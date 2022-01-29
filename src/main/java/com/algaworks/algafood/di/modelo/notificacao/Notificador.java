@@ -1,4 +1,4 @@
-package com.algaworks.algafood.di.notificacao;
+package com.algaworks.algafood.di.modelo.notificacao;
 
 import com.algaworks.algafood.di.modelo.Cliente;
 
