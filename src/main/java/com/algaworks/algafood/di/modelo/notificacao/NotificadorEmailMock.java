@@ -1,22 +1,22 @@
 package com.algaworks.algafood.di.modelo.notificacao;
 
+import com.algaworks.algafood.di.modelo.Cliente;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
-import com.algaworks.algafood.di.modelo.Cliente;
-
-@Profile("prod")
+@Profile("dev")
 @TipoDoNotificador(NivelUrgencia.URGENTE)
 @Component
-public class NotificadorEmail implements Notificador {
+public class NotificadorEmailMock implements Notificador {
 
-    public NotificadorEmail(){
-        System.out.println("NotificaddorEmail REAL");
+    public NotificadorEmailMock(){
+        System.out.println("NotificadorEmail MOCK");
     }
 
     @Override
+
     public void notificar(Cliente cliente, String mensagem) {
-        System.out.printf("Notificando %s através do e-mail %s: %s\n",
+        System.out.printf("MOCK: Notificando seria enviada para %s através do e-mail %s: %s\n",
                 cliente.getNome(), cliente.getEmail(), mensagem);
     }
 }
