@@ -12,4 +12,5 @@ public class ServiceConfig {
     public AtivacaoClienteService ativacaoClienteService() {
         return new AtivacaoClienteService();
     }
+
 }
