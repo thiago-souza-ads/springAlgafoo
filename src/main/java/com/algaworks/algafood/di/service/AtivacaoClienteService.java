@@ -11,19 +11,20 @@ import org.springframework.stereotype.Component;
 @Component
 public class AtivacaoClienteService {
 
-    @TipoDoNotificador(NivelUrgencia.SEM_URGENCIA)
+//    @TipoDoNotificador(NivelUrgencia.SEM_URGENCIA)
+//    @Autowired
+//    private Notificador notificador;
+
+//    //	@PostConstruct
+//    public void init() {
+//        System.out.println("INIT " + notificador);
+//    }
+//
+//    //	@PreDestroy
+//    public void destroy() {
+//        System.out.println("DESTROY");
+//    }
     @Autowired
-    private Notificador notificador;
-
-    //	@PostConstruct
-    public void init() {
-        System.out.println("INIT " + notificador);
-    }
-
-    //	@PreDestroy
-    public void destroy() {
-        System.out.println("DESTROY");
-    }
     private ApplicationEventPublisher eventPublisher;
 
     public void ativar(Cliente cliente) {
