@@ -10,7 +10,7 @@ import com.algaworks.algafood.di.service.AtivacaoClienteService;
 @Controller
 public class MeuPrimeiroController {
 
-    private AtivacaoClienteService ativacaoClienteService;
+    private final AtivacaoClienteService ativacaoClienteService;
 
     public MeuPrimeiroController(AtivacaoClienteService ativacaoClienteService) {
         this.ativacaoClienteService = ativacaoClienteService;
@@ -23,7 +23,7 @@ public class MeuPrimeiroController {
 
         ativacaoClienteService.ativar(joao);
 
-        return "Hello!";
+        return "<h1>Hello, active profile!</h1>";
     }
 
 }
