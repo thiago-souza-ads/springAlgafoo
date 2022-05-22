@@ -21,6 +21,9 @@ public class Estado {
     @Column(name = "sigla", length = 2)
     private String sigla;
 
+    @Column(name = "is_capital")
+    private Boolean isCapital;
+
     @ManyToOne // Muitos Restaurantes tem uma Cozinha
     @JoinColumn(name="pais_id", nullable = false) // Nomeclatura opcional, se nao colocar ele por defalt seria cozinha_id
     private Pais pais;

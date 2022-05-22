@@ -15,8 +15,11 @@ public class Cidade {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "nome", length = 30)
+    @Column(name = "nome", length = 100)
     private String nome;
+
+    @Column(name = "is_Capital")
+    private Boolean isCapital;
 
     @ManyToOne // Muitos Restaurantes tem uma Cozinha
     @JoinColumn(name="estado_id", nullable = false) // Nomeclatura opcional, se nao colocar ele por defalt seria cozinha_id
