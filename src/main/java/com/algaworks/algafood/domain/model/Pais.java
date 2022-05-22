@@ -5,14 +5,10 @@ import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 
-//@Getter
-//@Setter
-//@EqualsAndHashCode
+@Entity
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Entity
-//@Table(name = "tab_cozinhas")
-public class Cozinha {
+public class Pais {
 
     @Id
     @EqualsAndHashCode.Include
@@ -21,4 +17,7 @@ public class Cozinha {
 
     @Column(name = "nome", length = 30)
     private String nome;
+
+    @Column(name = "sigla", length = 3)
+    private String sigla;
 }

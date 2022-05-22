@@ -5,14 +5,10 @@ import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 
-//@Getter
-//@Setter
-//@EqualsAndHashCode
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-//@Table(name = "tab_cozinhas")
-public class Cozinha {
+public class Estado {
 
     @Id
     @EqualsAndHashCode.Include
@@ -21,4 +17,12 @@ public class Cozinha {
 
     @Column(name = "nome", length = 30)
     private String nome;
+
+    @Column(name = "sigla", length = 2)
+    private String sigla;
+
+    @ManyToOne // Muitos Restaurantes tem uma Cozinha
+    @JoinColumn(name="pais_id", nullable = false) // Nomeclatura opcional, se nao colocar ele por defalt seria cozinha_id
+    private Pais pais;
+
 }
