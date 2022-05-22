@@ -24,33 +24,39 @@ insert into restaurante  (nome, taxa_frete, cozinha_id) values ('X-Ratao', '10',
 
 insert into pais  (id, nome, sigla) values (1, 'Brasil', 'BR');
 
-insert into estado  (id, nome, sigla, is_Capital, pais_id) values (1, 'Acre' , 'AC' , false, 1);
-insert into estado  (id, nome, sigla, is_Capital, pais_id) values (2, 'Alagoas' , 'AL' ,false, 1);
-insert into estado  (id, nome, sigla, is_Capital, pais_id) values (3, 'Amapá' , 'AP' , false, 1);
-insert into estado  (id, nome, sigla, is_Capital, pais_id) values (4, 'Amazonas' , 'AM', false, 1);
-insert into estado  (id, nome, sigla, is_Capital, pais_id) values (5, 'Bahia' , 'BA' , false, 1);
-insert into estado  (id, nome, sigla, is_Capital, pais_id) values (6, 'Ceara' , 'CE' , false, 1);
-insert into estado  (id, nome, sigla, is_Capital, pais_id) values (7, 'Distrito Federal', 'DF' , true, 1);
-insert into estado  (id, nome, sigla, is_Capital, pais_id) values (8, 'Espírito Santo', 'ES' , false, 1);
-insert into estado  (id, nome, sigla, is_Capital, pais_id) values (9, 'Goiás', 'GO' , false, 1);
-insert into estado  (id, nome, sigla, is_Capital, pais_id) values (10, 'Maranhão', 'MA' , false, 1);
-insert into estado  (id, nome, sigla, is_Capital, pais_id) values (11, 'Mato Grosso', 'MT', false, 1);
-insert into estado  (id, nome, sigla, is_Capital, pais_id) values (12, 'Mato Grosso do Sul' , 'MS', false, 1);
-insert into estado  (id, nome, sigla, is_Capital, pais_id) values (13, 'Minas Gerais' , 'MG', false, 1);
-insert into estado  (id, nome, sigla, is_Capital, pais_id) values (14, 'Pará' , 'PA',false, 1);
-insert into estado  (id, nome, sigla, is_Capital, pais_id) values (15, 'Paraíba', 'PB', false, 1);
-insert into estado  (id, nome, sigla, is_Capital, pais_id) values (16, 'Paraná', 'PR', false, 1);
-insert into estado  (id, nome, sigla, is_Capital, pais_id) values (17, 'Pernambuco', 'PE', false, 1);
-insert into estado  (id, nome, sigla, is_Capital, pais_id) values (18, 'Piauí' , 'PI' , false, 1);
-insert into estado  (id, nome, sigla, is_Capital, pais_id) values (19, 'Rio de Janeiro' , 'RJ', false, 1);
-insert into estado  (id, nome, sigla, is_Capital, pais_id) values (20, 'Rio Grande do Norte', 'RN', false, 1);
-insert into estado  (id, nome, sigla, is_Capital, pais_id) values (21, 'Rio Grande do Sul', 'RS', false, 1);
-insert into estado  (id, nome, sigla, is_Capital, pais_id) values (22, 'Rondônia', 'RO', false, 1);
-insert into estado  (id, nome, sigla, is_Capital, pais_id) values (23, 'Roraima', 'RR', false, 1);
-insert into estado  (id, nome, sigla, is_Capital, pais_id) values (24, 'Santa Catarina', 'SC', false, 1);
-insert into estado  (id, nome, sigla, is_Capital, pais_id) values (25, 'São Paulo', 'SP', false, 1);
-insert into estado  (id, nome, sigla, is_Capital, pais_id) values (26, 'Sergipe', 'SE', false, 1);
-insert into estado  (id, nome, sigla, is_Capital, pais_id) values (27, 'Tocantins','TO', false , 1);
+insert into regiao (id, nome) values (1, 'Sul');
+insert into regiao (id, nome) values (2, 'Sudeste');
+insert into regiao (id, nome) values (3, 'Centro-oeste');
+insert into regiao (id, nome) values (4, 'Norte');
+insert into regiao (id, nome) values (5, 'Nordeste');
+
+insert into estado  (id, nome, sigla, is_Capital, regiao_id, pais_id) values (1, 'Acre' , 'AC' , false, 4, 1);
+insert into estado  (id, nome, sigla, is_Capital, regiao_id, pais_id) values (2, 'Alagoas' , 'AL' ,false, 5, 1);
+insert into estado  (id, nome, sigla, is_Capital, regiao_id, pais_id) values (3, 'Amapá' , 'AP' , false, 4, 1);
+insert into estado  (id, nome, sigla, is_Capital, regiao_id, pais_id) values (4, 'Amazonas' , 'AM', false, 4, 1);
+insert into estado  (id, nome, sigla, is_Capital, regiao_id, pais_id) values (5, 'Bahia' , 'BA' , false, 5, 1);
+insert into estado  (id, nome, sigla, is_Capital, regiao_id, pais_id) values (6, 'Ceara' , 'CE' , false, 5, 1);
+insert into estado  (id, nome, sigla, is_Capital, regiao_id, pais_id) values (7, 'Distrito Federal', 'DF' , true, 3, 1);
+insert into estado  (id, nome, sigla, is_Capital, regiao_id, pais_id) values (8, 'Espírito Santo', 'ES' , false, 2, 1);
+insert into estado  (id, nome, sigla, is_Capital, regiao_id, pais_id) values (9, 'Goiás', 'GO' , false, 3, 1);
+insert into estado  (id, nome, sigla, is_Capital, regiao_id, pais_id) values (10, 'Maranhão', 'MA' , false, 5, 1);
+insert into estado  (id, nome, sigla, is_Capital, regiao_id, pais_id) values (11, 'Mato Grosso', 'MT', false, 3, 1);
+insert into estado  (id, nome, sigla, is_Capital, regiao_id, pais_id) values (12, 'Mato Grosso do Sul' , 'MS', false, 3, 1);
+insert into estado  (id, nome, sigla, is_Capital, regiao_id, pais_id) values (13, 'Minas Gerais' , 'MG', false, 1, 1);
+insert into estado  (id, nome, sigla, is_Capital, regiao_id, pais_id) values (14, 'Pará' , 'PA',false, 4, 1);
+insert into estado  (id, nome, sigla, is_Capital, regiao_id, pais_id) values (15, 'Paraíba', 'PB', false, 5, 1);
+insert into estado  (id, nome, sigla, is_Capital, regiao_id, pais_id) values (16, 'Paraná', 'PR', false, 1, 1);
+insert into estado  (id, nome, sigla, is_Capital, regiao_id, pais_id) values (17, 'Pernambuco', 'PE', false, 5, 1);
+insert into estado  (id, nome, sigla, is_Capital, regiao_id, pais_id) values (18, 'Piauí' , 'PI' , false, 5, 1);
+insert into estado  (id, nome, sigla, is_Capital, regiao_id, pais_id) values (19, 'Rio de Janeiro' , 'RJ', false, 2, 1);
+insert into estado  (id, nome, sigla, is_Capital, regiao_id, pais_id) values (20, 'Rio Grande do Norte', 'RN', false, 5, 1);
+insert into estado  (id, nome, sigla, is_Capital, regiao_id, pais_id) values (21, 'Rio Grande do Sul', 'RS', false, 1, 1);
+insert into estado  (id, nome, sigla, is_Capital, regiao_id, pais_id) values (22, 'Rondônia', 'RO', false, 4, 1);
+insert into estado  (id, nome, sigla, is_Capital, regiao_id, pais_id) values (23, 'Roraima', 'RR', false, 4, 1);
+insert into estado  (id, nome, sigla, is_Capital, regiao_id, pais_id) values (24, 'Santa Catarina', 'SC', false, 1, 1);
+insert into estado  (id, nome, sigla, is_Capital, regiao_id, pais_id) values (25, 'São Paulo', 'SP', false, 2, 1);
+insert into estado  (id, nome, sigla, is_Capital, regiao_id, pais_id) values (26, 'Sergipe', 'SE', false, 5, 1);
+insert into estado  (id, nome, sigla, is_Capital, regiao_id, pais_id) values (27, 'Tocantins','TO', false , 4, 1);
 
 insert into cidade  (nome, is_Capital, estado_id) values ('Alta Floresta D´oeste', false,22);
 insert into cidade  (nome, is_Capital, estado_id) values ('Ariquemes', false,22);
@@ -5622,5 +5628,21 @@ insert into cidade  (nome, is_Capital, estado_id) values ('Vicentinópolis', fal
 insert into cidade  (nome, is_Capital, estado_id) values ('Vila Boa', false,9);
 insert into cidade  (nome, is_Capital, estado_id) values ('Vila Propício', false,9);
 insert into cidade  (nome, is_Capital, estado_id) values ('Brasília', true,7);
+
+
+insert into formaDePagamento  (descricao) values ('A vista dinheiro');
+insert into formaDePagamento  (descricao) values ('A vista credito');
+insert into formaDePagamento  (descricao) values ('A vista debito');
+insert into formaDePagamento  (descricao) values ('Parcelado credito');
+insert into formaDePagamento  (descricao) values ('Pix');
+insert into formaDePagamento  (descricao) values ('Boleto');
+
+insert into permissao (nome, descricao) values ('Consultar', 'Permite consultar dados dentro do sistema');
+insert into permissao (nome, descricao) values ('Gerenciar', 'Permite gerenciar dados dentro do sistema');
+
+
+
+
+
 
 
