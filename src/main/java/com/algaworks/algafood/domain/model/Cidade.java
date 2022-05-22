@@ -5,9 +5,9 @@ import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 
+@Entity
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Entity
 public class Cidade {
 
     @Id
@@ -22,6 +22,7 @@ public class Cidade {
     private Boolean isCapital;
 
     @ManyToOne // Muitos Restaurantes tem uma Cozinha
-    @JoinColumn(name="estado_id", nullable = false) // Nomeclatura opcional, se nao colocar ele por defalt seria cozinha_id
+    @JoinColumn(name = "estado_id", nullable = false)
+    // Nomeclatura opcional, se nao colocar ele por defalt seria cozinha_id
     private Estado estado;
 }

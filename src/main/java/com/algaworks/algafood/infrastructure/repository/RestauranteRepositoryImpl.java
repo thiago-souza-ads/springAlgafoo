@@ -1,7 +1,6 @@
 package com.algaworks.algafood.infrastructure.repository;
 
 import com.algaworks.algafood.domain.model.Restaurante;
-import com.algaworks.algafood.domain.repository.CozinhaRepository;
 import com.algaworks.algafood.domain.repository.RestauranteRepository;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,23 +17,25 @@ public class RestauranteRepositoryImpl implements RestauranteRepository {
     private EntityManager manager;
 
     @Override
-    public List<Restaurante> listar (){
+    public List<Restaurante> listar() {
         TypedQuery<Restaurante> query = manager.createQuery("from Restaurante", Restaurante.class);
         return query.getResultList();
     }
+
     @Override
-    public Restaurante buscar(Long id){
+    public Restaurante buscar(Long id) {
         return manager.find(Restaurante.class, id);
     }
+
     @Override
     @Transactional
-    public Restaurante salvar(Restaurante restaurante){
+    public Restaurante salvar(Restaurante restaurante) {
         return manager.merge(restaurante);
     }
 
     @Override
     @Transactional
-    public void remover(Restaurante restaurante){
+    public void remover(Restaurante restaurante) {
         restaurante = buscar(restaurante.getId());
         manager.remove(restaurante);
     }

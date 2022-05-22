@@ -8,9 +8,9 @@ import javax.persistence.*;
 //@Getter
 //@Setter
 //@EqualsAndHashCode
+@Entity
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Entity
 //@Table(name = "tab_cozinhas")
 public class Cozinha {
 

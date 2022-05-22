@@ -9,6 +9,6 @@ public class EmissaoNotaFiscalService {
 
     @EventListener
     public void clienteAtivadoListener(ClienteAtivadoEvent event) {
-        System.out.println("Emitindo nota fiscal para "+ event.getCliente().getNome());
+        System.out.println("Emitindo nota fiscal para " + event.getCliente().getNome());
     }
 }

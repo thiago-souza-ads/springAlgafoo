@@ -21,7 +21,7 @@ public class ConsultaRestauranteMain {
         for (Restaurante restaurante : restaurantes) {
             Thread.sleep(500);
             System.out.println("\n ---------------------------------------------");
-            System.out.println("| Restaurante nª: " + restaurante.getId()  +"\n| Nome do Restaurante: "+ restaurante.getNome() +"\n| Taxa de entrega: " + restaurante.getTaxaFrete() + "%\n| Id da Cozinha: " + restaurante.getCozinha().getId() + "\n| Tipo da Cozinha: " +restaurante.getCozinha().getNome());
+            System.out.println("| Restaurante nª: " + restaurante.getId() + "\n| Nome do Restaurante: " + restaurante.getNome() + "\n| Taxa de entrega: " + restaurante.getTaxaFrete() + "%\n| Id da Cozinha: " + restaurante.getCozinha().getId() + "\n| Tipo da Cozinha: " + restaurante.getCozinha().getNome());
         }
         System.out.println("\n ---------------------------------------------");
 

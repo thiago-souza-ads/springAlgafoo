@@ -5,9 +5,9 @@ import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 
-@Entity
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Entity
 public class Pais {
 
     @Id
