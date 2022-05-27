@@ -31,4 +31,4 @@ build/
 
 ### VS Code ###
 .vscode/
-/src/main/java/com/algaworks/algafood/domain/model/example/Modelo.java
+/src/main/java/com/algaworks/algafood/domain/model/example/*.java
