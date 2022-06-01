@@ -23,10 +23,13 @@ public class CozinhaController {
     public List<Cozinha> listar() {
         return cozinhaRepository.listar();
     }
+
     @GetMapping("/{cozinhaId}")
-//    public Cozinha buscar(@PathVariable("cozinhaId") Long id){ // Para Bind não automatico
+
     public Cozinha buscar(@PathVariable Long cozinhaId){
+
         return cozinhaRepository.buscar(cozinhaId);
     }
 
+    //    public Cozinha buscar(@PathVariable("cozinhaId") Long id){ // Para Bind não automatico
 }
