@@ -6,13 +6,9 @@ import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 
-//@Getter
-//@Setter
-//@EqualsAndHashCode
 @Entity
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-//@Table(name = "tab_cozinhas")
 public class Cozinha {
 
     @Id
@@ -20,7 +16,6 @@ public class Cozinha {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JsonProperty(value = "gastronomia") // Altera nome da variavel para representação no dominio
     @Column(name = "nome", length = 30)
     private String nome;
 }

@@ -21,7 +21,10 @@ import javax.persistence.*;
  *
  */
 
-
+//@Getter
+//@Setter
+//@EqualsAndHashCode
+//@Table(name = "tab_cozinhas")
 @Entity // Dizendo que essa classe será uma // Por padrão a classe entidade será o nome da classe Ex: 'modelo'
 @Data // Lombok - Get e Set - Equals e HashCode
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
@@ -35,11 +38,33 @@ public class Modelo {
     private Long id; // Utilizar encapsulamento - Acessar e modificar via Getter e Setter
 
     // Usando a biblioteca Jackson
-    @JsonIgnore // Irá ignorar na requisição via api a coluna // Cuidado com precedencia, não conter outra notation que substitua
-    @JsonProperty("Titulo") // Irá exibir esse nome como representação para a variavel na requisicao da api
+//    @JsonIgnore // Irá ignorar na requisição via api a coluna // Cuidado com precedencia, não conter outra notation que substitua
+    @JsonProperty("nomeModelo") // Irá exibir esse nome como representação para a variavel na requisicao da api
     @Column(name = "nome_modelo", length = 30) // Name Pode deixar defalt seria mesmo nome da variavel // Length Padrão de Tamanho é 255 String
     private String nomeModelo;
 
-    //<----------> Fui da aula 3.1 - 3.2 com as Anotações <--------------------->
-    // <----------> Fui até a aula 3.6 com as Anotações <--------------------->
+    @JsonIgnore // Irá ignorar na requisição via api a coluna // Cuidado com precedencia, não conter outra notation que substitua
+//    @JsonProperty("dadosModelo") // Irá exibir esse nome como representação para a variavel na requisicao da api
+    @Column(name = "dados_modelo", length = 30) // Name Pode deixar defalt seria mesmo nome da variavel // Length Padrão de Tamanho é 255 String
+    private String dadosModelo;
+
+    @JsonIgnore // Irá ignorar na requisição via api a coluna // Cuidado com precedencia, não conter outra notation que substitua
+//    @JsonProperty("infoModelo") // Irá exibir esse nome como representação para a variavel na requisicao da api
+    @Column(name = "info_modelo", length = 30) // Name Pode deixar defalt seria mesmo nome da variavel // Length Padrão de Tamanho é 255 String
+    private String infoModelo;
+
+    @JsonIgnore // Irá ignorar na requisição via api a coluna // Cuidado com precedencia, não conter outra notation que substitua
+//    @JsonProperty("stringModelo") // Irá exibir esse nome como representação para a variavel na requisicao da api
+    @Column(name = "string_modelo", length = 30) // Name Pode deixar defalt seria mesmo nome da variavel // Length Padrão de Tamanho é 255 String
+    private String stringModelo;
+
+    @JsonIgnore // Irá ignorar na requisição via api a coluna // Cuidado com precedencia, não conter outra notation que substitua
+//    @JsonProperty("outraStringModelo") // Irá exibir esse nome como representação para a variavel na requisicao da api
+    @Column(name = "outra_string_modelo", length = 30) // Name Pode deixar defalt seria mesmo nome da variavel // Length Padrão de Tamanho é 255 String
+    private String outraStringModelo;
+
+    @JsonIgnore // Irá ignorar na requisição via api a coluna // Cuidado com precedencia, não conter outra notation que substitua
+//    @JsonProperty("maisOutraStringModelo") // Irá exibir esse nome como representação para a variavel na requisicao da api
+    @Column(name = "mais_outra_string_modelo", length = 30) // Name Pode deixar defalt seria mesmo nome da variavel // Length Padrão de Tamanho é 255 String
+    private String maisOutraStringModelo;
 }

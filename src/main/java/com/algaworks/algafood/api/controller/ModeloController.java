@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@RestController  // @Controller @ResponseBody
 @RequestMapping(value = "/modelos")
 public class ModeloController {
 
@@ -21,6 +21,7 @@ public class ModeloController {
     public List<Modelo> listar() {
         return modeloRepository.listar();
     }
+
     @GetMapping(produces = MediaType.APPLICATION_XML_VALUE)
     public ModeloXmlWrapper listarXml() {
         return new ModeloXmlWrapper(modeloRepository.listar());
@@ -31,6 +32,35 @@ public class ModeloController {
     public Modelo buscar(@PathVariable Long modeloId) {
         return modeloRepository.buscar(modeloId);
     }
+
+    @PostMapping // Metodo não idempotente, quantas vezes chamar vai salvar, mesmo que repetido
+    @ResponseStatus(HttpStatus.CREATED) // ResponseStatus informando que foi criado
+    public void adicionar(@RequestBody Modelo modelo) {
+        modeloRepository.salvar(modelo);
+    }
+//    @GetMapping("/{modeloId}")
+//    public ResponseEntity<Modelo> buscar(@PathVariable Long modeloId){
+//        Modelo modelo = modeloRepository.buscar(modeloId);
+//        return ResponseEntity.status(HttpStatus.OK).body(modelo);
+//        return ResponseEntity.ok(modelo);
+////        Headers pode conter tambem o local do redirecionamento em caso de mudança de local, postman segue os redirecionamentos
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.add(HttpHeaders.LOCATION, "httt://api.algafood.local:8080/modelos");
+//
+//        if(modelo != null){
+//            return ResponseEntity
+//                    .status(HttpStatus.OK)
+//                    .body(modelo);
+//        }
+//        //Caso não encontrar retornara 404
+//        return ResponseEntity.notFound().build();
+//    }
+    //    @ResponseStatus(HttpStatus.OK)
+//    @GetMapping("/{cozinhaId}")
+//    public Cozinha buscar(@PathVariable Long cozinhaId){
+//        return cozinhaRepository.buscar(cozinhaId);
+//        //    public Cozinha buscar(@PathVariable("cozinhaId") Long id){ // Para Bind não automatico
+//    }
 
     /**
      * Principais métodos - verbos http:

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 
-@RestController // @Controller @ResponseBody
+@RestController
 @RequestMapping("/enderecos")
 public class EnderecoController {
 

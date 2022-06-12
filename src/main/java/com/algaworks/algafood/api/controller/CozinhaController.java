@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
-@RestController // @Controller @ResponseBody
+@RestController
 @RequestMapping("/cozinhas")
 public class CozinhaController {
 
@@ -29,31 +29,12 @@ public class CozinhaController {
         return cozinhaRepository.listar();
     }
 
-//    @ResponseStatus(HttpStatus.OK)
-//    @GetMapping("/{cozinhaId}")
-//    public Cozinha buscar(@PathVariable Long cozinhaId){
-//        return cozinhaRepository.buscar(cozinhaId);
-//        //    public Cozinha buscar(@PathVariable("cozinhaId") Long id){ // Para Bind não automatico
-//    }
-
     @GetMapping("/{cozinhaId}")
-    public ResponseEntity<Cozinha> buscar(@PathVariable Long cozinhaId){
-        Cozinha cozinha = cozinhaRepository.buscar(cozinhaId);
-//        return ResponseEntity.status(HttpStatus.OK).body(cozinha);
-//        return ResponseEntity.ok(cozinha);
-        //Headers pode conter tambem o local do redirecionamento em caso de mudança de local, postman segue os redirecionamentos
-        HttpHeaders headers = new HttpHeaders();
-        headers.add(HttpHeaders.LOCATION, "httt://api.algafood.local:8080/cozinhas");
+    public Cozinha buscar(@PathVariable Long cozinhaId) {return cozinhaRepository.buscar(cozinhaId); }
 
-        if(cozinha != null){
-            return ResponseEntity
-                    .status(HttpStatus.FOUND)
-                    .headers(headers)
-                    .build();
-        }
-        //Caso não encontrar retornara 404
-        return ResponseEntity.notFound().build();
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED) // ResponseStatus informando que foi criado
+    public void adicionar(@RequestBody Cozinha cozinha){
+        cozinhaRepository.salvar(cozinha);
     }
-
-
 }
