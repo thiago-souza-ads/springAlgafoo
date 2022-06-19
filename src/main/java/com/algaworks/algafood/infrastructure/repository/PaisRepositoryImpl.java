@@ -2,6 +2,7 @@ package com.algaworks.algafood.infrastructure.repository;
 
 import com.algaworks.algafood.domain.model.Pais;
 import com.algaworks.algafood.domain.repository.PaisRepository;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,8 +36,11 @@ public class PaisRepositoryImpl implements PaisRepository {
 
     @Override
     @Transactional
-    public void remover(Pais pais) {
-        pais = buscar(pais.getId());
+    public void remover(Long id) {
+        Pais pais = buscar(id);
+        if (pais == null) {
+            throw new EmptyResultDataAccessException(1);
+        }
         manager.remove(pais);
     }
 }

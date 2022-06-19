@@ -29,9 +29,8 @@ public class Endereco {
     @Column(name = "cep", length = 30)
     private String cep;
 
-    @ManyToOne // Muitos Restaurantes tem uma Cozinha
+    @ManyToOne // Muitos Enderecos tem uma Cidade
     @JoinColumn(name = "cidade_id", nullable = false)
-    // Nomeclatura opcional, se nao colocar ele por defalt seria cozinha_id
     private Cidade cidade;
 
 }

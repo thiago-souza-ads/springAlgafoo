@@ -2,10 +2,13 @@ package com.algaworks.algafood.api.controller;
 
 import com.algaworks.algafood.domain.model.Endereco;
 import com.algaworks.algafood.domain.repository.EnderecoRepository;
+import com.algaworks.algafood.domain.service.CadastroEnderecoService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,9 +20,39 @@ public class EnderecoController {
     @Autowired
     private EnderecoRepository enderecoRepository;
 
+    @Autowired
+    private CadastroEnderecoService cadastroEnderecoService;
+
     @GetMapping
     public List<Endereco> listar() {
         return enderecoRepository.listar();
     }
 
+    @GetMapping(produces = MediaType.APPLICATION_XML_VALUE)
+    public List<Endereco> listarXML() {
+        return enderecoRepository.listar();
+    }
+
+    @GetMapping("/{enderecoId}")
+    public Endereco buscar(@PathVariable Long enderecoId) {
+        return enderecoRepository.buscar(enderecoId);
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public void adicionar(@RequestBody Endereco endereco) {
+        cadastroEnderecoService.salvar(endereco);
+    }
+
+    @PutMapping("/{enderecoId}")
+    public ResponseEntity<Endereco> atualizar(@PathVariable Long enderecoId, @RequestBody Endereco endereco) {
+        Endereco enderecoAtual = enderecoRepository.buscar(enderecoId);
+        if (enderecoAtual != null) {
+            BeanUtils.copyProperties(endereco, enderecoAtual, "id");
+            cadastroEnderecoService.salvar(enderecoAtual);
+            return ResponseEntity.ok(enderecoAtual);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }

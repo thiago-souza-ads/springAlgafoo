@@ -2,6 +2,7 @@ package com.algaworks.algafood.infrastructure.repository;
 
 import com.algaworks.algafood.domain.model.Regiao;
 import com.algaworks.algafood.domain.repository.RegiaoRepository;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,8 +36,11 @@ public class RegiaoRepositoryImpl implements RegiaoRepository {
 
     @Override
     @Transactional
-    public void remover(Regiao regiao) {
-        regiao = buscar(regiao.getId());
+    public void remover(Long id) {
+        Regiao regiao = buscar(id);
+        if (regiao == null) {
+            throw new EmptyResultDataAccessException(1);
+        }
         manager.remove(regiao);
     }
 }

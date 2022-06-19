@@ -2,33 +2,33 @@ package com.algaworks.algafood.domain.service;
 
 import com.algaworks.algafood.domain.exception.EntidadeEmUsoException;
 import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
-import com.algaworks.algafood.domain.model.Cozinha;
-import com.algaworks.algafood.domain.repository.CozinhaRepository;
+import com.algaworks.algafood.domain.model.Estado;
+import com.algaworks.algafood.domain.repository.EstadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CadastroCozinhaService {
+public class CadastroEstadoService {
 
     @Autowired
-    private CozinhaRepository cozinhaRepository;
+    private EstadoRepository estadoRepository;
 
-    public Cozinha salvar(Cozinha cozinha) {
-        return cozinhaRepository.salvar(cozinha);
+    public Estado salvar(Estado estado) {
+        return estadoRepository.salvar(estado);
     }
 
-    public void excluir(Long cozinhaId) {
+    public void excluir(Long estadoId) {
         try {
-            cozinhaRepository.remover(cozinhaId);
+            estadoRepository.remover(estadoId);
         } catch (EmptyResultDataAccessException e) {
             throw new EntidadeNaoEncontradaException(
-                    String.format("A entidade [{%d}] de id:[{%d}] não existe no Banco de Dados, não pode ser excluida.", Cozinha.class.getName(), cozinhaId)
+                    String.format("A entidade [{%d}] de id:[{%d}] não existe no Banco de Dados, não pode ser excluida.", Estado.class.getName(), estadoId)
             );
         } catch (DataIntegrityViolationException e) {
             throw new EntidadeEmUsoException(
-                    String.format("A entidade [{%d] de id:[{%d}] está em uso por outras Entidades, não pode ser excluida.", Cozinha.class.getName(), cozinhaId)
+                    String.format("A entidade [{%d] de id:[{%d}] está em uso por outras Entidades, não pode ser excluida.", Estado.class.getName(), estadoId)
             );
         }
     }

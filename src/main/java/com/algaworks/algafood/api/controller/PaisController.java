@@ -1,11 +1,16 @@
 package com.algaworks.algafood.api.controller;
 
+import com.algaworks.algafood.domain.exception.EntidadeEmUsoException;
+import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
 import com.algaworks.algafood.domain.model.Pais;
 import com.algaworks.algafood.domain.repository.PaisRepository;
+import com.algaworks.algafood.domain.service.CadastroPaisService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,10 +21,51 @@ public class PaisController {
 
     @Autowired
     private PaisRepository paisRepository;
+    @Autowired
+    private CadastroPaisService cadastroPaisService;
 
     @GetMapping
     public List<Pais> listar() {
         return paisRepository.listar();
     }
 
+    @GetMapping(produces = MediaType.APPLICATION_XML_VALUE)
+    public List<Pais> listarXML() {
+        return paisRepository.listar();
+    }
+
+    @GetMapping("/{paisId}")
+    public Pais buscar(@PathVariable Long paisId) {
+        return paisRepository.buscar(paisId);
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public void adicionar(@RequestBody Pais pais) {
+        cadastroPaisService.salvar(pais);
+    }
+
+    @PutMapping("/{paisId}")
+    public ResponseEntity<Pais> atualizar(@PathVariable Long paisId, @RequestBody Pais pais) {
+        Pais paisAtual = paisRepository.buscar(paisId);
+        if (paisAtual != null) {
+            BeanUtils.copyProperties(pais, paisAtual, "id");
+            cadastroPaisService.salvar(paisAtual);
+            return ResponseEntity.ok(paisAtual);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @DeleteMapping("/{paisId}")
+    public ResponseEntity<Pais> remover(@PathVariable Long paisId) {
+        try {
+            cadastroPaisService.excluir(paisId);
+            return ResponseEntity.noContent().build();
+        } catch (EntidadeNaoEncontradaException e) {
+            return ResponseEntity.notFound().build();
+        } catch (EntidadeEmUsoException e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        }
+    }
 }

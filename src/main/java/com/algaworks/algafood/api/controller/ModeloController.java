@@ -1,14 +1,30 @@
 package com.algaworks.algafood.api.controller;
 
 import com.algaworks.algafood.api.model.ModeloXmlWrapper;
+import com.algaworks.algafood.domain.exception.EntidadeEmUsoException;
+import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
 import com.algaworks.algafood.domain.model.Modelo;
 import com.algaworks.algafood.domain.repository.ModeloRepository;
+import com.algaworks.algafood.domain.service.CadastroModeloService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+/**
+ * @author Thiago Rodrigues de Souza
+ * Esta classe é um controller, responsavel por receber requisições da API,
+ * <p>
+ * <p>
+ * O correto seria somente busca no controlador,
+ * o service do domain fará alterações,
+ * usando o service, chamando aqui pelo controlador
+ * Esta classe de modelo está utilizando boas praticas de programação, a classe serve de referencia para estudo.
+ */
 
 @RestController  // @Controller @ResponseBody
 @RequestMapping(value = "/modelos")
@@ -16,6 +32,8 @@ public class ModeloController {
 
     @Autowired
     private ModeloRepository modeloRepository;
+    @Autowired
+    private CadastroModeloService cadastroModeloService;
 
     @GetMapping
     public List<Modelo> listar() {
@@ -38,7 +56,49 @@ public class ModeloController {
     public void adicionar(@RequestBody Modelo modelo) {
         modeloRepository.salvar(modelo);
     }
-//    @GetMapping("/{modeloId}")
+
+    @PutMapping("/{modeloId}")
+    public ResponseEntity<Modelo> atualizar(@PathVariable Long modeloId, @RequestBody Modelo modelo) {
+        Modelo modeloAtual = modeloRepository.buscar(modeloId);
+        if (modeloAtual != null) {
+            BeanUtils.copyProperties(modelo, modeloAtual, "id");
+            cadastroModeloService.salvar(modeloAtual);
+            return ResponseEntity.ok(modeloAtual);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @DeleteMapping("/{cozinhaId}")
+    public ResponseEntity<Modelo> remover(@PathVariable Long modeloId) {
+        try {
+            cadastroModeloService.excluir(modeloId);
+            return ResponseEntity.noContent().build();
+        } catch (EntidadeNaoEncontradaException e) {
+            return ResponseEntity.notFound().build();
+        } catch (EntidadeEmUsoException e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        }
+    }
+
+    // tipo de DeleteMapping
+//    @DeleteMapping("/{cozinhaId}")
+//    public ResponseEntity<Cozinha> remover(@PathVariable Long cozinhaId) {
+//        try{
+//            Cozinha cozinha = cozinhaRepository.buscar(cozinhaId);
+//            if (cozinha != null) {
+//                cozinhaRepository.remover(cozinha);
+//                return ResponseEntity.noContent().build();
+//            } else {
+//                return ResponseEntity.notFound().build();
+//            }
+//        } catch (DataIntegrityViolationException e){
+//            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+//        }
+//    }
+
+
+    //    @GetMapping("/{modeloId}")
 //    public ResponseEntity<Modelo> buscar(@PathVariable Long modeloId){
 //        Modelo modelo = modeloRepository.buscar(modeloId);
 //        return ResponseEntity.status(HttpStatus.OK).body(modelo);
@@ -95,6 +155,5 @@ public class ModeloController {
      * 503 - Serviço Indisponivel
      *
      */
-
 
 }

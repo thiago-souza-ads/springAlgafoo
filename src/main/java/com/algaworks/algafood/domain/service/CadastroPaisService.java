@@ -2,33 +2,33 @@ package com.algaworks.algafood.domain.service;
 
 import com.algaworks.algafood.domain.exception.EntidadeEmUsoException;
 import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
-import com.algaworks.algafood.domain.model.Cozinha;
-import com.algaworks.algafood.domain.repository.CozinhaRepository;
+import com.algaworks.algafood.domain.model.Pais;
+import com.algaworks.algafood.domain.repository.PaisRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CadastroCozinhaService {
+public class CadastroPaisService {
 
     @Autowired
-    private CozinhaRepository cozinhaRepository;
+    private PaisRepository paisRepository;
 
-    public Cozinha salvar(Cozinha cozinha) {
-        return cozinhaRepository.salvar(cozinha);
+    public Pais salvar(Pais pais) {
+        return paisRepository.salvar(pais);
     }
 
-    public void excluir(Long cozinhaId) {
+    public void excluir(Long paisId) {
         try {
-            cozinhaRepository.remover(cozinhaId);
+            paisRepository.remover(paisId);
         } catch (EmptyResultDataAccessException e) {
             throw new EntidadeNaoEncontradaException(
-                    String.format("A entidade [{%d}] de id:[{%d}] não existe no Banco de Dados, não pode ser excluida.", Cozinha.class.getName(), cozinhaId)
+                    String.format("A entidade [{%d}] de id:[{%d}] não existe no Banco de Dados, não pode ser excluida.", Pais.class.getName(), paisId)
             );
         } catch (DataIntegrityViolationException e) {
             throw new EntidadeEmUsoException(
-                    String.format("A entidade [{%d] de id:[{%d}] está em uso por outras Entidades, não pode ser excluida.", Cozinha.class.getName(), cozinhaId)
+                    String.format("A entidade [{%d] de id:[{%d}] está em uso por outras Entidades, não pode ser excluida.", Pais.class.getName(), paisId)
             );
         }
     }

@@ -2,6 +2,7 @@ package com.algaworks.algafood.infrastructure.repository;
 
 import com.algaworks.algafood.domain.model.Endereco;
 import com.algaworks.algafood.domain.repository.EnderecoRepository;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,8 +36,11 @@ public class EnderecoRepositoryImpl implements EnderecoRepository {
 
     @Override
     @Transactional
-    public void remover(Endereco endereco) {
-        endereco = buscar(endereco.getId());
+    public void remover(Long id) {
+        Endereco endereco = buscar(id);
+        if (endereco == null) {
+            throw new EmptyResultDataAccessException(1);
+        }
         manager.remove(endereco);
     }
 }

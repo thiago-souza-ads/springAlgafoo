@@ -12,6 +12,6 @@ public interface RegiaoRepository {
 
     Regiao salvar(Regiao regiao);
 
-    void remover(Regiao regiao);
+    void remover(Long regiaoId);
 
 }

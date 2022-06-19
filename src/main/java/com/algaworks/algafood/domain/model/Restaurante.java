@@ -24,7 +24,6 @@ public class Restaurante {
 
     @ManyToOne // Muitos Restaurantes tem uma Cozinha
     @JoinColumn(name = "cozinha_id", nullable = false)
-    // Nomeclatura opcional, se nao colocar ele por defalt seria cozinha_id
     private Cozinha cozinha;
 
 }

@@ -2,35 +2,34 @@ package com.algaworks.algafood.domain.service;
 
 import com.algaworks.algafood.domain.exception.EntidadeEmUsoException;
 import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
-import com.algaworks.algafood.domain.model.Cozinha;
-import com.algaworks.algafood.domain.repository.CozinhaRepository;
+import com.algaworks.algafood.domain.model.Cidade;
+import com.algaworks.algafood.domain.repository.CidadeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CadastroCozinhaService {
+public class CadastroCidadeService {
 
     @Autowired
-    private CozinhaRepository cozinhaRepository;
+    private CidadeRepository cidadeRepository;
 
-    public Cozinha salvar(Cozinha cozinha) {
-        return cozinhaRepository.salvar(cozinha);
+    public Cidade salvar(Cidade cidade) {
+        return cidadeRepository.salvar(cidade);
     }
 
-    public void excluir(Long cozinhaId) {
+    public void excluir(Long cidadeId) {
         try {
-            cozinhaRepository.remover(cozinhaId);
+            cidadeRepository.remover(cidadeId);
         } catch (EmptyResultDataAccessException e) {
             throw new EntidadeNaoEncontradaException(
-                    String.format("A entidade [{%d}] de id:[{%d}] não existe no Banco de Dados, não pode ser excluida.", Cozinha.class.getName(), cozinhaId)
+                    String.format("A cidade [{%d}] não existe, não pode ser excluida.", cidadeId)
             );
         } catch (DataIntegrityViolationException e) {
             throw new EntidadeEmUsoException(
-                    String.format("A entidade [{%d] de id:[{%d}] está em uso por outras Entidades, não pode ser excluida.", Cozinha.class.getName(), cozinhaId)
+                    String.format("A cidade [{%d}] está em uso, não pode ser excluida.", cidadeId)
             );
         }
     }
-
 }

@@ -2,6 +2,7 @@ package com.algaworks.algafood.infrastructure.repository;
 
 import com.algaworks.algafood.domain.model.FormaDePagamento;
 import com.algaworks.algafood.domain.repository.FormaDePagamentoRepository;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,8 +36,11 @@ public class FormaDePagamentoRepositoryImpl implements FormaDePagamentoRepositor
 
     @Override
     @Transactional
-    public void remover(FormaDePagamento formaDePagamento) {
-        formaDePagamento = buscar(formaDePagamento.getId());
+    public void remover(Long id) {
+        FormaDePagamento formaDePagamento = buscar(id);
+        if (formaDePagamento == null) {
+            throw new EmptyResultDataAccessException(1);
+        }
         manager.remove(formaDePagamento);
     }
 }

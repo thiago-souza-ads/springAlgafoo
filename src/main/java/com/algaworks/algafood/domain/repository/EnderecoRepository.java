@@ -12,6 +12,6 @@ public interface EnderecoRepository {
 
     Endereco salvar(Endereco endereco);
 
-    void remover(Endereco endereco);
+    void remover(Long enderecoId);
 
 }

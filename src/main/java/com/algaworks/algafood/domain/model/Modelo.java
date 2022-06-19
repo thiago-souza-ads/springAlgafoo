@@ -14,7 +14,7 @@ import javax.persistence.*;
  * e boas praticas relacionadas a elaboração de uma entidade.
  *
  * Com a injeção de dependencias do lombok não será vecessario Gerar os Getter's e os Setter's
- *
+ * Classe de Representação de Alguma entidde de negocio
  * No properties:
  * spring.jpa.generate-ddl=true (Configurando o JPA para gerar o DDL)
  * spring.jpa.hibernate.ddl-auto=create(Nessa configuraçção Create vai dropar a tabela e criar outras)

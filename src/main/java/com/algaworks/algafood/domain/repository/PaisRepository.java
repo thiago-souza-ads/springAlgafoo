@@ -12,6 +12,6 @@ public interface PaisRepository {
 
     Pais salvar(Pais pais);
 
-    void remover(Pais pais);
+    void remover(Long paisId);
 
 }

@@ -24,14 +24,12 @@ public class Estado {
     @Column(name = "is_capital")
     private Boolean isCapital;
 
-    @ManyToOne // Muitos Restaurantes tem uma Cozinha
+    @ManyToOne // Muitos Estados tem uma Regiao
     @JoinColumn(name = "regiao_id", nullable = false)
-    // Nomeclatura opcional, se nao colocar ele por defalt seria cozinha_id
     private Regiao regiao;
 
-    @ManyToOne // Muitos Restaurantes tem uma Cozinha
+    @ManyToOne // Muitos Estados tem um Pais
     @JoinColumn(name = "pais_id", nullable = false)
-    // Nomeclatura opcional, se nao colocar ele por defalt seria cozinha_id
     private Pais pais;
 
 }

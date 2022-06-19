@@ -12,6 +12,6 @@ public interface FormaDePagamentoRepository {
 
     FormaDePagamento salvar(FormaDePagamento cidade);
 
-    void remover(FormaDePagamento cidade);
+    void remover(Long formaDePagamentoId);
 
 }
