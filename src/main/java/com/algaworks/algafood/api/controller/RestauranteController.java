@@ -2,7 +2,9 @@ package com.algaworks.algafood.api.controller;
 
 import com.algaworks.algafood.domain.exception.EntidadeEmUsoException;
 import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
+import com.algaworks.algafood.domain.model.Cozinha;
 import com.algaworks.algafood.domain.model.Restaurante;
+import com.algaworks.algafood.domain.repository.CozinhaRepository;
 import com.algaworks.algafood.domain.repository.RestauranteRepository;
 import com.algaworks.algafood.domain.service.CadastroRestauranteService;
 import org.springframework.beans.BeanUtils;
@@ -23,6 +25,8 @@ public class RestauranteController {
     private RestauranteRepository restauranteRepository;
     @Autowired
     private CadastroRestauranteService cadastroRestauranteService;
+    @Autowired
+    private CozinhaRepository cozinhaRepository;
 
     @GetMapping
     public List<Restaurante> listar() {
@@ -55,14 +59,26 @@ public class RestauranteController {
     }
 
     @PutMapping("/{restauranteId}")
-    public ResponseEntity<Restaurante> atualizar(@PathVariable Long restauranteId, @RequestBody Restaurante restaurante) {
-        Restaurante restauranteAtual = restauranteRepository.buscar(restauranteId);
-        if (restauranteAtual != null) {
-            BeanUtils.copyProperties(restaurante, restauranteAtual, "id");
-            cadastroRestauranteService.salvar(restauranteAtual);
-            return ResponseEntity.ok(restauranteAtual);
-        } else {
-            return ResponseEntity.notFound().build();
+    public ResponseEntity<?> atualizar(@PathVariable Long restauranteId, @RequestBody Restaurante restaurante) {
+        try{
+            Long cozinhaId = restaurante.getCozinha().getId();
+            Cozinha cozinha = cozinhaRepository.buscar(cozinhaId);
+            if(cozinha == null){
+                throw new EntidadeNaoEncontradaException(
+                        String.format("A cidade [{%d}] não existe, não pode ser excluida.", cozinhaId)
+                );
+            }
+            Restaurante restauranteAtual = restauranteRepository.buscar(restauranteId);
+            if (restauranteAtual != null) {
+                BeanUtils.copyProperties(restaurante, restauranteAtual, "id");
+                cadastroRestauranteService.salvar(restauranteAtual);
+                return ResponseEntity.ok(restauranteAtual);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } catch (EntidadeNaoEncontradaException e){
+            return ResponseEntity.badRequest()
+                    .body(e.getMessage());
         }
     }
 

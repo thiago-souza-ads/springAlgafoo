@@ -57,6 +57,7 @@ public class ModeloController {
         modeloRepository.salvar(modelo);
     }
 
+    //Atualização Total do objeto
     @PutMapping("/{modeloId}")
     public ResponseEntity<Modelo> atualizar(@PathVariable Long modeloId, @RequestBody Modelo modelo) {
         Modelo modeloAtual = modeloRepository.buscar(modeloId);
