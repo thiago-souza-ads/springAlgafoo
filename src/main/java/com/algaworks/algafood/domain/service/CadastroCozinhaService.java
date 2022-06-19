@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CadastroCozinhaService {
-
+    // Não pode retornar Response Entity// Ideal criar Exception de negocio personalizada e tratar
     @Autowired
     private CozinhaRepository cozinhaRepository;
 

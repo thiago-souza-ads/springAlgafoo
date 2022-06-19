@@ -22,6 +22,7 @@ import java.util.List;
 @RequestMapping("/cozinhas")
 public class CozinhaController {
 
+    // O cerreto seria somente busca no controlador, o service do domain fará alterações, usando o service, chamando aqui pelo controlador
     @Autowired
     private CadastroCozinhaService cadastroCozinhaService;
     @Autowired
@@ -54,13 +55,13 @@ public class CozinhaController {
         Cozinha cozinhaAtual = cozinhaRepository.buscar(cozinhaId);
         if (cozinhaAtual != null) {
             BeanUtils.copyProperties(cozinha, cozinhaAtual, "id");
-            cozinhaRepository.salvar(cozinhaAtual);
+            cadastroCozinhaService.salvar(cozinhaAtual);
             return ResponseEntity.ok(cozinhaAtual);
         } else {
             return ResponseEntity.notFound().build();
         }
     }
-
+// tipo 1
 //    @DeleteMapping("/{cozinhaId}")
 //    public ResponseEntity<Cozinha> remover(@PathVariable Long cozinhaId) {
 //        try{
@@ -75,6 +76,7 @@ public class CozinhaController {
 //            return ResponseEntity.status(HttpStatus.CONFLICT).build();
 //        }
 //    }
+    // Tipo 2
         @DeleteMapping("/{cozinhaId}")
         public ResponseEntity<Cozinha> remover(@PathVariable Long cozinhaId) {
             try{
