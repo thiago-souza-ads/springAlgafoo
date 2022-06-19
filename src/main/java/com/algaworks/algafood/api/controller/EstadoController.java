@@ -43,8 +43,16 @@ public class EstadoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void adicionar(@RequestBody Estado estado) {
-        cadastroEstadoService.salvar(estado);
+    public ResponseEntity<?> adicionar(@RequestBody Estado estado) {
+        try{
+            estado = cadastroEstadoService.salvar(estado);
+
+            return ResponseEntity.status(HttpStatus.CREATED)
+                    .body(estado);
+        } catch (EntidadeNaoEncontradaException e){
+            return ResponseEntity.badRequest()
+                    .body(e.getMessage());
+        }
     }
 
     @PutMapping("/{estadoId}")

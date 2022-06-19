@@ -42,8 +42,16 @@ public class CidadeController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED) // ResponseStatus informando que foi criado
-    public void adicionar(@RequestBody Cidade cidade) {
-        cadastroCidadeService.salvar(cidade);
+    public ResponseEntity<?> adicionar(@RequestBody Cidade cidade) {
+        try{
+            cidade = cadastroCidadeService.salvar(cidade);
+
+            return ResponseEntity.status(HttpStatus.CREATED)
+                    .body(cidade);
+        } catch (EntidadeNaoEncontradaException e){
+            return ResponseEntity.badRequest()
+                    .body(e.getMessage());
+        }
     }
 
     @PutMapping("/{cidadeId}")

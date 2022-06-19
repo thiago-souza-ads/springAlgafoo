@@ -3,7 +3,11 @@ package com.algaworks.algafood.domain.service;
 import com.algaworks.algafood.domain.exception.EntidadeEmUsoException;
 import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
 import com.algaworks.algafood.domain.model.Cidade;
+import com.algaworks.algafood.domain.model.Estado;
+import com.algaworks.algafood.domain.model.Pais;
 import com.algaworks.algafood.domain.repository.CidadeRepository;
+import com.algaworks.algafood.domain.repository.EstadoRepository;
+import com.algaworks.algafood.domain.repository.PaisRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -15,7 +19,31 @@ public class CadastroCidadeService {
     @Autowired
     private CidadeRepository cidadeRepository;
 
+    @Autowired
+    private EstadoRepository estadoRepository;
+
+    @Autowired
+    private PaisRepository paisRepository;
+
     public Cidade salvar(Cidade cidade) {
+        Long estadoId = cidade.getEstado().getId();
+        Estado estado = estadoRepository.buscar(estadoId);
+        if (estado == null) {
+            throw new EntidadeNaoEncontradaException(
+                    String.format("A entidade [{%s}] de id:[{%d}] não existe no Banco de Dados, não pode ser utilizada.", Estado.class.getName(), estadoId)
+            );
+        }
+        Long paisId = cidade.getEstado().getPais().getId();
+        Pais pais = paisRepository.buscar(paisId);
+        if (pais == null) {
+            throw new EntidadeNaoEncontradaException(
+                    String.format("A entidade [{%s}] de id:[{%d}] não existe no Banco de Dados, não pode ser utilizada.", Pais.class.getName(), paisId)
+            );
+        }
+        cidade.setEstado(estado);
+
+        cidade.getEstado().setPais(pais);
+
         return cidadeRepository.salvar(cidade);
     }
 

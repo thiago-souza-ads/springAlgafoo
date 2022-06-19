@@ -1,5 +1,6 @@
 package com.algaworks.algafood.api.controller;
 
+import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
 import com.algaworks.algafood.domain.model.Endereco;
 import com.algaworks.algafood.domain.repository.EnderecoRepository;
 import com.algaworks.algafood.domain.service.CadastroEnderecoService;
@@ -40,8 +41,16 @@ public class EnderecoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void adicionar(@RequestBody Endereco endereco) {
-        cadastroEnderecoService.salvar(endereco);
+    public ResponseEntity<?> adicionar(@RequestBody Endereco endereco) {
+        try{
+            endereco = cadastroEnderecoService.salvar(endereco);
+
+            return ResponseEntity.status(HttpStatus.CREATED)
+                    .body(endereco);
+        } catch (EntidadeNaoEncontradaException e){
+            return ResponseEntity.badRequest()
+                    .body(e.getMessage());
+        }
     }
 
     @PutMapping("/{enderecoId}")
