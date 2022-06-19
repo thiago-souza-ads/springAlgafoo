@@ -23,11 +23,11 @@ public class CadastroEnderecoService {
             enderecoRepository.remover(enderecoId);
         } catch (EmptyResultDataAccessException e) {
             throw new EntidadeNaoEncontradaException(
-                    String.format("A entidade [{%d}] de id:[{%d}] não existe no Banco de Dados, não pode ser excluida.", Endereco.class.getName(), enderecoId)
+                    String.format("A entidade [{%s}] de id:[{%d}] não existe no Banco de Dados, não pode ser excluida.", Endereco.class.getName(), enderecoId)
             );
         } catch (DataIntegrityViolationException e) {
             throw new EntidadeEmUsoException(
-                    String.format("A entidade [{%d] de id:[{%d}] está em uso por outras Entidades, não pode ser excluida.", Endereco.class.getName(), enderecoId)
+                    String.format("A entidade [{%s] de id:[{%d}] está em uso por outras Entidades, não pode ser excluida.", Endereco.class.getName(), enderecoId)
             );
         }
     }
