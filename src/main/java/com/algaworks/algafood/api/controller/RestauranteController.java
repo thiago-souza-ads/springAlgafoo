@@ -7,14 +7,19 @@ import com.algaworks.algafood.domain.model.Restaurante;
 import com.algaworks.algafood.domain.repository.CozinhaRepository;
 import com.algaworks.algafood.domain.repository.RestauranteRepository;
 import com.algaworks.algafood.domain.service.CadastroRestauranteService;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.aspectj.bridge.ReflectionFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.ReflectionUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Field;
 import java.util.List;
+import java.util.Map;
 
 
 @RestController // @Controller @ResponseBody
@@ -80,6 +85,32 @@ public class RestauranteController {
             return ResponseEntity.badRequest()
                     .body(e.getMessage());
         }
+    }
+    @PatchMapping("/{restauranteId}")
+    public ResponseEntity<?> atualizarParcial(@PathVariable Long restauranteId, @RequestBody Map<String, Object> campos){
+        Restaurante restauranteAtual = restauranteRepository.buscar(restauranteId);
+        if(restauranteAtual == null){
+            return ResponseEntity.notFound().build();
+        }
+        merge(campos, restauranteAtual);
+
+        return atualizar(restauranteId, restauranteAtual);
+    }
+
+    private void merge(Map<String, Object> dadosOrigem, Restaurante restauranteDestino) {
+        ObjectMapper objectMapper = new ObjectMapper(); // converte mapper
+        Restaurante restauranteOrigem = objectMapper.convertValue(dadosOrigem, Restaurante.class); // Cirando uma instancia de restaurante com base nos dados origem
+
+        // Metodo 1 - só que lança exception em campos de tipo diferentes tipo BigDecimal e outros
+        dadosOrigem.forEach((nomePropriedade, valorPropriedade) -> {
+            Field field = ReflectionUtils.findField(Restaurante.class, nomePropriedade); // identifica o nomeVariavel
+            field.setAccessible(Boolean.TRUE); // Caso campo seja private
+
+            Object novoValor = ReflectionUtils.getField(field, restauranteOrigem);
+
+            System.out.println(nomePropriedade + " = " + valorPropriedade + " = " + novoValor + "\n");
+            ReflectionUtils.setField(field, restauranteDestino, novoValor);// pega a classe destino e seta na variavel certa o valor
+        });
     }
 
     @DeleteMapping("/{restauranteId}")
