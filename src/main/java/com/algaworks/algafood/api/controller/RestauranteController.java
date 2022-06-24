@@ -8,7 +8,6 @@ import com.algaworks.algafood.domain.repository.CozinhaRepository;
 import com.algaworks.algafood.domain.repository.RestauranteRepository;
 import com.algaworks.algafood.domain.service.CadastroRestauranteService;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.aspectj.bridge.ReflectionFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -51,27 +50,23 @@ public class RestauranteController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<?> adicionar(@RequestBody Restaurante restaurante) {
-        try{
+        try {
             restaurante = cadastroRestauranteService.salvar(restaurante);
 
-            return ResponseEntity.status(HttpStatus.CREATED)
-                    .body(restaurante);
+            return ResponseEntity.status(HttpStatus.CREATED).body(restaurante);
 
-        } catch (EntidadeNaoEncontradaException e){
-            return ResponseEntity.badRequest()
-                    .body(e.getMessage());
+        } catch (EntidadeNaoEncontradaException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 
     @PutMapping("/{restauranteId}")
     public ResponseEntity<?> atualizar(@PathVariable Long restauranteId, @RequestBody Restaurante restaurante) {
-        try{
+        try {
             Long cozinhaId = restaurante.getCozinha().getId();
             Cozinha cozinha = cozinhaRepository.buscar(cozinhaId);
-            if(cozinha == null){
-                throw new EntidadeNaoEncontradaException(
-                        String.format("A cidade [{%d}] não existe, não pode ser excluida.", cozinhaId)
-                );
+            if (cozinha == null) {
+                throw new EntidadeNaoEncontradaException(String.format("A cidade [{%d}] não existe, não pode ser excluida.", cozinhaId));
             }
             Restaurante restauranteAtual = restauranteRepository.buscar(restauranteId);
             if (restauranteAtual != null) {
@@ -81,15 +76,15 @@ public class RestauranteController {
             } else {
                 return ResponseEntity.notFound().build();
             }
-        } catch (EntidadeNaoEncontradaException e){
-            return ResponseEntity.badRequest()
-                    .body(e.getMessage());
+        } catch (EntidadeNaoEncontradaException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+
     @PatchMapping("/{restauranteId}")
-    public ResponseEntity<?> atualizarParcial(@PathVariable Long restauranteId, @RequestBody Map<String, Object> campos){
+    public ResponseEntity<?> atualizarParcial(@PathVariable Long restauranteId, @RequestBody Map<String, Object> campos) {
         Restaurante restauranteAtual = restauranteRepository.buscar(restauranteId);
-        if(restauranteAtual == null){
+        if (restauranteAtual == null) {
             return ResponseEntity.notFound().build();
         }
         merge(campos, restauranteAtual);
