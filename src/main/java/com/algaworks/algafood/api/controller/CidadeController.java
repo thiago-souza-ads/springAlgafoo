@@ -64,6 +64,7 @@ public class CidadeController {
 
     @PutMapping("/{cidadeId}")
     public ResponseEntity<Cidade> atualizar(@PathVariable Long cidadeId, @RequestBody Cidade cidade) {
+//        Optional<Cidade> cidadeOptional = cidadeRepository.findById(cidadeId).orElseThrow(() -> new EntidadeNaoEncontradaException());
         Optional<Cidade> cidadeOptional = cidadeRepository.findById(cidadeId);
         if (cidadeOptional.isPresent()) {
             Cidade cidadeAtual = cidadeOptional.get();
