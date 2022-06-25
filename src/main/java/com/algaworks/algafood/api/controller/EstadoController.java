@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -28,17 +29,23 @@ public class EstadoController {
 
     @GetMapping
     public List<Estado> listar() {
-        return estadoRepository.listar();
+        return estadoRepository.findAll();
     }
 
     @GetMapping(produces = MediaType.APPLICATION_XML_VALUE)
     public List<Estado> listarXML() {
-        return estadoRepository.listar();
+        return estadoRepository.findAll();
     }
 
     @GetMapping("/{estadoId}")
     public Estado buscar(@PathVariable Long estadoId) {
-        return estadoRepository.buscar(estadoId);
+        Optional<Estado> optionalEstado = estadoRepository.findById(estadoId);
+        if (optionalEstado.isPresent()){
+            return optionalEstado.get();
+        }
+        throw new EntidadeNaoEncontradaException(
+                String.format("A entidade [{%s}] de id:[{%d}] não existe no Banco de Dados, não pode ser utilizada.", Estado.class.getName(), estadoId)
+        );
     }
 
     @PostMapping
@@ -57,14 +64,14 @@ public class EstadoController {
 
     @PutMapping("/{estadoId}")
     public ResponseEntity<Estado> atualizar(@PathVariable Long estadoId, @RequestBody Estado estado) {
-        Estado estadoAtual = estadoRepository.buscar(estadoId);
-        if (estadoAtual != null) {
+        Optional<Estado> optionalEstado = estadoRepository.findById(estadoId);
+        if (optionalEstado.isPresent()) {
+            Estado estadoAtual = optionalEstado.get();
             BeanUtils.copyProperties(estado, estadoAtual, "id");
             cadastroEstadoService.salvar(estadoAtual);
             return ResponseEntity.ok(estadoAtual);
-        } else {
-            return ResponseEntity.notFound().build();
         }
+        return ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/{estadoId}")

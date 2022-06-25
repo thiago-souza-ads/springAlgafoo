@@ -24,12 +24,12 @@ public class CadastroModeloService {
     private ModeloRepository modeloRepository;
 
     public Modelo salvar(Modelo modelo) {
-        return modeloRepository.salvar(modelo);
+        return modeloRepository.save(modelo);
     }
 
     public void excluir(Long modeloId) {
         try {
-            modeloRepository.remover(modeloId);
+            modeloRepository.deleteById(modeloId);
         } catch (EmptyResultDataAccessException e) {
             throw new EntidadeNaoEncontradaException(
                     String.format("A entidade [{%s}] de id:[{%d}] não existe no Banco de Dados, não pode ser excluida.", Modelo.class.getName(), modeloId)

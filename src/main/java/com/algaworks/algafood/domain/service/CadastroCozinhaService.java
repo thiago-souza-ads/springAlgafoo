@@ -16,12 +16,12 @@ public class CadastroCozinhaService {
     private CozinhaRepository cozinhaRepository;
 
     public Cozinha salvar(Cozinha cozinha) {
-        return cozinhaRepository.salvar(cozinha);
+        return cozinhaRepository.save(cozinha);
     }
 
     public void excluir(Long cozinhaId) {
         try {
-            cozinhaRepository.remover(cozinhaId);
+            cozinhaRepository.deleteById(cozinhaId);
         } catch (EmptyResultDataAccessException e) {
             throw new EntidadeNaoEncontradaException(
                     String.format("A entidade [{%s}] de id:[{%d}] não existe no Banco de Dados, não pode ser excluida.", Cozinha.class.getName(), cozinhaId)

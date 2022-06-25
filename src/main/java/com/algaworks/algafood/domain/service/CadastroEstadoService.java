@@ -11,6 +11,8 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class CadastroEstadoService {
 
@@ -21,19 +23,20 @@ public class CadastroEstadoService {
 
     public Estado salvar(Estado estado) {
         Long paisId = estado.getPais().getId();
-        Pais pais = paisRepository.buscar(paisId);
-        if (pais == null) {
+        Optional<Pais> optionalPais = paisRepository.findById(paisId);
+        if (!optionalPais.isPresent()) {
             throw new EntidadeNaoEncontradaException(
                     String.format("A entidade [{%s}] de id:[{%d}] não existe no Banco de Dados, não pode ser utilizada.", Pais.class.getName(), paisId)
             );
         }
+        Pais pais = optionalPais.get();
         estado.setPais(pais);
-        return estadoRepository.salvar(estado);
+        return estadoRepository.save(estado);
     }
 
     public void excluir(Long estadoId) {
         try {
-            estadoRepository.remover(estadoId);
+            estadoRepository.deleteById(estadoId);
         } catch (EmptyResultDataAccessException e) {
             throw new EntidadeNaoEncontradaException(
                     String.format("A entidade [{%s}] de id:[{%d}] não existe no Banco de Dados, não pode ser excluida.", Estado.class.getName(), estadoId)

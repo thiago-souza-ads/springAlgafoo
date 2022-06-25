@@ -15,6 +15,8 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class CadastroEnderecoService {
     @Autowired
@@ -28,35 +30,38 @@ public class CadastroEnderecoService {
 
     public Endereco salvar(Endereco endereco) {
         Long cidadeId = endereco.getCidade().getId();
-        Cidade cidade = cidadeRepository.buscar(cidadeId);
-        if(cidade == null){
+        Optional<Cidade> optionalCidade = cidadeRepository.findById(cidadeId);
+        if(!optionalCidade.isPresent()){
             throw new EntidadeNaoEncontradaException(
                     String.format("A entidade [{%s}] de id:[{%d}] não existe no Banco de Dados, não pode ser utilizada.", Cidade.class.getName(), cidadeId)
             );
         }
+        Cidade cidade = optionalCidade.get();
         Long estadoId = endereco.getCidade().getId();
-        Estado estado = estadoRepository.buscar(estadoId);
-        if(estado == null){
+        Optional<Estado> estadoOptional = estadoRepository.findById(estadoId);
+        if(!estadoOptional.isPresent()){
             throw new EntidadeNaoEncontradaException(
                     String.format("A entidade [{%s}] de id:[{%d}] não existe no Banco de Dados, não pode ser utilizada.", Estado.class.getName(), estadoId)
             );
         }
+        Estado estado = estadoOptional.get();
         Long paisId = endereco.getCidade().getEstado().getPais().getId();
-        Pais pais = paisRepository.buscar(paisId);
-        if(pais == null){
+        Optional<Pais> optionalPais = paisRepository.findById(paisId);
+        if(!optionalPais.isPresent()){
             throw new EntidadeNaoEncontradaException(
                     String.format("A entidade [{%s}] de id:[{%d}] não existe no Banco de Dados, não pode ser utilizada.", Pais.class.getName(), paisId)
             );
         }
+        Pais pais = optionalPais.get();
         endereco.setCidade(cidade);
         endereco.getCidade().setEstado(estado);
         endereco.getCidade().getEstado().setPais(pais);
-        return enderecoRepository.salvar(endereco);
+        return enderecoRepository.save(endereco);
     }
 
     public void excluir(Long enderecoId) {
         try {
-            enderecoRepository.remover(enderecoId);
+            enderecoRepository.deleteById(enderecoId);
         } catch (EmptyResultDataAccessException e) {
             throw new EntidadeNaoEncontradaException(
                     String.format("A entidade [{%s}] de id:[{%d}] não existe no Banco de Dados, não pode ser excluida.", Endereco.class.getName(), enderecoId)

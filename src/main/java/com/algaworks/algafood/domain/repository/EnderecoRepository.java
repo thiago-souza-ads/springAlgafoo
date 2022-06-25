@@ -1,17 +1,9 @@
 package com.algaworks.algafood.domain.repository;
 
 import com.algaworks.algafood.domain.model.Endereco;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
-public interface EnderecoRepository {
-
-    List<Endereco> listar();
-
-    Endereco buscar(Long id);
-
-    Endereco salvar(Endereco endereco);
-
-    void remover(Long enderecoId);
-
+@Repository
+public interface EnderecoRepository extends JpaRepository<Endereco, Long> {
 }

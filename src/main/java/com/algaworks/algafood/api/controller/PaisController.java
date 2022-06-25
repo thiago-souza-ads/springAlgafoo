@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController // @Controller @ResponseBody
@@ -26,17 +27,23 @@ public class PaisController {
 
     @GetMapping
     public List<Pais> listar() {
-        return paisRepository.listar();
+        return paisRepository.findAll();
     }
 
     @GetMapping(produces = MediaType.APPLICATION_XML_VALUE)
     public List<Pais> listarXML() {
-        return paisRepository.listar();
+        return paisRepository.findAll();
     }
 
     @GetMapping("/{paisId}")
     public Pais buscar(@PathVariable Long paisId) {
-        return paisRepository.buscar(paisId);
+        Optional<Pais> optionalPais = paisRepository.findById(paisId);
+        if (optionalPais.isPresent()) {
+            return optionalPais.get();
+        }
+        throw new EntidadeNaoEncontradaException(
+                String.format("A entidade [{%s}] de id:[{%d}] não existe no Banco de Dados, não pode ser utilizada.", Pais.class.getName(), paisId)
+        );
     }
 
     @PostMapping
@@ -47,14 +54,14 @@ public class PaisController {
 
     @PutMapping("/{paisId}")
     public ResponseEntity<Pais> atualizar(@PathVariable Long paisId, @RequestBody Pais pais) {
-        Pais paisAtual = paisRepository.buscar(paisId);
-        if (paisAtual != null) {
+        Optional<Pais> optionalPais = paisRepository.findById(paisId);
+        if (optionalPais.isPresent()) {
+            Pais paisAtual = optionalPais.get();
             BeanUtils.copyProperties(pais, paisAtual, "id");
             cadastroPaisService.salvar(paisAtual);
             return ResponseEntity.ok(paisAtual);
-        } else {
-            return ResponseEntity.notFound().build();
         }
+        return ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/{paisId}")

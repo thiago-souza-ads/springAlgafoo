@@ -18,12 +18,12 @@ public class CadastroRegiaoService {
     private RegiaoRepository regiaoRepository;
 
     public Regiao salvar(Regiao regiao) {
-        return regiaoRepository.salvar(regiao);
+        return regiaoRepository.save(regiao);
     }
 
     public void excluir(Long regiaoId) {
         try {
-            regiaoRepository.remover(regiaoId);
+            regiaoRepository.deleteById(regiaoId);
         } catch (EmptyResultDataAccessException e) {
             throw new EntidadeNaoEncontradaException(
                     String.format("A entidade [{%s}] de id:[{%d}] não existe no Banco de Dados, não pode ser excluida.", Regiao.class.getName(), regiaoId)

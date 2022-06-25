@@ -16,12 +16,12 @@ public class CadastroPaisService {
     private PaisRepository paisRepository;
 
     public Pais salvar(Pais pais) {
-        return paisRepository.salvar(pais);
+        return paisRepository.save(pais);
     }
 
     public void excluir(Long paisId) {
         try {
-            paisRepository.remover(paisId);
+            paisRepository.deleteById(paisId);
         } catch (EmptyResultDataAccessException e) {
             throw new EntidadeNaoEncontradaException(
                     String.format("A entidade [{%s}] de id:[{%d}] não existe no Banco de Dados, não pode ser excluida.", Pais.class.getName(), paisId)

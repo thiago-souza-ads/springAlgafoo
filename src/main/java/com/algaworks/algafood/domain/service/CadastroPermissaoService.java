@@ -18,12 +18,12 @@ public class CadastroPermissaoService {
     private PermissaoRepository permissaoRepository;
 
     public Permissao salvar(Permissao permissao) {
-        return permissaoRepository.salvar(permissao);
+        return permissaoRepository.save(permissao);
     }
 
     public void excluir(Long permissaoId) {
         try {
-            permissaoRepository.remover(permissaoId);
+            permissaoRepository.deleteById(permissaoId);
         } catch (EmptyResultDataAccessException e) {
             throw new EntidadeNaoEncontradaException(
                     String.format("A entidade [{%s}] de id:[{%d}] não existe no Banco de Dados, não pode ser excluida.", Permissao.class.getName(), permissaoId)

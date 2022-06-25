@@ -16,12 +16,12 @@ public class CadastroFormaDePagamentoService {
     private FormaDePagamentoRepository formaDePagamentoRepository;
 
     public FormaDePagamento salvar(FormaDePagamento formaDePagamento) {
-        return formaDePagamentoRepository.salvar(formaDePagamento);
+        return formaDePagamentoRepository.save(formaDePagamento);
     }
 
     public void excluir(Long formaDePagamentoId) {
         try {
-            formaDePagamentoRepository.remover(formaDePagamentoId);
+            formaDePagamentoRepository.deleteById(formaDePagamentoId);
         } catch (EmptyResultDataAccessException e) {
             throw new EntidadeNaoEncontradaException(
                     String.format("A entidade [{%s}] de id:[{%d}] não existe no Banco de Dados, não pode ser excluida.", FormaDePagamento.class.getName(), formaDePagamentoId)

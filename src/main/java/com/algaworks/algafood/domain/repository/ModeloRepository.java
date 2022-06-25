@@ -1,8 +1,8 @@
 package com.algaworks.algafood.domain.repository;
 
 import com.algaworks.algafood.domain.model.Modelo;
-
-import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  * @author Thiago Rodrigues de Souza
@@ -11,14 +11,14 @@ import java.util.List;
  * defalt.
  * Esta classe de modelo está utilizando boas praticas de programação, a classe serve de referencia para estudo.
  */
+@Repository
+public interface ModeloRepository extends JpaRepository<Modelo, Long> {
 
-public interface ModeloRepository {
-
-    List<Modelo> listar();
-
-    Modelo buscar(Long id);
-
-    Modelo salvar(Modelo modelo);
-
-    void remover(Long modeloId);
+//    List<Modelo> listar();
+//
+//    Modelo buscar(Long id);
+//
+//    Modelo salvar(Modelo modelo);
+//
+//    void remover(Long modeloId);
 }

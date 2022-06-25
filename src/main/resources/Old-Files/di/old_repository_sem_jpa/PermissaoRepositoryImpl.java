@@ -1,4 +1,4 @@
-package com.algaworks.algafood.infrastructure.repository;
+package old_repository_sem_jpa;
 
 import com.algaworks.algafood.domain.model.Permissao;
 import com.algaworks.algafood.domain.repository.PermissaoRepository;

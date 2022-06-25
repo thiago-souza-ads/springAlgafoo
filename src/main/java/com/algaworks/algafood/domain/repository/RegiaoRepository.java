@@ -1,17 +1,9 @@
 package com.algaworks.algafood.domain.repository;
 
 import com.algaworks.algafood.domain.model.Regiao;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
-public interface RegiaoRepository {
-
-    List<Regiao> listar();
-
-    Regiao buscar(Long id);
-
-    Regiao salvar(Regiao regiao);
-
-    void remover(Long regiaoId);
-
+@Repository
+public interface RegiaoRepository extends JpaRepository<Regiao, Long> {
 }

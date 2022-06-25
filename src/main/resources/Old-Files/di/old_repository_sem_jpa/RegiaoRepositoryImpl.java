@@ -1,7 +1,7 @@
-package com.algaworks.algafood.infrastructure.repository;
+package old_repository_sem_jpa;
 
-import com.algaworks.algafood.domain.model.Cozinha;
-import com.algaworks.algafood.domain.repository.CozinhaRepository;
+import com.algaworks.algafood.domain.model.Regiao;
+import com.algaworks.algafood.domain.repository.RegiaoRepository;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,35 +12,35 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Component
-public class CozinhaRepositoryImpl implements CozinhaRepository {
+public class RegiaoRepositoryImpl implements RegiaoRepository {
 
     @PersistenceContext
     private EntityManager manager;
 
     @Override
-    public List<Cozinha> listar() {
-        TypedQuery<Cozinha> query = manager.createQuery("from Cozinha", Cozinha.class);
+    public List<Regiao> listar() {
+        TypedQuery<Regiao> query = manager.createQuery("from Regiao", Regiao.class);
         return query.getResultList();
     }
 
     @Override
-    public Cozinha buscar(Long id) {
-        return manager.find(Cozinha.class, id);
+    public Regiao buscar(Long id) {
+        return manager.find(Regiao.class, id);
     }
 
     @Override
     @Transactional
-    public Cozinha salvar(Cozinha cozinha) {
-        return manager.merge(cozinha);
+    public Regiao salvar(Regiao regiao) {
+        return manager.merge(regiao);
     }
 
     @Override
     @Transactional
     public void remover(Long id) {
-        Cozinha cozinha = buscar(id);
-        if (cozinha == null) {
+        Regiao regiao = buscar(id);
+        if (regiao == null) {
             throw new EmptyResultDataAccessException(1);
         }
-        manager.remove(cozinha);
+        manager.remove(regiao);
     }
 }

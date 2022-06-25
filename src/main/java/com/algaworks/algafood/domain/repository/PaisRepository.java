@@ -1,17 +1,9 @@
 package com.algaworks.algafood.domain.repository;
 
 import com.algaworks.algafood.domain.model.Pais;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
-public interface PaisRepository {
-
-    List<Pais> listar();
-
-    Pais buscar(Long id);
-
-    Pais salvar(Pais pais);
-
-    void remover(Long paisId);
-
+@Repository
+public interface PaisRepository extends JpaRepository<Pais, Long> {
 }

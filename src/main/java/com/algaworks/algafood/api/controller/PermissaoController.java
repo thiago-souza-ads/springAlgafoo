@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController // @Controller @ResponseBody
@@ -26,17 +27,23 @@ public class PermissaoController {
 
     @GetMapping
     public List<Permissao> listar() {
-        return permissaoRepository.listar();
+        return permissaoRepository.findAll();
     }
 
     @GetMapping(produces = MediaType.APPLICATION_XML_VALUE)
     public List<Permissao> listarXML() {
-        return permissaoRepository.listar();
+        return permissaoRepository.findAll();
     }
 
     @GetMapping("/{permissaoId}")
     public Permissao buscar(@PathVariable Long permissaoId) {
-        return permissaoRepository.buscar(permissaoId);
+        Optional<Permissao> optionalPermissao = permissaoRepository.findById(permissaoId);
+        if (optionalPermissao.isPresent()) {
+            return optionalPermissao.get();
+        }
+        throw new EntidadeNaoEncontradaException(
+                String.format("A entidade [{%s}] de id:[{%d}] não existe no Banco de Dados, não pode ser utilizada.", Permissao.class.getName(), permissaoId)
+        );
     }
 
     @PostMapping
@@ -47,14 +54,14 @@ public class PermissaoController {
 
     @PutMapping("/{permissaoId}")
     public ResponseEntity<Permissao> atualizar(@PathVariable Long permissaoId, @RequestBody Permissao permissao) {
-        Permissao permissaoAtual = permissaoRepository.buscar(permissaoId);
-        if (permissaoAtual != null) {
+        Optional<Permissao> optionalPermissao = permissaoRepository.findById(permissaoId);
+        if (optionalPermissao.isPresent()) {
+            Permissao permissaoAtual = optionalPermissao.get();
             BeanUtils.copyProperties(permissao, permissaoAtual, "id");
             cadastroPermissaoService.salvar(permissaoAtual);
             return ResponseEntity.ok(permissaoAtual);
-        } else {
-            return ResponseEntity.notFound().build();
         }
+        return ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/{permissaoId}")

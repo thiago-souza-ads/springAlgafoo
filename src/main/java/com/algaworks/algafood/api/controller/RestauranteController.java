@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 
 @RestController // @Controller @ResponseBody
@@ -34,17 +35,23 @@ public class RestauranteController {
 
     @GetMapping
     public List<Restaurante> listar() {
-        return restauranteRepository.listar();
+        return restauranteRepository.findAll();
     }
 
     @GetMapping(produces = MediaType.APPLICATION_XML_VALUE)
     public List<Restaurante> listarXML() {
-        return restauranteRepository.listar();
+        return restauranteRepository.findAll();
     }
 
     @GetMapping("/{restauranteId}")
     public Restaurante buscar(@PathVariable Long restauranteId) {
-        return restauranteRepository.buscar(restauranteId);
+        Optional<Restaurante> optionalRestaurante = restauranteRepository.findById(restauranteId);
+        if (optionalRestaurante.isPresent()){
+            return optionalRestaurante.get();
+        }
+        throw new EntidadeNaoEncontradaException(
+                String.format("A entidade [{%s}] de id:[{%d}] não existe no Banco de Dados, não pode ser utilizada.", Restaurante.class.getName(), restauranteId)
+        );
     }
 
     @PostMapping
@@ -64,18 +71,20 @@ public class RestauranteController {
     public ResponseEntity<?> atualizar(@PathVariable Long restauranteId, @RequestBody Restaurante restaurante) {
         try {
             Long cozinhaId = restaurante.getCozinha().getId();
-            Cozinha cozinha = cozinhaRepository.buscar(cozinhaId);
-            if (cozinha == null) {
-                throw new EntidadeNaoEncontradaException(String.format("A cidade [{%d}] não existe, não pode ser excluida.", cozinhaId));
+            Optional<Cozinha> optionalCozinha = cozinhaRepository.findById(cozinhaId);
+            if (!optionalCozinha.isEmpty()) {
+                throw new EntidadeNaoEncontradaException(
+                        String.format("A entidade [{%s}] de id:[{%d}] não existe no Banco de Dados, não pode ser utilizada.", Cozinha.class.getName(), cozinhaId)
+                );
             }
-            Restaurante restauranteAtual = restauranteRepository.buscar(restauranteId);
-            if (restauranteAtual != null) {
+            Optional<Restaurante> optionalRestaurante = restauranteRepository.findById(restauranteId);
+            if (optionalRestaurante.isPresent()) {
+                Restaurante restauranteAtual = optionalRestaurante.get();
                 BeanUtils.copyProperties(restaurante, restauranteAtual, "id");
                 cadastroRestauranteService.salvar(restauranteAtual);
                 return ResponseEntity.ok(restauranteAtual);
-            } else {
-                return ResponseEntity.notFound().build();
             }
+            return ResponseEntity.notFound().build();
         } catch (EntidadeNaoEncontradaException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
@@ -83,10 +92,12 @@ public class RestauranteController {
 
     @PatchMapping("/{restauranteId}")
     public ResponseEntity<?> atualizarParcial(@PathVariable Long restauranteId, @RequestBody Map<String, Object> campos) {
-        Restaurante restauranteAtual = restauranteRepository.buscar(restauranteId);
-        if (restauranteAtual == null) {
+        Optional<Restaurante> optionalRestaurante = restauranteRepository.findById(restauranteId);
+        if (!optionalRestaurante.isPresent()) {
             return ResponseEntity.notFound().build();
         }
+        Restaurante restauranteAtual = optionalRestaurante.get();
+
         merge(campos, restauranteAtual);
 
         return atualizar(restauranteId, restauranteAtual);

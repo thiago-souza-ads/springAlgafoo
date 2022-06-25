@@ -1,7 +1,6 @@
-package com.algaworks.algafood.infrastructure.repository;
+package old_repository_sem_jpa;
 
-import com.algaworks.algafood.domain.model.Pais;
-import com.algaworks.algafood.domain.repository.PaisRepository;
+import com.algaworks.algafood.domain.model.Cidade;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,35 +11,35 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Component
-public class PaisRepositoryImpl implements PaisRepository {
+public class CidadeRepositoryImpl implements CidadeRepository {
 
     @PersistenceContext
     private EntityManager manager;
 
     @Override
-    public List<Pais> listar() {
-        TypedQuery<Pais> query = manager.createQuery("from Pais", Pais.class);
+    public List<Cidade> listar() {
+        TypedQuery<Cidade> query = manager.createQuery("from Cidade", Cidade.class);
         return query.getResultList();
     }
 
     @Override
-    public Pais buscar(Long id) {
-        return manager.find(Pais.class, id);
+    public Cidade buscar(Long id) {
+        return manager.find(Cidade.class, id);
     }
 
     @Override
     @Transactional
-    public Pais salvar(Pais pais) {
-        return manager.merge(pais);
+    public Cidade salvar(Cidade cidade) {
+        return manager.merge(cidade);
     }
 
     @Override
     @Transactional
-    public void remover(Long id) {
-        Pais pais = buscar(id);
-        if (pais == null) {
+    public void remover(Long cidadeId) {
+        Cidade cidade = buscar(cidadeId);
+        if (cidade == null) {
             throw new EmptyResultDataAccessException(1);
         }
-        manager.remove(pais);
+        manager.remove(cidade);
     }
 }

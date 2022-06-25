@@ -11,6 +11,8 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class CadastroRestauranteService {
 
@@ -22,20 +24,20 @@ public class CadastroRestauranteService {
 
     public Restaurante salvar(Restaurante restaurante) {
         Long cozinhaId = restaurante.getCozinha().getId();
-        Cozinha cozinha = cozinhaRepository.buscar(cozinhaId);
-        if(cozinha == null){
+        Optional<Cozinha> optionalCozinha = cozinhaRepository.findById(cozinhaId);
+        if(!optionalCozinha.isPresent()){
             throw new EntidadeNaoEncontradaException(
                     String.format("A entidade [{%s}] de id:[{%d}] não existe no Banco de Dados, não pode ser utilizada.", Cozinha.class.getName(), cozinhaId)
             );
         }
+        Cozinha cozinha = optionalCozinha.get();
         restaurante.setCozinha(cozinha);
-
-        return restauranteRepository.salvar(restaurante);
+        return restauranteRepository.save(restaurante);
     }
 
     public void excluir(Long restauranteId) {
         try {
-            restauranteRepository.remover(restauranteId);
+            restauranteRepository.deleteById(restauranteId);
         } catch (EmptyResultDataAccessException e) {
             throw new EntidadeNaoEncontradaException(
                     String.format("A entidade [{%s}] de id:[{%d}] não existe no Banco de Dados, não pode ser excluida.", Restaurante.class.getName(), restauranteId)

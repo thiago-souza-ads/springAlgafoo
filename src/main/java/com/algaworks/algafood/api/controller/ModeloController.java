@@ -1,6 +1,5 @@
 package com.algaworks.algafood.api.controller;
 
-import com.algaworks.algafood.api.model.ModeloXmlWrapper;
 import com.algaworks.algafood.domain.exception.EntidadeEmUsoException;
 import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
 import com.algaworks.algafood.domain.model.Modelo;
@@ -14,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author Thiago Rodrigues de Souza
@@ -37,37 +37,43 @@ public class ModeloController {
 
     @GetMapping
     public List<Modelo> listar() {
-        return modeloRepository.listar();
+        return modeloRepository.findAll();
     }
 
-    @GetMapping(produces = MediaType.APPLICATION_XML_VALUE)
-    public ModeloXmlWrapper listarXml() {
-        return new ModeloXmlWrapper(modeloRepository.listar());
-    }
+//    @GetMapping(produces = MediaType.APPLICATION_XML_VALUE)
+//    public ModeloXmlWrapper listarXml() {
+//        return new ModeloXmlWrapper(modeloRepository.findAll());
+//    }
 
     @ResponseStatus(HttpStatus.CREATED) // Forçara o retorno desse modo 201
     @GetMapping("/{modeloId}")
     public Modelo buscar(@PathVariable Long modeloId) {
-        return modeloRepository.buscar(modeloId);
+        Optional<Modelo> optionalModelo = modeloRepository.findById(modeloId);
+        if (optionalModelo.isPresent()) {
+            return optionalModelo.get();
+        }
+        throw new EntidadeNaoEncontradaException(
+                String.format("A entidade [{%s}] de id:[{%d}] não existe no Banco de Dados, não pode ser utilizada.", Modelo.class.getName(), modeloId)
+        );
     }
 
     @PostMapping // Metodo não idempotente, quantas vezes chamar vai salvar, mesmo que repetido
     @ResponseStatus(HttpStatus.CREATED) // ResponseStatus informando que foi criado
     public void adicionar(@RequestBody Modelo modelo) {
-        modeloRepository.salvar(modelo);
+        cadastroModeloService.salvar(modelo);
     }
 
     //Atualização Total do objeto
     @PutMapping("/{modeloId}")
     public ResponseEntity<Modelo> atualizar(@PathVariable Long modeloId, @RequestBody Modelo modelo) {
-        Modelo modeloAtual = modeloRepository.buscar(modeloId);
-        if (modeloAtual != null) {
+        Optional<Modelo> optionalModelo = modeloRepository.findById(modeloId);
+        if (optionalModelo.isPresent()) {
+            Modelo modeloAtual = optionalModelo.get();
             BeanUtils.copyProperties(modelo, modeloAtual, "id");
             cadastroModeloService.salvar(modeloAtual);
             return ResponseEntity.ok(modeloAtual);
-        } else {
-            return ResponseEntity.notFound().build();
         }
+        return ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/{cozinhaId}")

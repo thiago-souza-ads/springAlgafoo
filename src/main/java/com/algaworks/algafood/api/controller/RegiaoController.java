@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -26,17 +27,23 @@ public class RegiaoController {
 
     @GetMapping
     public List<Regiao> listar() {
-        return regiaoRepository.listar();
+        return regiaoRepository.findAll();
     }
 
     @GetMapping(produces = MediaType.APPLICATION_XML_VALUE)
     public List<Regiao> listarXML() {
-        return regiaoRepository.listar();
+        return regiaoRepository.findAll();
     }
 
     @GetMapping("/{regiaoId}")
     public Regiao buscar(@PathVariable Long regiaoId) {
-        return regiaoRepository.buscar(regiaoId);
+        Optional<Regiao> optionalRegiao = regiaoRepository.findById(regiaoId);
+        if (optionalRegiao.isPresent()) {
+            return optionalRegiao.get();
+        }
+        throw new EntidadeNaoEncontradaException(
+                String.format("A entidade [{%s}] de id:[{%d}] não existe no Banco de Dados, não pode ser utilizada.", Regiao.class.getName(), regiaoId)
+        );
     }
 
     @PostMapping
@@ -47,14 +54,14 @@ public class RegiaoController {
 
     @PutMapping("/{regiaoId}")
     public ResponseEntity<Regiao> atualizar(@PathVariable Long regiaoId, @RequestBody Regiao regiao) {
-        Regiao regiaoAtual = regiaoRepository.buscar(regiaoId);
-        if (regiaoAtual != null) {
+        Optional<Regiao> optionalRegiao = regiaoRepository.findById(regiaoId);
+        if (optionalRegiao.isPresent()) {
+            Regiao regiaoAtual = optionalRegiao.get();
             BeanUtils.copyProperties(regiao, regiaoAtual, "id");
             cadastroRegiaoService.salvar(regiaoAtual);
             return ResponseEntity.ok(regiaoAtual);
-        } else {
-            return ResponseEntity.notFound().build();
         }
+        return ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/{regiaoId}")

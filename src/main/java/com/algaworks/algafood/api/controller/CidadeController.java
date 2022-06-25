@@ -3,6 +3,7 @@ package com.algaworks.algafood.api.controller;
 import com.algaworks.algafood.domain.exception.EntidadeEmUsoException;
 import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
 import com.algaworks.algafood.domain.model.Cidade;
+import com.algaworks.algafood.domain.model.Estado;
 import com.algaworks.algafood.domain.repository.CidadeRepository;
 import com.algaworks.algafood.domain.service.CadastroCidadeService;
 import org.springframework.beans.BeanUtils;
@@ -13,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -27,17 +29,23 @@ public class CidadeController {
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Cidade> listarJSON() {
-        return cidadeRepository.listar();
+        return cidadeRepository.findAll();
     }
 
     @GetMapping(produces = MediaType.APPLICATION_XML_VALUE)
     public List<Cidade> listarXML() {
-        return cidadeRepository.listar();
+        return cidadeRepository.findAll();
     }
 
     @GetMapping("/{cidadeId}")
     public Cidade buscar(@PathVariable Long cidadeId) {
-        return cidadeRepository.buscar(cidadeId);
+        Optional<Cidade> cidadeOptional = cidadeRepository.findById(cidadeId);
+        if(cidadeOptional.isPresent()){
+            return cidadeOptional.get();
+        }
+        throw new EntidadeNaoEncontradaException(
+                String.format("A entidade [{%s}] de id:[{%d}] não existe no Banco de Dados, não pode ser utilizada.", Cidade.class.getName(), cidadeId)
+        );
     }
 
     @PostMapping
@@ -56,8 +64,9 @@ public class CidadeController {
 
     @PutMapping("/{cidadeId}")
     public ResponseEntity<Cidade> atualizar(@PathVariable Long cidadeId, @RequestBody Cidade cidade) {
-        Cidade cidadeAtual = cidadeRepository.buscar(cidadeId);
-        if (cidadeAtual != null) {
+        Optional<Cidade> cidadeOptional = cidadeRepository.findById(cidadeId);
+        if (cidadeOptional.isPresent()) {
+            Cidade cidadeAtual = cidadeOptional.get();
             BeanUtils.copyProperties(cidade, cidadeAtual, "id");
             cadastroCidadeService.salvar(cidadeAtual);
             return ResponseEntity.ok(cidadeAtual);

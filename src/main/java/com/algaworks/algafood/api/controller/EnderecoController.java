@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -26,17 +27,23 @@ public class EnderecoController {
 
     @GetMapping
     public List<Endereco> listar() {
-        return enderecoRepository.listar();
+        return enderecoRepository.findAll();
     }
 
     @GetMapping(produces = MediaType.APPLICATION_XML_VALUE)
     public List<Endereco> listarXML() {
-        return enderecoRepository.listar();
+        return enderecoRepository.findAll();
     }
 
     @GetMapping("/{enderecoId}")
     public Endereco buscar(@PathVariable Long enderecoId) {
-        return enderecoRepository.buscar(enderecoId);
+        Optional<Endereco> optionalEndereco = enderecoRepository.findById(enderecoId);
+        if(optionalEndereco.isPresent()){
+            return optionalEndereco.get();
+        }
+        throw new EntidadeNaoEncontradaException(
+                String.format("A entidade [{%s}] de id:[{%d}] não existe no Banco de Dados, não pode ser utilizada.", Endereco.class.getName(), enderecoId)
+        );
     }
 
     @PostMapping
@@ -55,13 +62,13 @@ public class EnderecoController {
 
     @PutMapping("/{enderecoId}")
     public ResponseEntity<Endereco> atualizar(@PathVariable Long enderecoId, @RequestBody Endereco endereco) {
-        Endereco enderecoAtual = enderecoRepository.buscar(enderecoId);
-        if (enderecoAtual != null) {
+        Optional<Endereco> optionalEndereco = enderecoRepository.findById(enderecoId);
+        if (optionalEndereco.isPresent()) {
+            Endereco enderecoAtual = optionalEndereco.get();
             BeanUtils.copyProperties(endereco, enderecoAtual, "id");
             cadastroEnderecoService.salvar(enderecoAtual);
             return ResponseEntity.ok(enderecoAtual);
-        } else {
-            return ResponseEntity.notFound().build();
         }
+        return ResponseEntity.notFound().build();
     }
 }
