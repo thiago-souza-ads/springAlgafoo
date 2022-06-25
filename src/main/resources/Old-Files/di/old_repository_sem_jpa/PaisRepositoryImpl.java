@@ -12,7 +12,7 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Component
-public class PaisRepositoryImpl implements PaisRepository {
+public class PaisRepositoryImpl{
 
     @PersistenceContext
     private EntityManager manager;

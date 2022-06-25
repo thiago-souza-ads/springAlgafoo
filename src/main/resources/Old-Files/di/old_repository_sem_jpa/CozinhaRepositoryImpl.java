@@ -11,7 +11,7 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Component
-public class CozinhaRepositoryImpl implements CozinhaRepository {
+public class CozinhaRepositoryImpl {
 
     @PersistenceContext
     private EntityManager manager;

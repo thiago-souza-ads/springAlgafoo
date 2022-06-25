@@ -12,7 +12,7 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Component
-public class PermissaoRepositoryImpl implements PermissaoRepository {
+public class PermissaoRepositoryImpl{
 
     @PersistenceContext
     private EntityManager manager;

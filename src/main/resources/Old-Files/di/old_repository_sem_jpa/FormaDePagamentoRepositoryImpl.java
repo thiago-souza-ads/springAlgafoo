@@ -12,7 +12,7 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Component
-public class FormaDePagamentoRepositoryImpl implements FormaDePagamentoRepository {
+public class FormaDePagamentoRepositoryImpl{
 
     @PersistenceContext
     private EntityManager manager;

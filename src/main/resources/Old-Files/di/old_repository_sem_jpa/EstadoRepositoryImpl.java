@@ -12,7 +12,7 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Component
-public class EstadoRepositoryImpl implements EstadoRepository {
+public class EstadoRepositoryImpl{
 
     @PersistenceContext
     private EntityManager manager;

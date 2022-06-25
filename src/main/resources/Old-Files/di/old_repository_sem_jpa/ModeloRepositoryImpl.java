@@ -19,7 +19,7 @@ import java.util.List;
  */
 
 @Component
-public class ModeloRepositoryImpl implements ModeloRepository {
+public class ModeloRepositoryImpl{
 
     @PersistenceContext
     private EntityManager manager;

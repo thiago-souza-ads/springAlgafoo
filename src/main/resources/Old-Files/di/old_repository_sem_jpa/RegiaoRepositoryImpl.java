@@ -12,7 +12,7 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Component
-public class RegiaoRepositoryImpl implements RegiaoRepository {
+public class RegiaoRepositoryImpl{
 
     @PersistenceContext
     private EntityManager manager;

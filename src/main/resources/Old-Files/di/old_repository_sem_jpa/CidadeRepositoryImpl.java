@@ -11,7 +11,7 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Component
-public class CidadeRepositoryImpl implements CidadeRepository {
+public class CidadeRepositoryImpl {
 
     @PersistenceContext
     private EntityManager manager;

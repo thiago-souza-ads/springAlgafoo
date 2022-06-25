@@ -12,7 +12,7 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Component
-public class EnderecoRepositoryImpl implements EnderecoRepository {
+public class EnderecoRepositoryImpl{
 
     @PersistenceContext
     private EntityManager manager;
