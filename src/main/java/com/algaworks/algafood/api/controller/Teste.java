@@ -52,7 +52,7 @@ public class Teste {
         return restauranteRepository
                 .consultaCriteria(nome, taxaInicial, taxaFinal);
     }
-    //Tipo 1
+    //Tipo 1 - Spec
 //    @GetMapping("/restaurantes/com-frete-gratis")
 //    public List<Restaurante> restaurantesComFretesGratis(String nome){
 //        var comFreteGratis = new RestauranteComFreteGratisSpec();
@@ -77,5 +77,9 @@ public class Teste {
     @GetMapping("/cozinhas/primeira")
     public Optional<Cozinha> cozinhaPrimeira() {
         return cozinhaRepository.buscarPrimeiro();
+    }
+    @GetMapping("/cozinhas/bidirecional")
+    public Optional<Cozinha> cozinhaRestaurante(Long id) {
+        return cozinhaRepository.findById(id);
     }
 }
