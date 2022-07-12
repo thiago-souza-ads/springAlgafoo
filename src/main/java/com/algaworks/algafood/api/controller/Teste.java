@@ -4,9 +4,7 @@ import com.algaworks.algafood.domain.model.Cozinha;
 import com.algaworks.algafood.domain.model.Restaurante;
 import com.algaworks.algafood.domain.repository.CozinhaRepository;
 import com.algaworks.algafood.domain.repository.RestauranteRepository;
-import com.algaworks.algafood.domain.service.spec.RestauranteSpecs;
-import com.algaworks.algafood.infrastructure.repository.spec.RestauranteComFreteGratisSpec;
-import com.algaworks.algafood.infrastructure.repository.spec.RestauranteComNomeSemelhanteSpec;
+import com.algaworks.algafood.infrastructure.repository.spec.RestauranteSpecs;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/teste")
@@ -62,8 +61,21 @@ public class Teste {
 //        return restauranteRepository.findAll(comFreteGratis.and(comNomeSemelhante));
 //    }
     // TIpo 2 com Builder
+//    @GetMapping("/restaurantes/com-frete-gratis")
+//    public List<Restaurante> restaurantesComFretesGratis(String nome) {
+//        return restauranteRepository.findAll(RestauranteSpecs.comFreteGratis().and(RestauranteSpecs.comNomeSemelhante(nome)));
+//    }
+    // TIpo 3 com implementando com Lazy no Repository
     @GetMapping("/restaurantes/com-frete-gratis")
     public List<Restaurante> restaurantesComFretesGratis(String nome) {
-        return restauranteRepository.findAll(RestauranteSpecs.comFreteGratis().and(RestauranteSpecs.comNomeSemelhante(nome)));
+        return restauranteRepository.findComFreteGratis(nome);
+    }
+    @GetMapping("/restaurantes/primeiro")
+    public Optional<Restaurante> restaurantePrimeiro() {
+        return restauranteRepository.buscarPrimeiro();
+    }
+    @GetMapping("/cozinhas/primeira")
+    public Optional<Cozinha> cozinhaPrimeira() {
+        return cozinhaRepository.buscarPrimeiro();
     }
 }

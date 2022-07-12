@@ -12,7 +12,11 @@ import java.util.List;
 
 @Repository
 public interface RestauranteRepository
-        extends JpaRepository<Restaurante, Long>, RestauranteRepositoryQueries, JpaSpecificationExecutor<Restaurante> {
+        extends
+        CustomJpaRepository<Restaurante, Long>,
+        JpaRepository<Restaurante, Long>,
+        RestauranteRepositoryQueries,
+        JpaSpecificationExecutor<Restaurante> {
 
     //Prexifos semelhantes => find, query, get, read, stream
     //Prexifos outros => exists(Return Boolean), count(Retunr Int)
