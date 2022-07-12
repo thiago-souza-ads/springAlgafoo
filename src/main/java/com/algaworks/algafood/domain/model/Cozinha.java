@@ -1,9 +1,12 @@
 package com.algaworks.algafood.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -17,4 +20,9 @@ public class Cozinha {
 
     @Column(name = "nome", length = 30)
     private String nome;
+
+    //Mapeamento Bidirecional
+    //@JsonIgnore
+    //@OneToMany(mappedBy = "cozinha")
+    //private List<Restaurante> restaurantes = new ArrayList<>();
 }

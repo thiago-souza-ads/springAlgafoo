@@ -4,9 +4,7 @@ import com.algaworks.algafood.domain.model.Cozinha;
 import com.algaworks.algafood.domain.model.Restaurante;
 import com.algaworks.algafood.domain.repository.CozinhaRepository;
 import com.algaworks.algafood.domain.repository.RestauranteRepository;
-import com.algaworks.algafood.domain.service.spec.RestauranteSpecs;
-import com.algaworks.algafood.infrastructure.repository.spec.RestauranteComFreteGratisSpec;
-import com.algaworks.algafood.infrastructure.repository.spec.RestauranteComNomeSemelhanteSpec;
+import com.algaworks.algafood.infrastructure.repository.spec.RestauranteSpecs;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/teste")
@@ -53,7 +52,7 @@ public class Teste {
         return restauranteRepository
                 .consultaCriteria(nome, taxaInicial, taxaFinal);
     }
-    //Tipo 1
+    //Tipo 1 - Spec
 //    @GetMapping("/restaurantes/com-frete-gratis")
 //    public List<Restaurante> restaurantesComFretesGratis(String nome){
 //        var comFreteGratis = new RestauranteComFreteGratisSpec();
@@ -65,5 +64,9 @@ public class Teste {
     @GetMapping("/restaurantes/com-frete-gratis")
     public List<Restaurante> restaurantesComFretesGratis(String nome) {
         return restauranteRepository.findAll(RestauranteSpecs.comFreteGratis().and(RestauranteSpecs.comNomeSemelhante(nome)));
+    }
+    @GetMapping("/cozinhas/bidirecional")
+    public Optional<Cozinha> cozinhaRestaurante(Long id) {
+        return cozinhaRepository.findById(id);
     }
 }
