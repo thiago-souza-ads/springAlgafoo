@@ -23,6 +23,6 @@ public class Cozinha {
 
     //Mapeamento Bidirecional
     //@JsonIgnore
-    //@OneToMany(mappedBy = "cozinha")
+    //@OneToMany(mappedBy = "cozinha") // Uma cozinha pode ter muitos restaurantes
     //private List<Restaurante> restaurantes = new ArrayList<>();
 }
