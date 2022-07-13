@@ -29,7 +29,8 @@ public class RestauranteRepositoryImpl implements RestauranteRepositoryQueries {
     @PersistenceContext
     private EntityManager manager;
 
-    @Autowired @Lazy
+    @Autowired
+    @Lazy // Injetando o repositorio dentro dele mesmo evitando redundania circular
     private RestauranteRepository restauranteRepository;
 
     @Override

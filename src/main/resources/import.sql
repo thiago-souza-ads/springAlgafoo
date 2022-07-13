@@ -5647,4 +5647,13 @@ insert into tab_modelo (nome_modelo, dados_modelo, info_modelo, string_modelo, o
 insert into tab_modelo (nome_modelo, dados_modelo, info_modelo, string_modelo, outra_string_modelo, mais_outra_string_modelo) values ('modelo 4', 'modelo de coluna4','tamanho 30-4','Modelo 04','04 04 04','ModeloModelo4');
 insert into tab_modelo (nome_modelo, dados_modelo, info_modelo, string_modelo, outra_string_modelo, mais_outra_string_modelo) values ('modelo 5', 'modelo de coluna5','tamanho 30-5','Modelo 05','05 05 05','ModeloModelo5');
 
+insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (1,1), (1,2), (1,3), (2,1),(1,3), (1,4)
+insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (1,2)
+insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (1,3)
+insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (1,4)
+insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (2,1)
+insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (2,3)
+insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (4,1)
+insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (4,4)
+
 
