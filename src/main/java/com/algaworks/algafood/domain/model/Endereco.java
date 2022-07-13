@@ -7,6 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Data
+// @Embedded(Na entidade que receber colocar anotacao),   e @Embeddable (Nessa classe pra falar que ela 'e incorporavel, prefixando as colunas)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Endereco {
     @Id
