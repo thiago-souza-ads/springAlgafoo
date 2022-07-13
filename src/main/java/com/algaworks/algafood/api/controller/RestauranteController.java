@@ -72,15 +72,15 @@ public class RestauranteController {
         try {
             Long cozinhaId = restaurante.getCozinha().getId();
             Optional<Cozinha> optionalCozinha = cozinhaRepository.findById(cozinhaId);
-            if (!optionalCozinha.isEmpty()) {
+            if (optionalCozinha.isEmpty()) {
                 throw new EntidadeNaoEncontradaException(
-                        String.format("A entidade [{%s}] de id:[{%d}] não existe no Banco de Dados, não pode ser utilizada.", Cozinha.class.getName(), cozinhaId)
+                        String.format("A entidade [{%s}] de id:[{%d}] não existe no Banco de Dados, não pode ser utilizada.", Cozinha.class.getSimpleName(), cozinhaId)
                 );
             }
             Optional<Restaurante> optionalRestaurante = restauranteRepository.findById(restauranteId);
             if (optionalRestaurante.isPresent()) {
                 Restaurante restauranteAtual = optionalRestaurante.get();
-                BeanUtils.copyProperties(restaurante, restauranteAtual, "id");
+                BeanUtils.copyProperties(restaurante, restauranteAtual, "id", "formasDePagamento");
                 cadastroRestauranteService.salvar(restauranteAtual);
                 return ResponseEntity.ok(restauranteAtual);
             }

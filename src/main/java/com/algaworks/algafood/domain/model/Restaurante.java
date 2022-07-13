@@ -30,6 +30,7 @@ public class Restaurante {
     @JoinColumn(name = "cozinha_id", nullable = false)
     private Cozinha cozinha;
 
+    @JsonIgnore // Evitar Payload Pesado
     @ManyToMany  // Muitos restaurantes, possuem muitass formas de pagamento;
     @JoinTable(name = "restaurante_forma_pagamento",
                joinColumns = @JoinColumn(name = "restaurante_id"),
