@@ -9,10 +9,17 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Informacoes adicionais:
+ *
+ * Relacionamento muitos para muitos
+ * Customizando nome tabela, Definindo nome da coluna intermediaria que liga na outra tabela
+ */
+
+
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-//@Table(name = "tab_restaurante")
 public class Restaurante {
 
     @Id
@@ -22,18 +29,17 @@ public class Restaurante {
     @Column(nullable = false)
     private String nome;
 
-    @Column(name = "taxa_frete", nullable = false) // nao aceitara nullo
+    @Column(name = "taxa_frete", nullable = false)
     private BigDecimal taxaFrete;
 
-    @ManyToOne // Muitos Restaurantes tem uma Cozinha
-//    @JsonIgnore-> Estava aqui para Relacionamento Bidirecional
+    @ManyToOne
     @JoinColumn(name = "cozinha_id", nullable = false)
     private Cozinha cozinha;
 
-    @JsonIgnore // Evitar Payload Pesado
-    @ManyToMany  // Muitos restaurantes, possuem muitass formas de pagamento;
+    @JsonIgnore
+    @ManyToMany
     @JoinTable(name = "restaurante_forma_pagamento",
-               joinColumns = @JoinColumn(name = "restaurante_id"),
-               inverseJoinColumns = @JoinColumn(name = "forma_pagamento_id")) // Customizando nome tabela, Definindo nome da coluna intermediaria que liga na outra tabela
+            joinColumns = @JoinColumn(name = "restaurante_id"),
+            inverseJoinColumns = @JoinColumn(name = "forma_pagamento_id"))
     private List<FormaDePagamento> formasDePagamento = new ArrayList<>();
 }

@@ -21,7 +21,7 @@ public class Cidade {
     @Column(name = "is_Capital")
     private Boolean isCapital;
 
-    @ManyToOne // Muitas Cidades tem um Estado
+    @ManyToOne // <--- Muitas Cidades tem um Estado = Relacionamento muitos para um
     @JoinColumn(name = "estado_id", nullable = false)
     private Estado estado;
 }

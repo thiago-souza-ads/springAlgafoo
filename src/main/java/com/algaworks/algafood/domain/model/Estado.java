@@ -28,7 +28,7 @@ public class Estado {
     @JoinColumn(name = "regiao_id", nullable = false)
     private Regiao regiao;
 
-    @ManyToOne // Muitos Estados tem um Pais
+    @ManyToOne // <--- Muitos Estados tem um Pais = Relacionamento muitos para um
     @JoinColumn(name = "pais_id", nullable = false)
     private Pais pais;
 

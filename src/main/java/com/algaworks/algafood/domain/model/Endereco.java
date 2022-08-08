@@ -5,9 +5,16 @@ import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 
+/**
+ * Informacoes Adicionais
+ * Para usar esta classe incorporada:
+ *
+ * @Embedded (Na entidade que receber colocar anotacao) <-- Restaurante
+ * @Embeddable (Nessa entidade para falar que ela eh incorporavel, prefixando as colunas) <-- Endereco
+ */
+
 @Entity
 @Data
-// @Embedded(Na entidade que receber colocar anotacao),   e @Embeddable (Nessa classe pra falar que ela 'e incorporavel, prefixando as colunas)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Endereco {
     @Id
@@ -30,7 +37,7 @@ public class Endereco {
     @Column(name = "cep", length = 30)
     private String cep;
 
-    @ManyToOne // Muitos Enderecos tem uma Cidade
+    @ManyToOne // <--- Muitos Enderecos tem uma Cidade = Relacionamento muitos para um
     @JoinColumn(name = "cidade_id", nullable = false)
     private Cidade cidade;
 
