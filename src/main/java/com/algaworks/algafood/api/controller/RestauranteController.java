@@ -21,8 +21,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-
-@RestController // @Controller @ResponseBody
+@RestController
 @RequestMapping("/restaurantes")
 public class RestauranteController {
 
@@ -46,7 +45,7 @@ public class RestauranteController {
     @GetMapping("/{restauranteId}")
     public Restaurante buscar(@PathVariable Long restauranteId) {
         Optional<Restaurante> optionalRestaurante = restauranteRepository.findById(restauranteId);
-        if (optionalRestaurante.isPresent()){
+        if (optionalRestaurante.isPresent()) {
             return optionalRestaurante.get();
         }
         throw new EntidadeNaoEncontradaException(

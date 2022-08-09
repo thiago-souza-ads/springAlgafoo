@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-
 @RestController
 @RequestMapping("/enderecos")
 public class EnderecoController {
@@ -38,7 +37,7 @@ public class EnderecoController {
     @GetMapping("/{enderecoId}")
     public Endereco buscar(@PathVariable Long enderecoId) {
         Optional<Endereco> optionalEndereco = enderecoRepository.findById(enderecoId);
-        if(optionalEndereco.isPresent()){
+        if (optionalEndereco.isPresent()) {
             return optionalEndereco.get();
         }
         throw new EntidadeNaoEncontradaException(
@@ -49,12 +48,12 @@ public class EnderecoController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<?> adicionar(@RequestBody Endereco endereco) {
-        try{
+        try {
             endereco = cadastroEnderecoService.salvar(endereco);
 
             return ResponseEntity.status(HttpStatus.CREATED)
                     .body(endereco);
-        } catch (EntidadeNaoEncontradaException e){
+        } catch (EntidadeNaoEncontradaException e) {
             return ResponseEntity.badRequest()
                     .body(e.getMessage());
         }

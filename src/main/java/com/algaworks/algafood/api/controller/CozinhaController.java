@@ -15,6 +15,16 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Informacoes adicionais:
+ * Segue api`s removidas que estava retornando XML
+ *
+ * @GetMapping(produces = MediaType.APPLICATION_XML_VALUE)
+ * public CozinhasXmlWrapper listarXML() {
+ * return new CozinhasXmlWrapper(cozinhaRepository.findAll());
+ * }
+ */
+
 
 @RestController
 @RequestMapping("/cozinhas")
@@ -29,11 +39,6 @@ public class CozinhaController {
     public List<Cozinha> listarJSON() {
         return cozinhaRepository.findAll();
     }
-
-//    @GetMapping(produces = MediaType.APPLICATION_XML_VALUE)
-//    public CozinhasXmlWrapper listarXML() {
-//        return new CozinhasXmlWrapper(cozinhaRepository.findAll());
-//    }
 
     @GetMapping("/{cozinhaId}")
     public Cozinha buscar(@PathVariable Long cozinhaId) {

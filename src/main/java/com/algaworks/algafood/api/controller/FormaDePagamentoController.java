@@ -15,8 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-
-@RestController // @Controller @ResponseBody
+@RestController
 @RequestMapping("/formasDePagamento")
 public class FormaDePagamentoController {
 
@@ -38,7 +37,7 @@ public class FormaDePagamentoController {
     @GetMapping("/{formaDePagamentoId}")
     public FormaDePagamento buscar(@PathVariable Long formaDePagamentoId) {
         Optional<FormaDePagamento> optionalFormaDePagamento = formaDePagamentoRepository.findById(formaDePagamentoId);
-        if (optionalFormaDePagamento.isPresent()){
+        if (optionalFormaDePagamento.isPresent()) {
             return optionalFormaDePagamento.get();
         }
         throw new EntidadeNaoEncontradaException(

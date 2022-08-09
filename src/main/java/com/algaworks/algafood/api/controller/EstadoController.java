@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-
 @RestController
 @RequestMapping("/estados")
 public class EstadoController {
@@ -40,7 +39,7 @@ public class EstadoController {
     @GetMapping("/{estadoId}")
     public Estado buscar(@PathVariable Long estadoId) {
         Optional<Estado> optionalEstado = estadoRepository.findById(estadoId);
-        if (optionalEstado.isPresent()){
+        if (optionalEstado.isPresent()) {
             return optionalEstado.get();
         }
         throw new EntidadeNaoEncontradaException(
@@ -51,12 +50,12 @@ public class EstadoController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<?> adicionar(@RequestBody Estado estado) {
-        try{
+        try {
             estado = cadastroEstadoService.salvar(estado);
 
             return ResponseEntity.status(HttpStatus.CREATED)
                     .body(estado);
-        } catch (EntidadeNaoEncontradaException e){
+        } catch (EntidadeNaoEncontradaException e) {
             return ResponseEntity.badRequest()
                     .body(e.getMessage());
         }

@@ -3,7 +3,6 @@ package com.algaworks.algafood.api.controller;
 import com.algaworks.algafood.domain.exception.EntidadeEmUsoException;
 import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
 import com.algaworks.algafood.domain.model.Cidade;
-import com.algaworks.algafood.domain.model.Estado;
 import com.algaworks.algafood.domain.repository.CidadeRepository;
 import com.algaworks.algafood.domain.service.CadastroCidadeService;
 import org.springframework.beans.BeanUtils;
@@ -40,7 +39,7 @@ public class CidadeController {
     @GetMapping("/{cidadeId}")
     public Cidade buscar(@PathVariable Long cidadeId) {
         Optional<Cidade> cidadeOptional = cidadeRepository.findById(cidadeId);
-        if(cidadeOptional.isPresent()){
+        if (cidadeOptional.isPresent()) {
             return cidadeOptional.get();
         }
         throw new EntidadeNaoEncontradaException(
@@ -51,20 +50,23 @@ public class CidadeController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED) // ResponseStatus informando que foi criado
     public ResponseEntity<?> adicionar(@RequestBody Cidade cidade) {
-        try{
+        try {
             cidade = cadastroCidadeService.salvar(cidade);
-
             return ResponseEntity.status(HttpStatus.CREATED)
                     .body(cidade);
-        } catch (EntidadeNaoEncontradaException e){
+        } catch (EntidadeNaoEncontradaException e) {
             return ResponseEntity.badRequest()
                     .body(e.getMessage());
         }
     }
 
+    /**
+     * Informacoes adicionais, outra maneira de retornar um Optional:
+     * Optional<Cidade> cidadeOptional = cidadeRepository.findById(cidadeId).orElseThrow(() -> new EntidadeNaoEncontradaException());
+     */
+
     @PutMapping("/{cidadeId}")
     public ResponseEntity<Cidade> atualizar(@PathVariable Long cidadeId, @RequestBody Cidade cidade) {
-//        Optional<Cidade> cidadeOptional = cidadeRepository.findById(cidadeId).orElseThrow(() -> new EntidadeNaoEncontradaException());
         Optional<Cidade> cidadeOptional = cidadeRepository.findById(cidadeId);
         if (cidadeOptional.isPresent()) {
             Cidade cidadeAtual = cidadeOptional.get();

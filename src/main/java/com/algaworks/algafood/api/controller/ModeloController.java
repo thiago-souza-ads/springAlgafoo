@@ -8,7 +8,6 @@ import com.algaworks.algafood.domain.service.CadastroModeloService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,17 +15,32 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * @author Thiago Rodrigues de Souza
- * Esta classe é um controller, responsavel por receber requisições da API,
- * <p>
- * <p>
- * O correto seria somente busca no controlador,
- * o service do domain fará alterações,
- * usando o service, chamando aqui pelo controlador
- * Esta classe de modelo está utilizando boas praticas de programação, a classe serve de referencia para estudo.
+ * Informacoes adicionais:
+ * Esta classe é um controller, responsavel por receber requisições da API(vinda do Front ou APIS de terceiros)
+ *
+ * Por boas praticas, o uso correto do controller, seria somente buscas(Get) no controlador, endpoint`s que realizam
+ * alteracoes sao indicadas chamadas do service do domain.
+ *
+ *  Notations:
+ *  @RestController <--- Engloba as abaixo e trata algumas exceptions.
+ *  @Controller
+ *  @ResponseBody
+ *
+ *  EndPoint removido de XML envelopada:
+ * @GetMapping(produces = MediaType.APPLICATION_XML_VALUE)
+ * public ModeloXmlWrapper listarXml() {
+ *       return new ModeloXmlWrapper(modeloRepository.findAll());
+ * }
+ *
+ * Detalhes importantes:
+ * @ResponseStatus(HttpStatus.CREATED) <--- Forçara o retorno desse modo 201
+ * @PostMapping <--- Metodo não idempotente, quantas vezes chamar vai salvar(se assim fosse executado), mesmo que repetido
+ * @ResponseStatus(HttpStatus.CREATED) <--- ResponseStatus informando que foi criado
+ * @PutMapping("/{modeloId}") <--- Atualização Total do objeto
+ * @DeleteMapping("/{cozinhaId}") <--- Deletar um recurso
  */
 
-@RestController  // @Controller @ResponseBody
+@RestController
 @RequestMapping(value = "/modelos")
 public class ModeloController {
 
@@ -40,12 +54,7 @@ public class ModeloController {
         return modeloRepository.findAll();
     }
 
-//    @GetMapping(produces = MediaType.APPLICATION_XML_VALUE)
-//    public ModeloXmlWrapper listarXml() {
-//        return new ModeloXmlWrapper(modeloRepository.findAll());
-//    }
-
-    @ResponseStatus(HttpStatus.CREATED) // Forçara o retorno desse modo 201
+    @ResponseStatus(HttpStatus.CREATED)
     @GetMapping("/{modeloId}")
     public Modelo buscar(@PathVariable Long modeloId) {
         Optional<Modelo> optionalModelo = modeloRepository.findById(modeloId);
@@ -57,13 +66,12 @@ public class ModeloController {
         );
     }
 
-    @PostMapping // Metodo não idempotente, quantas vezes chamar vai salvar, mesmo que repetido
-    @ResponseStatus(HttpStatus.CREATED) // ResponseStatus informando que foi criado
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public void adicionar(@RequestBody Modelo modelo) {
         cadastroModeloService.salvar(modelo);
     }
 
-    //Atualização Total do objeto
     @PutMapping("/{modeloId}")
     public ResponseEntity<Modelo> atualizar(@PathVariable Long modeloId, @RequestBody Modelo modelo) {
         Optional<Modelo> optionalModelo = modeloRepository.findById(modeloId);
@@ -88,48 +96,47 @@ public class ModeloController {
         }
     }
 
-    // tipo de DeleteMapping
-//    @DeleteMapping("/{cozinhaId}")
-//    public ResponseEntity<Cozinha> remover(@PathVariable Long cozinhaId) {
-//        try{
-//            Cozinha cozinha = cozinhaRepository.buscar(cozinhaId);
-//            if (cozinha != null) {
-//                cozinhaRepository.remover(cozinha);
-//                return ResponseEntity.noContent().build();
-//            } else {
-//                return ResponseEntity.notFound().build();
-//            }
-//        } catch (DataIntegrityViolationException e){
-//            return ResponseEntity.status(HttpStatus.CONFLICT).build();
-//        }
-//    }
-
-
-    //    @GetMapping("/{modeloId}")
-//    public ResponseEntity<Modelo> buscar(@PathVariable Long modeloId){
-//        Modelo modelo = modeloRepository.buscar(modeloId);
-//        return ResponseEntity.status(HttpStatus.OK).body(modelo);
-//        return ResponseEntity.ok(modelo);
-////        Headers pode conter tambem o local do redirecionamento em caso de mudança de local, postman segue os redirecionamentos
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.add(HttpHeaders.LOCATION, "httt://api.algafood.local:8080/modelos");
-//
-//        if(modelo != null){
-//            return ResponseEntity
-//                    .status(HttpStatus.OK)
-//                    .body(modelo);
-//        }
-//        //Caso não encontrar retornara 404
-//        return ResponseEntity.notFound().build();
-//    }
-    //    @ResponseStatus(HttpStatus.OK)
-//    @GetMapping("/{cozinhaId}")
-//    public Cozinha buscar(@PathVariable Long cozinhaId){
-//        return cozinhaRepository.buscar(cozinhaId);
-//        //    public Cozinha buscar(@PathVariable("cozinhaId") Long id){ // Para Bind não automatico
-//    }
-
     /**
+     * Outro exemplo de Delete:
+     *     @DeleteMapping("/{cozinhaId}")
+     *     public ResponseEntity<Cozinha> remover(@PathVariable Long cozinhaId) {
+     *         try{
+     *             Cozinha cozinha = cozinhaRepository.buscar(cozinhaId);
+     *             if (cozinha != null) {
+     *                 cozinhaRepository.remover(cozinha);
+     *                 return ResponseEntity.noContent().build();
+     *             } else {
+     *                 return ResponseEntity.notFound().build();
+     *             }
+     *         } catch (DataIntegrityViolationException e){
+     *             return ResponseEntity.status(HttpStatus.CONFLICT).build();
+     *         }
+     *     }
+     * Outro exemplo de Get:
+     *         @GetMapping("/{modeloId}")
+     *     public ResponseEntity<Modelo> buscar(@PathVariable Long modeloId){
+     *         Modelo modelo = modeloRepository.buscar(modeloId);
+     *         return ResponseEntity.status(HttpStatus.OK).body(modelo);
+     *         return ResponseEntity.ok(modelo);
+     * //        Headers pode conter tambem o local do redirecionamento em caso de mudança de local, postman segue os redirecionamentos
+     *         HttpHeaders headers = new HttpHeaders();
+     *         headers.add(HttpHeaders.LOCATION, "httt://api.algafood.local:8080/modelos");
+     *
+     *         if(modelo != null){
+     *             return ResponseEntity
+     *                     .status(HttpStatus.OK)
+     *                     .body(modelo);
+     *         }
+     *         //Caso não encontrar retornara 404
+     *         return ResponseEntity.notFound().build();
+     *     }
+     *         @ResponseStatus(HttpStatus.OK)
+     *     @GetMapping("/{cozinhaId}")
+     *     public Cozinha buscar(@PathVariable Long cozinhaId){
+     *         return cozinhaRepository.buscar(cozinhaId);
+     *         //    public Cozinha buscar(@PathVariable("cozinhaId") Long id){ // Para Bind não automatico
+     *     }
+     *
      * Principais métodos - verbos http:
      * Verbo        Utilidade                                                                   Idempotencia -Seguro e Não Modifica Recursos (Tipo um CRTL S varias ves, não altera estado da aplicação)
      * GET      Obter Representação de Um recusrso (Single ou Colection Resource)               SIM - SafeNethod
