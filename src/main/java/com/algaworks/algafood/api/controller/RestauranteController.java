@@ -79,7 +79,7 @@ public class RestauranteController {
             Optional<Restaurante> optionalRestaurante = restauranteRepository.findById(restauranteId);
             if (optionalRestaurante.isPresent()) {
                 Restaurante restauranteAtual = optionalRestaurante.get();
-                BeanUtils.copyProperties(restaurante, restauranteAtual, "id", "formasDePagamento");
+                BeanUtils.copyProperties(restaurante, restauranteAtual, "id", "formasDePagamento", "dataCadastro");
                 cadastroRestauranteService.salvar(restauranteAtual);
                 return ResponseEntity.ok(restauranteAtual);
             }
