@@ -3,9 +3,12 @@ package com.algaworks.algafood.domain.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +17,9 @@ import java.util.List;
  *
  * Relacionamento muitos para muitos
  * Customizando nome tabela, Definindo nome da coluna intermediaria que liga na outra tabela
+ *
+ * @CreationTimesTamp - define que ao criar uma instancia recebera uma nova data, do hibernate
+ * @UpdateTimesTamp - define que ao criar uma instancia recebera uma nova data, do hibernate
  */
 
 
@@ -32,6 +38,14 @@ public class Restaurante {
     @Column(name = "taxa_frete", nullable = false)
     private BigDecimal taxaFrete;
 
+    @CreationTimestamp
+    @Column(nullable = false)
+    private LocalDateTime dataCadastro;
+
+    @UpdateTimestamp
+    @Column(nullable = false)
+    private LocalDateTime dataAtualizacao;
+
     @ManyToOne
     @JoinColumn(name = "cozinha_id", nullable = false)
     private Cozinha cozinha;
@@ -42,4 +56,8 @@ public class Restaurante {
             joinColumns = @JoinColumn(name = "restaurante_id"),
             inverseJoinColumns = @JoinColumn(name = "forma_pagamento_id"))
     private List<FormaDePagamento> formasDePagamento = new ArrayList<>();
+
+    // @JsonIgnore -- Foi removido pois era somente para didatica
+    // @Embedded
+    // private Endereco endereo
 }
