@@ -59,7 +59,13 @@ public class Restaurante {
             inverseJoinColumns = @JoinColumn(name = "forma_pagamento_id"))
     private List<FormaDePagamento> formasDePagamento = new ArrayList<>();
 
-    // @JsonIgnore -- Foi removido pois era somente para didatica
-    // @Embedded
-    // private Endereco endereo
+    //@JsonIgnore
+    @OneToMany(mappedBy = "restaurante")
+    private List<Produto> produtos = new ArrayList<>();
+
+    /* -- Foi removido pois era somente para didatica
+     @JsonIgnore
+     @Embedded
+     private Endereco endereo
+     */
 }

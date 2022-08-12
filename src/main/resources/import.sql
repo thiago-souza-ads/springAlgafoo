@@ -5641,19 +5641,34 @@ insert into permissao (nome, descricao) values ('Consultar', 'Permite consultar 
 insert into permissao (nome, descricao) values ('Gerenciar', 'Permite gerenciar dados dentro do sistema');
 insert into permissao (nome, descricao) values ('Administrar', 'Permite administrar dados e usuarios dentro do sistema');
 
+insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (1,2);
 insert into tab_modelo (nome_modelo, dados_modelo, info_modelo, string_modelo, outra_string_modelo, mais_outra_string_modelo) values ('modelo 1', 'modelo de coluna1','tamanho 30-1','Modelo 01','01 01 01','ModeloModelo1');
 insert into tab_modelo (nome_modelo, dados_modelo, info_modelo, string_modelo, outra_string_modelo, mais_outra_string_modelo) values ('modelo 2', 'modelo de coluna2','tamanho 30-2','Modelo 02','02 02 02','ModeloModelo2');
 insert into tab_modelo (nome_modelo, dados_modelo, info_modelo, string_modelo, outra_string_modelo, mais_outra_string_modelo) values ('modelo 3', 'modelo de coluna3','tamanho 30-3','Modelo 03','03 03 03','ModeloModelo3');
 insert into tab_modelo (nome_modelo, dados_modelo, info_modelo, string_modelo, outra_string_modelo, mais_outra_string_modelo) values ('modelo 4', 'modelo de coluna4','tamanho 30-4','Modelo 04','04 04 04','ModeloModelo4');
 insert into tab_modelo (nome_modelo, dados_modelo, info_modelo, string_modelo, outra_string_modelo, mais_outra_string_modelo) values ('modelo 5', 'modelo de coluna5','tamanho 30-5','Modelo 05','05 05 05','ModeloModelo5');
 
-insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (1,1), (1,2), (1,3), (2,1),(1,3), (1,4)
-insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (1,2)
-insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (1,3)
-insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (1,4)
-insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (2,1)
-insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (2,3)
-insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (4,1)
-insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (4,4)
+insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (1,1);
+insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (1,2);
+insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (1,3);
+insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (2,1);
+insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (1,3);
+insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (1,4);
+insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (1,3);
+insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (1,4);
+insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (2,1);
+insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (2,3);
+insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (4,1);
+insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (4,4);
 
+insert into produto (nome, descricao, preco, ativo, restaurante_id, data_cadastro, data_atualizacao) values ('Pao de Queijo', 'Tradicional Pao de Queijo Mineiro', 78.90, 1, 1, utc_timestamp, utc_timestamp);
+insert into produto (nome, descricao, preco, ativo, restaurante_id, data_cadastro, data_atualizacao) values ('Porco com molho agridoce', 'Deliciosa carne suína ao molho especial', 78.90, 1, 1, utc_timestamp, utc_timestamp);
+insert into produto (nome, descricao, preco, ativo, restaurante_id, data_cadastro, data_atualizacao) values ('Camarão tailandês', '16 camarões grandes ao molho picante', 110, 1, 1, utc_timestamp, utc_timestamp);
+insert into produto (nome, descricao, preco, ativo, restaurante_id, data_cadastro, data_atualizacao) values ('Salada picante com carne grelhada', 'Salada de folhas com cortes finos de carne bovina grelhada e nosso molho especial de pimenta vermelha', 87.20, 1, 2, utc_timestamp, utc_timestamp);
+insert into produto (nome, descricao, preco, ativo, restaurante_id, data_cadastro, data_atualizacao) values ('Garlic Naan', 'Pão tradicional indiano com cobertura de alho', 21, 1, 3, utc_timestamp, utc_timestamp);
+insert into produto (nome, descricao, preco, ativo, restaurante_id, data_cadastro, data_atualizacao) values ('Murg Curry', 'Cubos de frango preparados com molho curry e especiarias', 43, 1, 3, utc_timestamp, utc_timestamp);
+insert into produto (nome, descricao, preco, ativo, restaurante_id, data_cadastro, data_atualizacao) values ('Bife Ancho', 'Corte macio e suculento, com dois dedos de espessura, retirado da parte dianteira do contrafilé', 79, 1, 4, utc_timestamp, utc_timestamp);
+insert into produto (nome, descricao, preco, ativo, restaurante_id, data_cadastro, data_atualizacao) values ('T-Bone', 'Corte muito saboroso, com um osso em formato de T, sendo de um lado o contrafilé e do outro o filé mignon', 89, 1, 4, utc_timestamp, utc_timestamp);
+insert into produto (nome, descricao, preco, ativo, restaurante_id, data_cadastro, data_atualizacao) values ('Sanduíche X-Tudo', 'Sandubão com muito queijo, hamburger bovino, bacon, ovo, salada e maionese', 19, 1, 5, utc_timestamp, utc_timestamp);
+insert into produto (nome, descricao, preco, ativo, restaurante_id, data_cadastro, data_atualizacao) values ('Espetinho de Cupim', 'Acompanha farinha, mandioca e vinagrete', 8, 1, 6, utc_timestamp, utc_timestamp);
 
