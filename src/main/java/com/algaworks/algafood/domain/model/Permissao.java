@@ -21,6 +21,4 @@ public class Permissao {
 
     @Column(name = "descricao", length = 200)
     private String descricao;
-
-
 }

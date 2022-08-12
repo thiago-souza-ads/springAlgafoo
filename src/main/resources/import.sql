@@ -5671,3 +5671,26 @@ insert into produto (nome, descricao, preco, ativo, restaurante_id, data_cadastr
 insert into produto (nome, descricao, preco, ativo, restaurante_id, data_cadastro, data_atualizacao) values ('T-Bone', 'Corte muito saboroso, com um osso em formato de T, sendo de um lado o contrafilé e do outro o filé mignon', 89, 1, 4, utc_timestamp, utc_timestamp);
 insert into produto (nome, descricao, preco, ativo, restaurante_id, data_cadastro, data_atualizacao) values ('Sanduíche X-Tudo', 'Sandubão com muito queijo, hamburger bovino, bacon, ovo, salada e maionese', 19, 1, 5, utc_timestamp, utc_timestamp);
 insert into produto (nome, descricao, preco, ativo, restaurante_id, data_cadastro, data_atualizacao) values ('Espetinho de Cupim', 'Acompanha farinha, mandioca e vinagrete', 8, 1, 6, utc_timestamp, utc_timestamp);
+
+insert into usuario (nome, email, senha, data_cadastro, data_atualizacao) values ('Thiago Rodrigues de Souza', 'thiagorodriguesdesouza@hotmail.com', '123456', utc_timestamp, utc_timestamp);
+insert into usuario (nome, email, senha, data_cadastro, data_atualizacao) values ('Gabriel Rodrigues de Souza', 'gabrielrodriguesdesouza@hotmail.com', '123456', utc_timestamp, utc_timestamp);
+insert into usuario (nome, email, senha, data_cadastro, data_atualizacao) values ('Suelen Pereira Rodrigues de Souza', 'suelenrodriguesdesouza@hotmail.com', '123456', utc_timestamp, utc_timestamp);
+
+insert into grupo (nome) values ("ADMINISTRADORES");
+insert into grupo (nome) values ("FUNCIONARIOS");
+
+insert into usuario_grupo (usuario_id, grupo_id) values ( 1, 1);
+insert into usuario_grupo (usuario_id, grupo_id) values ( 2, 2);
+insert into usuario_grupo (usuario_id, grupo_id) values ( 3, 2);
+
+insert into grupo_permissao (grupo_id, permissao_id) values (1, 1);
+insert into grupo_permissao (grupo_id, permissao_id) values (1, 2);
+insert into grupo_permissao (grupo_id, permissao_id) values (1, 3);
+
+insert into grupo_permissao (grupo_id, permissao_id) values (2, 1);
+
+insert into endereco(logradouro, numero, complemento, bairro, cep, cidade_id) values ('Rua da Paz', '1', 'Fundos', 'Alto Marcana', '83546-456', 1);
+insert into endereco(logradouro, numero, complemento, bairro, cep, cidade_id) values ('Rua da Paz', '1', 'Fundos', 'Alto Marcana', '83546-456', 1);
+insert into endereco(logradouro, numero, complemento, bairro, cep, cidade_id) values ('Rua da Paz', '1', 'Fundos', 'Alto Marcana', '83546-456', 1);
+insert into endereco(logradouro, numero, complemento, bairro, cep, cidade_id) values ('Rua da Paz', '1', 'Fundos', 'Alto Marcana', '83546-456', 1);
+insert into endereco(logradouro, numero, complemento, bairro, cep, cidade_id) values ('Rua da Paz', '1', 'Fundos', 'Alto Marcana', '83546-456', 1);
