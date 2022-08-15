@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.repository.cdi.Eager;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -48,7 +49,7 @@ public class Restaurante {
     @Column(nullable = false, columnDefinition = "datetime") //definindo ignorando datetime(6) casas decimais de milisegundos
     private LocalDateTime dataAtualizacao;
 
-    @ManyToOne
+    @ManyToOne // Com Json ignore ou nao o Hibernate vai dar o select de Cozinha - // Toda ligacao ToOne usa Eager Loading(Carregamento Ancioso)
     @JoinColumn(name = "cozinha_id", nullable = false)
     private Cozinha cozinha;
 
