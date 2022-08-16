@@ -25,6 +25,7 @@
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
           <factory-entry name="entityManagerFactory" value="80cfb83d-5fc2-4388-bd62-115f4747dcf5" />
+          <factory-entry name="springAlgafoo" />
         </datasource-mapping>
         <naming-strategy-map />
       </configuration>
