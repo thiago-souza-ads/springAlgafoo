@@ -49,7 +49,9 @@ public class Restaurante {
     @Column(nullable = false, columnDefinition = "datetime") //definindo ignorando datetime(6) casas decimais de milisegundos
     private LocalDateTime dataAtualizacao;
 
-    @ManyToOne // Com Json ignore ou nao o Hibernate vai dar o select de Cozinha - // Toda ligacao ToOne usa Eager Loading(Carregamento Ancioso)
+    // Com Json ignore ou nao o Hibernate vai dar o select de Cozinha
+    // Toda ligacao ToOne usa Eager Loading por Defalt (Carregamento Ancioso) @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "cozinha_id", nullable = false)
     private Cozinha cozinha;
 
@@ -64,6 +66,9 @@ public class Restaurante {
     @OneToMany(mappedBy = "restaurante") // Todos mapeamentos to Many eh Lazy Loading (Carregamento Pregicoso)
     private List<Produto> produtos = new ArrayList<>();
 
+    @OneToOne
+    @JoinColumn(name = "endereco_id", nullable = false)
+    private Endereco endereco;
 
      /*     @JsonIgnore -- Foi removido pois era somente para didatica
             @Embedded

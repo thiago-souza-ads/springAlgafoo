@@ -6,21 +6,6 @@ insert into cozinha (id, nome) values (5, 'Brasileira');
 insert into cozinha (id, nome) values (6, 'Mexicana');
 insert into cozinha (id, nome) values (7, 'Portuguesa');
 insert into cozinha (id, nome) values (8, 'Americana');
-insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao) values ('La bodega', '14.5', 6, utc_timestamp, utc_timestamp);
-insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao) values ('Preferido do Brasil', '10', 5, utc_timestamp, utc_timestamp);
-insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao) values ('TailandFood', '3', 1, utc_timestamp, utc_timestamp);
-insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao) values ('Cheff Canguru', '0', 3, utc_timestamp, utc_timestamp);
-insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao) values ('Bigodon Restaurante', '20', 6, utc_timestamp, utc_timestamp);
-insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao) values ('Tio San Restaurante', '17', 8, utc_timestamp, utc_timestamp);
-insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao) values ('Manuel Restaurante', '8', 7, utc_timestamp, utc_timestamp);
-insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao) values ('Restaurante La Polonia', '5', 4, utc_timestamp, utc_timestamp);
-insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao) values ('IndiaFood Indiano', '5', 2, utc_timestamp, utc_timestamp);
-insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao) values ('Maracana', '10', 5, utc_timestamp, utc_timestamp);
-insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao) values ('Curitiba', '10', 5, utc_timestamp, utc_timestamp);
-insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao) values ('Pernambuco', '10', 5, utc_timestamp, utc_timestamp);
-insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao) values ('Victor', '10', 5, utc_timestamp, utc_timestamp);
-insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao) values ('Restaurante Joao', '10', 5, utc_timestamp, utc_timestamp);
-insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao) values ('X-Ratao', '10', 5, utc_timestamp, utc_timestamp);
 
 insert into pais  (id, nome, sigla) values (1, 'Brasil', 'BR');
 
@@ -5630,6 +5615,28 @@ insert into cidade  (nome, is_Capital, estado_id) values ('Vila Propício', fals
 insert into cidade  (nome, is_Capital, estado_id) values ('Brasília', true,7);
 
 
+insert into endereco(logradouro, numero, complemento, bairro, cep, cidade_id) values ('Rua da Salvacao', '1751', 'Ap-301', 'Centro', '83546-456', 1);
+insert into endereco(logradouro, numero, complemento, bairro, cep, cidade_id) values ('Rua da Paz', '1965', 'Fundos', 'Vila Nova', '83546-456', 100);
+insert into endereco(logradouro, numero, complemento, bairro, cep, cidade_id) values ('Rua da Liberdade', '3854', 'Casa-2', 'Sao Sebastiao', '83546-456', 90);
+insert into endereco(logradouro, numero, complemento, bairro, cep, cidade_id) values ('Rua da Praca', '2755', 'Zona Rural', 'Catedral', '83546-456', 70);
+insert into endereco(logradouro, numero, complemento, bairro, cep, cidade_id) values ('Rua das Flores', '1041', 'Ao lado da Oficina', 'Santista', '83546-456', 45);
+
+insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('La bodega', '14.5', 6, utc_timestamp, utc_timestamp, 1);
+insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('Preferido do Brasil', '10', 5, utc_timestamp, utc_timestamp, 2);
+insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('TailandFood', '3', 1, utc_timestamp, utc_timestamp, 3);
+insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('Cheff Canguru', '0', 3, utc_timestamp, utc_timestamp, 4);
+insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('Bigodon Restaurante', '20', 6, utc_timestamp, utc_timestamp, 5);
+insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('Tio San Restaurante', '17', 8, utc_timestamp, utc_timestamp, 5);
+insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('Manuel Restaurante', '8', 7, utc_timestamp, utc_timestamp, 4);
+insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('Restaurante La Polonia', '5', 4, utc_timestamp, utc_timestamp, 3);
+insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('IndiaFood Indiano', '5', 2, utc_timestamp, utc_timestamp, 2);
+insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('Maracana', '10', 5, utc_timestamp, utc_timestamp, 1);
+insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('Curitiba', '10', 5, utc_timestamp, utc_timestamp, 2);
+insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('Pernambuco', '10', 5, utc_timestamp, utc_timestamp, 3);
+insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('Victor', '10', 5, utc_timestamp, utc_timestamp, 4);
+insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('Restaurante Joao', '10', 5, utc_timestamp, utc_timestamp, 5);
+insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('X-Ratao', '10', 5, utc_timestamp, utc_timestamp, 4);
+
 insert into forma_de_pagamento (descricao) values ('A vista dinheiro');
 insert into forma_de_pagamento (descricao) values ('A vista credito');
 insert into forma_de_pagamento (descricao) values ('A vista debito');
@@ -5688,9 +5695,3 @@ insert into grupo_permissao (grupo_id, permissao_id) values (1, 2);
 insert into grupo_permissao (grupo_id, permissao_id) values (1, 3);
 
 insert into grupo_permissao (grupo_id, permissao_id) values (2, 1);
-
-insert into endereco(logradouro, numero, complemento, bairro, cep, cidade_id) values ('Rua da Paz', '1', 'Fundos', 'Alto Marcana', '83546-456', 1);
-insert into endereco(logradouro, numero, complemento, bairro, cep, cidade_id) values ('Rua da Paz', '1', 'Fundos', 'Alto Marcana', '83546-456', 1);
-insert into endereco(logradouro, numero, complemento, bairro, cep, cidade_id) values ('Rua da Paz', '1', 'Fundos', 'Alto Marcana', '83546-456', 1);
-insert into endereco(logradouro, numero, complemento, bairro, cep, cidade_id) values ('Rua da Paz', '1', 'Fundos', 'Alto Marcana', '83546-456', 1);
-insert into endereco(logradouro, numero, complemento, bairro, cep, cidade_id) values ('Rua da Paz', '1', 'Fundos', 'Alto Marcana', '83546-456', 1);

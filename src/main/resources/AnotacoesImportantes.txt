@@ -1,0 +1,9 @@
+Desambiguicao de Beans usar:
+@Primary (Acima do @Component)
+
+@Qualifier("String nome") (Acima do Autowired)
+Recomenda-se criar uma Anotation(Classe) do tipo Qualifier e um Enum para evitar erros em tempo de execucao
+
+
+
+
