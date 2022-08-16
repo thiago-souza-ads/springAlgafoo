@@ -53,7 +53,7 @@ public class Restaurante {
     @JoinColumn(name = "cozinha_id", nullable = false)
     private Cozinha cozinha;
 
-    @JsonIgnore
+    //@JsonIgnore
     @ManyToMany
     @JoinTable(name = "restaurante_forma_pagamento",
             joinColumns = @JoinColumn(name = "restaurante_id"),
@@ -61,7 +61,7 @@ public class Restaurante {
     private List<FormaDePagamento> formasDePagamento = new ArrayList<>();
 
     //@JsonIgnore
-    @OneToMany(mappedBy = "restaurante")
+    @OneToMany(mappedBy = "restaurante") // Todos mapeamentos to Many eh Lazy Loading (Carregamento Pregicoso)
     private List<Produto> produtos = new ArrayList<>();
 
 
