@@ -25,14 +25,13 @@ public interface RestauranteRepository
     //Sufixos => Containig,
 
 
-    /**
-     * Maneira de resolver o Problema do N+1 atraves de Consulta JPQL
-     *
-     * @Query("from Restaurante r join fetch r.cozinha left join fetch r.formasDePagamento")
-     * List<Restaurante> findAll();
-     *
-     * @deprecated - removido devido a Implementacao automatica do JPA, apenas exemplo didatico!
-     */
+
+//     * Maneira de resolver o Problema do N+1 atraves de Consulta JPQL
+//     *
+//     * @Query("from Restaurante r join fetch r.cozinha left join fetch r.formasDePagamento")
+//     * List<Restaurante> findAll();
+//     *
+//     * @deprecated - removido devido a Implementacao automatica do JPA, apenas exemplo didatico!
 
     /**
      * Definicao do metodo que realizara consultas de restaurantes, que contem taxa de entrega no intervalo definido

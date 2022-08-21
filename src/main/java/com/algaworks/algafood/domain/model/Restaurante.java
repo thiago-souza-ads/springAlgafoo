@@ -57,7 +57,7 @@ public class Restaurante {
     @JoinColumn(name = "cozinha_id")
     private Cozinha cozinha;
 
-    //@JsonIgnore - Cuidado ao alterar para eager pois pode prejudicar o rendimento do sistema
+    @JsonIgnore //- Cuidado ao alterar para eager pois pode prejudicar o rendimento do sistema
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "restaurante_forma_pagamento",
             joinColumns = @JoinColumn(name = "restaurante_id"),
