@@ -63,11 +63,6 @@
             <version>1.18.22</version>
         </dependency>
         <dependency>
-            <groupId>org.flywaydb.pro</groupId>
-            <artifactId>flyway-core</artifactId>
-            <version>6.5.7</version>
-        </dependency>
-        <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-mysql</artifactId>
             <version>9.0.0</version>
