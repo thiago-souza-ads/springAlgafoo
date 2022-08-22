@@ -104,7 +104,7 @@
       <workItem from="1661101141049" duration="1438000" />
       <workItem from="1661103243275" duration="6601000" />
       <workItem from="1661118400726" duration="53000" />
-      <workItem from="1661209369028" duration="764000" />
+      <workItem from="1661209369028" duration="1070000" />
     </task>
     <task id="LOCAL-00001" summary="branchs">
       <created>1660613098618</created>
@@ -155,7 +155,21 @@
       <option name="project" value="LOCAL" />
       <updated>1661118426287</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Flyway - Organizando properties by profile">
+      <created>1661210415562</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1661210415562</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Flyway - Organizando properties by profile">
+      <created>1661210444903</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1661210444903</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -182,7 +196,8 @@
     <MESSAGE value="Hikari implements tests" />
     <MESSAGE value="Flyway Implementando" />
     <MESSAGE value="Flyway - Implementando" />
-    <option name="LAST_COMMIT_MESSAGE" value="Flyway - Implementando" />
+    <MESSAGE value="Flyway - Organizando properties by profile" />
+    <option name="LAST_COMMIT_MESSAGE" value="Flyway - Organizando properties by profile" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
