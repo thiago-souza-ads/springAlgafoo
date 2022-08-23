@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7a233741-ba57-4bb0-ac11-ea8e279bbf86" name="Changes" comment="Flyway - Implementando">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-development.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-development.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-production.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-production.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,6 +76,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\workspace\springAlgafoo\src\main\resources\db\migration" />
+      <recent name="F:\workspace\springAlgafoo\src\main\resources\db\migration\migration" />
       <recent name="F:\workspace\springAlgafoo\src\main\resources\db\migration\test_data" />
     </key>
   </component>
@@ -104,7 +103,7 @@
       <workItem from="1661101141049" duration="1438000" />
       <workItem from="1661103243275" duration="6601000" />
       <workItem from="1661118400726" duration="53000" />
-      <workItem from="1661209369028" duration="1070000" />
+      <workItem from="1661209369028" duration="1548000" />
     </task>
     <task id="LOCAL-00001" summary="branchs">
       <created>1660613098618</created>
@@ -169,7 +168,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661210444903</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Flyway - Organizando properties by profile">
+      <created>1661210549967</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1661210549967</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -195,9 +201,9 @@
     <MESSAGE value="branchs" />
     <MESSAGE value="Hikari implements tests" />
     <MESSAGE value="Flyway Implementando" />
-    <MESSAGE value="Flyway - Implementando" />
     <MESSAGE value="Flyway - Organizando properties by profile" />
-    <option name="LAST_COMMIT_MESSAGE" value="Flyway - Organizando properties by profile" />
+    <MESSAGE value="Flyway - Implementando" />
+    <option name="LAST_COMMIT_MESSAGE" value="Flyway - Implementando" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
