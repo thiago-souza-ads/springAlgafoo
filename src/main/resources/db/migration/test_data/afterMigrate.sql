@@ -5686,11 +5686,6 @@ insert into permissao (nome, descricao) values ('Gerenciar', 'Permite gerenciar 
 insert into permissao (nome, descricao) values ('Administrar', 'Permite administrar dados e usuarios dentro do sistema');
 
 insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (1,2);
-insert into tab_modelo (nome_modelo, dados_modelo, info_modelo, string_modelo, outra_string_modelo, mais_outra_string_modelo) values ('modelo 1', 'modelo de coluna1','tamanho 30-1','Modelo 01','01 01 01','ModeloModelo1');
-insert into tab_modelo (nome_modelo, dados_modelo, info_modelo, string_modelo, outra_string_modelo, mais_outra_string_modelo) values ('modelo 2', 'modelo de coluna2','tamanho 30-2','Modelo 02','02 02 02','ModeloModelo2');
-insert into tab_modelo (nome_modelo, dados_modelo, info_modelo, string_modelo, outra_string_modelo, mais_outra_string_modelo) values ('modelo 3', 'modelo de coluna3','tamanho 30-3','Modelo 03','03 03 03','ModeloModelo3');
-insert into tab_modelo (nome_modelo, dados_modelo, info_modelo, string_modelo, outra_string_modelo, mais_outra_string_modelo) values ('modelo 4', 'modelo de coluna4','tamanho 30-4','Modelo 04','04 04 04','ModeloModelo4');
-insert into tab_modelo (nome_modelo, dados_modelo, info_modelo, string_modelo, outra_string_modelo, mais_outra_string_modelo) values ('modelo 5', 'modelo de coluna5','tamanho 30-5','Modelo 05','05 05 05','ModeloModelo5');
 
 insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (1,1);
 insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (1,2);
