@@ -24,11 +24,11 @@ public class CadastroCozinhaService {
             cozinhaRepository.deleteById(cozinhaId);
         } catch (EmptyResultDataAccessException e) {
             throw new EntidadeNaoEncontradaException(
-                    String.format("A entidade [{%s}] de id:[{%d}] não existe no Banco de Dados, não pode ser excluida.", Cozinha.class.getName(), cozinhaId)
+                    String.format("A entidade [{%s}] de id:[{%d}] não existe no Banco de Dados, não pode ser excluida.", Cozinha.class.getSimpleName(), cozinhaId)
             );
         } catch (DataIntegrityViolationException e) {
             throw new EntidadeEmUsoException(
-                    String.format("A entidade [{%s] de id:[{%d}] está em uso por outras Entidades, não pode ser excluida.", Cozinha.class.getName(), cozinhaId)
+                    String.format("A entidade [{%s}] de id:[{%d}] está em uso por outras Entidades, não pode ser excluida.", Cozinha.class.getSimpleName(), cozinhaId)
             );
         }
     }
