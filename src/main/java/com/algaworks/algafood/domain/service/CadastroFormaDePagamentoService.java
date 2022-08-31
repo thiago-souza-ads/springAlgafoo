@@ -1,5 +1,6 @@
 package com.algaworks.algafood.domain.service;
 
+import com.algaworks.algafood.domain.constantes.Constantes;
 import com.algaworks.algafood.domain.exception.EntidadeEmUsoException;
 import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
 import com.algaworks.algafood.domain.model.FormaDePagamento;
@@ -24,13 +25,21 @@ public class CadastroFormaDePagamentoService {
             formaDePagamentoRepository.deleteById(formaDePagamentoId);
         } catch (EmptyResultDataAccessException e) {
             throw new EntidadeNaoEncontradaException(
-                    String.format("A entidade [{%s}] de id:[{%d}] não existe no Banco de Dados, não pode ser excluida.", FormaDePagamento.class.getName(), formaDePagamentoId)
+                    String.format(Constantes.ENTIDADE_INEXISTENTE, FormaDePagamento.class.getName(), formaDePagamentoId)
             );
         } catch (DataIntegrityViolationException e) {
             throw new EntidadeEmUsoException(
-                    String.format("A entidade [{%s] de id:[{%d}] está em uso por outras Entidades, não pode ser excluida.", FormaDePagamento.class.getName(), formaDePagamentoId)
+                    String.format(Constantes.ENTIDADE_EM_USO, FormaDePagamento.class.getName(), formaDePagamentoId)
             );
         }
+    }
+
+    public FormaDePagamento findOrFail(Long formaDePagamentoId) {
+        return formaDePagamentoRepository.findById(formaDePagamentoId)
+                .orElseThrow(
+                        () -> new EntidadeNaoEncontradaException(
+                                String.format(Constantes.ENTIDADE_INEXISTENTE, FormaDePagamento.class.getSimpleName(), formaDePagamentoId)
+                        ));
     }
 
 }

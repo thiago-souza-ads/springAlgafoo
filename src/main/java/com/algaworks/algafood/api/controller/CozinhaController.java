@@ -6,7 +6,6 @@ import com.algaworks.algafood.domain.service.CadastroCozinhaService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,9 +20,9 @@ public class CozinhaController {
     @Autowired
     private CozinhaRepository cozinhaRepository;
 
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<Cozinha> listarJSON() {
+    public List<Cozinha> listar() {
         return cozinhaRepository.findAll();
     }
 
@@ -35,8 +34,8 @@ public class CozinhaController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void adicionar(@RequestBody Cozinha cozinha) {
-        cadastroCozinhaService.salvar(cozinha);
+    public Cozinha adicionar(@RequestBody Cozinha cozinha) {
+        return cadastroCozinhaService.salvar(cozinha);
     }
 
     @PutMapping("/{cozinhaId}")

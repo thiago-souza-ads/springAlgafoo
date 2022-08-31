@@ -1,19 +1,16 @@
 package com.algaworks.algafood.domain.service;
 
+import com.algaworks.algafood.domain.Utils.Utils;
+import com.algaworks.algafood.domain.constantes.Constantes;
 import com.algaworks.algafood.domain.exception.EntidadeEmUsoException;
 import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
 import com.algaworks.algafood.domain.model.Cidade;
 import com.algaworks.algafood.domain.model.Estado;
-import com.algaworks.algafood.domain.model.Pais;
 import com.algaworks.algafood.domain.repository.CidadeRepository;
-import com.algaworks.algafood.domain.repository.EstadoRepository;
-import com.algaworks.algafood.domain.repository.PaisRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 public class CadastroCidadeService {
@@ -22,33 +19,12 @@ public class CadastroCidadeService {
     private CidadeRepository cidadeRepository;
 
     @Autowired
-    private EstadoRepository estadoRepository;
-
-    @Autowired
-    private PaisRepository paisRepository;
+    private CadastroEstadoService cadastroEstadoService;
 
     public Cidade salvar(Cidade cidade) {
-        Long estadoId = cidade.getEstado().getId();
-        Optional<Estado> optionalEstado = estadoRepository.findById(estadoId);
-        if (!optionalEstado.isPresent()) {
-            throw new EntidadeNaoEncontradaException(
-                    String.format("A entidade [{%s}] de id:[{%d}] não existe no Banco de Dados, não pode ser utilizada.", Estado.class.getName(), estadoId)
-            );
-        }
-        Estado estado = optionalEstado.get();
-        Long paisId = cidade.getEstado().getPais().getId();
-        Optional<Pais> optionalPais = paisRepository.findById(paisId);
-        if (!optionalPais.isPresent()) {
-            throw new EntidadeNaoEncontradaException(
-                    String.format("A entidade [{%s}] de id:[{%d}] não existe no Banco de Dados, não pode ser utilizada.", Pais.class.getName(), paisId)
-            );
-        }
-        Pais pais = optionalPais.get();
-
+        Utils.verificaCampoObrigatorio(cidade.getEstado().getId());
+        Estado estado = cadastroEstadoService.findOrFail(cidade.getEstado().getId());
         cidade.setEstado(estado);
-
-        cidade.getEstado().setPais(pais);
-
         return cidadeRepository.save(cidade);
     }
 
@@ -57,12 +33,20 @@ public class CadastroCidadeService {
             cidadeRepository.deleteById(cidadeId);
         } catch (EmptyResultDataAccessException e) {
             throw new EntidadeNaoEncontradaException(
-                    String.format("A cidade [{%d}] não existe, não pode ser excluida.", cidadeId)
+                    String.format(Constantes.ENTIDADE_INEXISTENTE, Cidade.class.getSimpleName(), cidadeId)
             );
         } catch (DataIntegrityViolationException e) {
             throw new EntidadeEmUsoException(
-                    String.format("A cidade [{%d}] está em uso, não pode ser excluida.", cidadeId)
+                    String.format(Constantes.ENTIDADE_EM_USO, Cidade.class.getSimpleName(), cidadeId)
             );
         }
+    }
+
+    public Cidade findOrFail(Long cidadeId) {
+        return cidadeRepository.findById(cidadeId)
+                .orElseThrow(
+                        () -> new EntidadeNaoEncontradaException(
+                                String.format(Constantes.ENTIDADE_INEXISTENTE, Cidade.class.getSimpleName(), cidadeId)
+                        ));
     }
 }

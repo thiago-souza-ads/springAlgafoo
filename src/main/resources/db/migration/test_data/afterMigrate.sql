@@ -1,8 +1,3 @@
--- // Para fazer um dump (backup dos dados) do database "algafood" no MySQL, use o seguinte comando:
--- // mysqldump --host localhost --user root --password --databases algafood > dump.sql
--- // Para criar o database "algafood" a partir do dump, execute o comando:
--- // mysql --host localhost --user root --password < dump.sql
-
 set foreign_key_checks = 0;
 
 delete from cidade;
@@ -5651,7 +5646,6 @@ insert into cidade  (nome, is_Capital, estado_id) values ('Vila Boa', false,9);
 insert into cidade  (nome, is_Capital, estado_id) values ('Vila Propício', false,9);
 insert into cidade  (nome, is_Capital, estado_id) values ('Brasília', true,7);
 
-
 insert into endereco(logradouro, numero, complemento, bairro, cep, cidade_id) values ('Rua da Salvacao', '1751', 'Ap-301', 'Centro', '83546-456', 1);
 insert into endereco(logradouro, numero, complemento, bairro, cep, cidade_id) values ('Rua da Paz', '1965', 'Fundos', 'Vila Nova', '83546-456', 100);
 insert into endereco(logradouro, numero, complemento, bairro, cep, cidade_id) values ('Rua da Liberdade', '3854', 'Casa-2', 'Sao Sebastiao', '83546-456', 90);
@@ -5686,7 +5680,6 @@ insert into permissao (nome, descricao) values ('Gerenciar', 'Permite gerenciar 
 insert into permissao (nome, descricao) values ('Administrar', 'Permite administrar dados e usuarios dentro do sistema');
 
 insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (1,2);
-
 insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (1,1);
 insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (1,2);
 insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (1,3);

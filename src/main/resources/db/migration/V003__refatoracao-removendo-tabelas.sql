@@ -1,1 +1,0 @@
-drop table tab_modelo;

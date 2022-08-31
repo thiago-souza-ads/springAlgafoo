@@ -4,14 +4,66 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a233741-ba57-4bb0-ac11-ea8e279bbf86" name="Changes" comment="Usando ResponseStatusException">
+    <list default="true" id="7a233741-ba57-4bb0-ac11-ea8e279bbf86" name="Changes" comment="Refatorando o Codigo - Clean Code - Tratamento de Erros e Response Codes">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/Utils/Utils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/exception/CampoObrigatorioException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/ServiceConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/CidadeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/CidadeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/CozinhaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/CozinhaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/constantes/Constantes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/constantes/Constantes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/exception/EntidadeNaoEncontradaException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/exception/EntidadeNaoEncontradaException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/EnderecoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/EnderecoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/EstadoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/EstadoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/FormaDePagamentoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/FormaDePagamentoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/ModeloController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/PaisController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/PaisController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/PermissaoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/PermissaoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/RegiaoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/RegiaoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/RestauranteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/RestauranteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/service/CadastroCidadeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/service/CadastroCidadeService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/service/CadastroCozinhaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/service/CadastroCozinhaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/service/CadastroEnderecoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/service/CadastroEnderecoService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/service/CadastroEstadoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/service/CadastroEstadoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/service/CadastroFormaDePagamentoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/service/CadastroFormaDePagamentoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/service/CadastroModeloService.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/service/CadastroPaisService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/service/CadastroPaisService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/service/CadastroPermissaoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/service/CadastroPermissaoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/service/CadastroRegiaoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/service/CadastroRegiaoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/service/CadastroRestauranteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/service/CadastroRestauranteService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Old-Files/di/MeuPrimeiroController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Old-Files/di/jpa/AlteracaoCozinhaMain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Old-Files/di/jpa/BuscaCozinhaMain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Old-Files/di/jpa/BuscaRestauranteMain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Old-Files/di/jpa/ConsultaCozinhaMain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Old-Files/di/jpa/ConsultaRestauranteMain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Old-Files/di/jpa/ExclusaoCozinhaMain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Old-Files/di/jpa/InclusaoCozinhaMain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Old-Files/di/listener/EmissaoNotaFiscalService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Old-Files/di/listener/NotificacaoService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Old-Files/di/model/CozinhasXmlWrapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Old-Files/di/model/ModeloXmlWrapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Old-Files/di/modelo/Cliente.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Old-Files/di/modelo/notificacao/NivelUrgencia.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Old-Files/di/modelo/notificacao/Notificador.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Old-Files/di/modelo/notificacao/NotificadorEmail.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Old-Files/di/modelo/notificacao/NotificadorEmailMock.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Old-Files/di/modelo/notificacao/NotificadorProperties.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Old-Files/di/modelo/notificacao/NotificadorSMS.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Old-Files/di/modelo/notificacao/TipoDoNotificador.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Old-Files/di/old_repository_sem_jpa/CidadeRepositoryImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Old-Files/di/old_repository_sem_jpa/CozinhaRepositoryImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Old-Files/di/old_repository_sem_jpa/EnderecoRepositoryImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Old-Files/di/old_repository_sem_jpa/EstadoRepositoryImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Old-Files/di/old_repository_sem_jpa/FormaDePagamentoRepositoryImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Old-Files/di/old_repository_sem_jpa/ModeloRepositoryImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Old-Files/di/old_repository_sem_jpa/PaisRepositoryImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Old-Files/di/old_repository_sem_jpa/PermissaoRepositoryImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Old-Files/di/old_repository_sem_jpa/RegiaoRepositoryImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Old-Files/di/old_repository_sem_jpa/RestauranteRepositoryImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Old-Files/di/service/AtivacaoClienteService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Old-Files/di/service/ClienteAtivadoEvent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V001__criacao-inicial.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V001__criacao-inicial.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V003__refatoracao-removendo-tabelas.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/test_data/afterMigrate.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/migration/test_data/afterMigrate.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +73,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -102,6 +154,9 @@
       <recent name="F:\workspace\springAlgafoo\src\main\resources\db\migration\migration" />
       <recent name="F:\workspace\springAlgafoo\src\main\resources\db\migration\test_data" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.algaworks.algafood.domain.service" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="AlgafoodApiApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
@@ -128,6 +183,13 @@
       <workItem from="1661209369028" duration="8597000" />
       <workItem from="1661298037679" duration="2143000" />
       <workItem from="1661387110635" duration="4451000" />
+      <workItem from="1661712429467" duration="597000" />
+      <workItem from="1661716424960" duration="611000" />
+      <workItem from="1661719317497" duration="1108000" />
+      <workItem from="1661822191462" duration="2265000" />
+      <workItem from="1661827817255" duration="105000" />
+      <workItem from="1661880428897" duration="596000" />
+      <workItem from="1661904572357" duration="6188000" />
     </task>
     <task id="LOCAL-00001" summary="branchs">
       <created>1660613098618</created>
@@ -220,7 +282,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661389730082</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Refatorando o Codigo - Clean Code - Tratamento de Erros e Response Codes">
+      <created>1661905058168</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1661905058168</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -251,7 +320,8 @@
     <MESSAGE value="Workspace" />
     <MESSAGE value="Tratamento de Exceptions" />
     <MESSAGE value="Usando ResponseStatusException" />
-    <option name="LAST_COMMIT_MESSAGE" value="Usando ResponseStatusException" />
+    <MESSAGE value="Refatorando o Codigo - Clean Code - Tratamento de Erros e Response Codes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refatorando o Codigo - Clean Code - Tratamento de Erros e Response Codes" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

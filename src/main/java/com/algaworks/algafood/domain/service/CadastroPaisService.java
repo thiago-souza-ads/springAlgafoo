@@ -34,4 +34,12 @@ public class CadastroPaisService {
         }
     }
 
+    public Pais findOrFail(Long paisId) {
+        return paisRepository.findById(paisId)
+                .orElseThrow(
+                        () -> new EntidadeNaoEncontradaException(
+                                String.format(Constantes.ENTIDADE_INEXISTENTE, Pais.class.getSimpleName(), paisId)
+                        ));
+    }
+
 }

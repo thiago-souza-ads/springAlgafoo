@@ -97,17 +97,6 @@ create table restaurante_forma_pagamento (
     forma_pagamento_id bigint not null
 ) engine=InnoDB charset=utf8;
 
-create table tab_modelo (
-    id bigint not null auto_increment,
-    dados_modelo varchar(30),
-    info_modelo varchar(30),
-    mais_outra_string_modelo varchar(30),
-    nome_modelo varchar(30),
-    outra_string_modelo varchar(30),
-    string_modelo varchar(30),
-    primary key (id)
-) engine=InnoDB charset=utf8;
-
 create table usuario (
     id bigint not null auto_increment,
     data_atualizacao datetime not null,

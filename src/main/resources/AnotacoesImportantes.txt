@@ -4,6 +4,6 @@ Desambiguicao de Beans usar:
 @Qualifier("String nome") (Acima do Autowired)
 Recomenda-se criar uma Anotation(Classe) do tipo Qualifier e um Enum para evitar erros em tempo de execucao
 
-
+Inversao de Controles
 
 

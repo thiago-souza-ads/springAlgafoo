@@ -1,10 +1,9 @@
 package com.algaworks.algafood.domain.service;
 
+import com.algaworks.algafood.domain.constantes.Constantes;
 import com.algaworks.algafood.domain.exception.EntidadeEmUsoException;
 import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
-import com.algaworks.algafood.domain.model.Permissao;
 import com.algaworks.algafood.domain.model.Regiao;
-import com.algaworks.algafood.domain.repository.PermissaoRepository;
 import com.algaworks.algafood.domain.repository.RegiaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -26,13 +25,21 @@ public class CadastroRegiaoService {
             regiaoRepository.deleteById(regiaoId);
         } catch (EmptyResultDataAccessException e) {
             throw new EntidadeNaoEncontradaException(
-                    String.format("A entidade [{%s}] de id:[{%d}] não existe no Banco de Dados, não pode ser excluida.", Regiao.class.getName(), regiaoId)
+                    String.format(Constantes.ENTIDADE_INEXISTENTE, Regiao.class.getName(), regiaoId)
             );
         } catch (DataIntegrityViolationException e) {
             throw new EntidadeEmUsoException(
-                    String.format("A entidade [{%s] de id:[{%d}] está em uso por outras Entidades, não pode ser excluida.", Regiao.class.getName(), regiaoId)
+                    String.format(Constantes.ENTIDADE_EM_USO, Regiao.class.getName(), regiaoId)
             );
         }
+    }
+
+    public Regiao findOrFail(Long regiaoId) {
+        return regiaoRepository.findById(regiaoId)
+                .orElseThrow(
+                        () -> new EntidadeNaoEncontradaException(
+                                String.format(Constantes.ENTIDADE_INEXISTENTE, Regiao.class.getSimpleName(), regiaoId)
+                        ));
     }
 
 }
