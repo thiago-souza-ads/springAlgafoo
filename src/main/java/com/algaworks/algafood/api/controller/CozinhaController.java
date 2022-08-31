@@ -22,11 +22,13 @@ public class CozinhaController {
     private CozinhaRepository cozinhaRepository;
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
     public List<Cozinha> listarJSON() {
         return cozinhaRepository.findAll();
     }
 
     @GetMapping("/{cozinhaId}")
+    @ResponseStatus(HttpStatus.OK)
     public Cozinha buscar(@PathVariable Long cozinhaId) {
         return cadastroCozinhaService.findOrFail(cozinhaId);
     }
@@ -38,12 +40,10 @@ public class CozinhaController {
     }
 
     @PutMapping("/{cozinhaId}")
+    @ResponseStatus(HttpStatus.OK)
     public Cozinha atualizar(@PathVariable Long cozinhaId, @RequestBody Cozinha cozinha) {
-
         Cozinha cozinhaAtual = cadastroCozinhaService.findOrFail(cozinhaId);
-
         BeanUtils.copyProperties(cozinha, cozinhaAtual, "id");
-
         return cadastroCozinhaService.salvar(cozinhaAtual);
     }
 
