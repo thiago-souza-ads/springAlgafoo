@@ -32,4 +32,4 @@ build/
 ### VS Code ###
 
 /src/main/resources/ddl.sql
-/.idea/*
+/.idea/workspace.xml
