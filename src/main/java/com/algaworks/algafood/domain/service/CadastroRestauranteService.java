@@ -1,6 +1,7 @@
 package com.algaworks.algafood.domain.service;
 
 import com.algaworks.algafood.domain.constantes.Constantes;
+import com.algaworks.algafood.domain.exception.CampoObrigatorioException;
 import com.algaworks.algafood.domain.exception.EntidadeEmUsoException;
 import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
 import com.algaworks.algafood.domain.model.Cozinha;
@@ -21,8 +22,13 @@ public class CadastroRestauranteService {
     private CadastroCozinhaService cadastroCozinhaService;
 
     public Restaurante salvar(Restaurante restaurante) {
-        Cozinha cozinha = cadastroCozinhaService.findOrFail(restaurante.getCozinha().getId());
-        restaurante.setCozinha(cozinha);
+        try{
+            Cozinha cozinha = cadastroCozinhaService.findOrFail(restaurante.getCozinha().getId());
+            restaurante.setCozinha(cozinha);
+        } catch (NullPointerException nullPointerException){
+            throw new CampoObrigatorioException(
+                    String.format(Constantes.CAMPO_OBRIGATORIO_ERRO, Restaurante.class.getSimpleName() ,Cozinha.class.getSimpleName()));
+        }
         return restauranteRepository.save(restaurante);
     }
 
