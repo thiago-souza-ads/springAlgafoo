@@ -1,6 +1,5 @@
 package com.algaworks.algafood.api.controller;
 
-import com.algaworks.algafood.domain.model.Cidade;
 import com.algaworks.algafood.domain.model.FormaDePagamento;
 import com.algaworks.algafood.domain.repository.FormaDePagamentoRepository;
 import com.algaworks.algafood.domain.service.CadastroFormaDePagamentoService;
@@ -55,21 +54,21 @@ public class FormaDePagamentoController {
         cadastroFormaDePagamentoService.excluir(formaDePagamentoId);
     }
 
-    @PatchMapping("/{cidadeId}")
-    public Cidade atualizarParcial(@PathVariable Long cidadeId, @RequestBody Map<String, Object> campos) {
-        Cidade cidadeAtual = cadastroCidadeService.findOrFail(cidadeId);
-        merge(campos, cidadeAtual);
-        return atualizar(cidadeId, cidadeAtual);
+    @PatchMapping("/{formaDePagamentoId}")
+    public FormaDePagamento atualizarParcial(@PathVariable Long formaDePagamentoId, @RequestBody Map<String, Object> campos) {
+        FormaDePagamento formaDePagamentoAtual = cadastroFormaDePagamentoService.findOrFail(formaDePagamentoId);
+        merge(campos, formaDePagamentoAtual);
+        return atualizar(formaDePagamentoId, formaDePagamentoAtual);
     }
 
-    private void merge(Map<String, Object> dadosOrigem, Cidade cidadeDestino) {
+    private void merge(Map<String, Object> dadosOrigem, FormaDePagamento formaDePagamentoDestino) {
         ObjectMapper objectMapper = new ObjectMapper();
-        Cidade cidadeOrigem = objectMapper.convertValue(dadosOrigem, Cidade.class);
+        FormaDePagamento formaDePagamentoOrigem = objectMapper.convertValue(dadosOrigem, FormaDePagamento.class);
         dadosOrigem.forEach((nomePropriedade, valorPropriedade) -> {
-            Field field = ReflectionUtils.findField(Cidade.class, nomePropriedade);
+            Field field = ReflectionUtils.findField(FormaDePagamento.class, nomePropriedade);
             field.setAccessible(Boolean.TRUE);
-            Object novoValor = ReflectionUtils.getField(field, cidadeOrigem);
-            ReflectionUtils.setField(field, cidadeDestino, novoValor);
+            Object novoValor = ReflectionUtils.getField(field, formaDePagamentoOrigem);
+            ReflectionUtils.setField(field, formaDePagamentoDestino, novoValor);
         });
     }
 }

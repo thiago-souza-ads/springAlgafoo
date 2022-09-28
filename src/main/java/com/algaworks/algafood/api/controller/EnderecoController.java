@@ -1,6 +1,5 @@
 package com.algaworks.algafood.api.controller;
 
-import com.algaworks.algafood.domain.model.Cidade;
 import com.algaworks.algafood.domain.model.Endereco;
 import com.algaworks.algafood.domain.repository.EnderecoRepository;
 import com.algaworks.algafood.domain.service.CadastroEnderecoService;
@@ -55,21 +54,21 @@ public class EnderecoController {
         cadastroEnderecoService.excluir(enderecoId);
     }
 
-    @PatchMapping("/{cidadeId}")
-    public Cidade atualizarParcial(@PathVariable Long cidadeId, @RequestBody Map<String, Object> campos) {
-        Cidade cidadeAtual = cadastroCidadeService.findOrFail(cidadeId);
-        merge(campos, cidadeAtual);
-        return atualizar(cidadeId, cidadeAtual);
+    @PatchMapping("/{enderecoId}")
+    public Endereco atualizarParcial(@PathVariable Long enderecoId, @RequestBody Map<String, Object> campos) {
+        Endereco enderecoAtual = cadastroEnderecoService.findOrFail(enderecoId);
+        merge(campos, enderecoAtual);
+        return atualizar(enderecoId, enderecoAtual);
     }
 
-    private void merge(Map<String, Object> dadosOrigem, Cidade cidadeDestino) {
+    private void merge(Map<String, Object> dadosOrigem, Endereco enderecoDestino) {
         ObjectMapper objectMapper = new ObjectMapper();
-        Cidade cidadeOrigem = objectMapper.convertValue(dadosOrigem, Cidade.class);
+        Endereco enderecoOrigem = objectMapper.convertValue(dadosOrigem, Endereco.class);
         dadosOrigem.forEach((nomePropriedade, valorPropriedade) -> {
-            Field field = ReflectionUtils.findField(Cidade.class, nomePropriedade);
+            Field field = ReflectionUtils.findField(Endereco.class, nomePropriedade);
             field.setAccessible(Boolean.TRUE);
-            Object novoValor = ReflectionUtils.getField(field, cidadeOrigem);
-            ReflectionUtils.setField(field, cidadeDestino, novoValor);
+            Object novoValor = ReflectionUtils.getField(field, enderecoOrigem);
+            ReflectionUtils.setField(field, enderecoDestino, novoValor);
         });
     }
 }

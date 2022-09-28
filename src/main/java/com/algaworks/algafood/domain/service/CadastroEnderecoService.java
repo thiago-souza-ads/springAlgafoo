@@ -20,7 +20,6 @@ public class CadastroEnderecoService {
     private CadastroCidadeService cadastroCidadeService;
 
     public Endereco salvar(Endereco endereco) {
-        Utils.verificaCampoObrigatorio(endereco.getCidade().getId());
         Cidade cidade = cadastroCidadeService.findOrFail(endereco.getCidade().getId());
         endereco.setCidade(cidade);
         return enderecoRepository.save(endereco);

@@ -1,6 +1,5 @@
 package com.algaworks.algafood.api.controller;
 
-import com.algaworks.algafood.domain.model.Cidade;
 import com.algaworks.algafood.domain.model.Estado;
 import com.algaworks.algafood.domain.repository.EstadoRepository;
 import com.algaworks.algafood.domain.service.CadastroEstadoService;
@@ -57,21 +56,21 @@ public class EstadoController {
         cadastroEstadoService.excluir(estadoId);
     }
 
-    @PatchMapping("/{cidadeId}")
-    public Cidade atualizarParcial(@PathVariable Long cidadeId, @RequestBody Map<String, Object> campos) {
-        Cidade cidadeAtual = cadastroCidadeService.findOrFail(cidadeId);
-        merge(campos, cidadeAtual);
-        return atualizar(cidadeId, cidadeAtual);
+    @PatchMapping("/{estadoId}")
+    public Estado atualizarParcial(@PathVariable Long estadoId, @RequestBody Map<String, Object> campos) {
+        Estado estadoAtual = cadastroEstadoService.findOrFail(estadoId);
+        merge(campos, estadoAtual);
+        return atualizar(estadoId, estadoAtual);
     }
 
-    private void merge(Map<String, Object> dadosOrigem, Cidade cidadeDestino) {
+    private void merge(Map<String, Object> dadosOrigem, Estado estadoDestino) {
         ObjectMapper objectMapper = new ObjectMapper();
-        Cidade cidadeOrigem = objectMapper.convertValue(dadosOrigem, Cidade.class);
+        Estado estadoOrigem = objectMapper.convertValue(dadosOrigem, Estado.class);
         dadosOrigem.forEach((nomePropriedade, valorPropriedade) -> {
-            Field field = ReflectionUtils.findField(Cidade.class, nomePropriedade);
+            Field field = ReflectionUtils.findField(Estado.class, nomePropriedade);
             field.setAccessible(Boolean.TRUE);
-            Object novoValor = ReflectionUtils.getField(field, cidadeOrigem);
-            ReflectionUtils.setField(field, cidadeDestino, novoValor);
+            Object novoValor = ReflectionUtils.getField(field, estadoOrigem);
+            ReflectionUtils.setField(field, estadoDestino, novoValor);
         });
     }
 }

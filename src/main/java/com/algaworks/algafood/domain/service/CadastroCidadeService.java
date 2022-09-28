@@ -22,7 +22,6 @@ public class CadastroCidadeService {
     private CadastroEstadoService cadastroEstadoService;
 
     public Cidade salvar(Cidade cidade) {
-        Utils.verificaCampoObrigatorio(cidade.getEstado().getId());
         Estado estado = cadastroEstadoService.findOrFail(cidade.getEstado().getId());
         cidade.setEstado(estado);
         return cidadeRepository.save(cidade);
