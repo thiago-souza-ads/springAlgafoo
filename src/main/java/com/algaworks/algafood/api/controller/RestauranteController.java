@@ -1,7 +1,6 @@
 package com.algaworks.algafood.api.controller;
 
 import com.algaworks.algafood.domain.model.Restaurante;
-import com.algaworks.algafood.domain.repository.CozinhaRepository;
 import com.algaworks.algafood.domain.repository.RestauranteRepository;
 import com.algaworks.algafood.domain.service.CadastroRestauranteService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -23,8 +22,6 @@ public class RestauranteController {
     private RestauranteRepository restauranteRepository;
     @Autowired
     private CadastroRestauranteService cadastroRestauranteService;
-    @Autowired
-    private CozinhaRepository cozinhaRepository;
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)

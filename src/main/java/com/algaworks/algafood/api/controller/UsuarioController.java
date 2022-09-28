@@ -2,7 +2,6 @@ package com.algaworks.algafood.api.controller;
 
 import com.algaworks.algafood.domain.model.Usuario;
 import com.algaworks.algafood.domain.repository.UsuarioRepository;
-import com.algaworks.algafood.domain.service.CadastroGrupoService;
 import com.algaworks.algafood.domain.service.CadastroUsuarioService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.BeanUtils;
@@ -74,5 +73,4 @@ public class UsuarioController {
     public void remover(@PathVariable Long usuarioId) {
         cadastroUsuarioService.excluir(usuarioId);
     }
-
 }
