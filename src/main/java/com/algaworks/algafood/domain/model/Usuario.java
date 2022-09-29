@@ -30,11 +30,11 @@ public class Usuario {
 
     @CreationTimestamp
     @Column(nullable = false, columnDefinition = "datetime")
-    private LocalDateTime data_cadastro;
+    private LocalDateTime dataCadastro;
 
     @CreationTimestamp
     @Column(nullable = false, columnDefinition = "datetime")
-    private LocalDateTime data_atualizacao;
+    private LocalDateTime dataAtualizacao;
 
     @ManyToMany
     @JoinTable(name = "usuario_grupo",

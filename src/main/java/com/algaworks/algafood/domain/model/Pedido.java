@@ -32,20 +32,20 @@ public class Pedido {
 
     @CreationTimestamp
     @Column(columnDefinition = "datetime", nullable = false)
-    private Date data_cadastro = new Date();
+    private Date dataCadastro = new Date();
 
     @UpdateTimestamp
     @Column(nullable = false, columnDefinition = "datetime")
-    private Date data_atualizacao;
+    private Date dataAtualizacao;
 
     @Column(columnDefinition = "datetime")
-    private Date data_confirmacao;
+    private Date dataConfirmacao;
 
     @Column(nullable = false, columnDefinition = "datetime")
-    private Date data_cancelamento;
+    private Date dataCancelamento;
 
     @Column(columnDefinition = "datetime")
-    private Date data_entrega;
+    private Date dataEntrega;
 
     @ManyToOne
     @JoinColumn(name = "forma_de_pagamento_id", nullable = false)

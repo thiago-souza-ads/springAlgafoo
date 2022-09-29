@@ -14,5 +14,4 @@ public interface CozinhaRepository extends CustomJpaRepository<Cozinha, Long> {
 
     List<Cozinha> findAllByNomeContaining(String nome);
 
-//    Optional<Cozinha> findFirstByNomeContaining(String nome);
 }

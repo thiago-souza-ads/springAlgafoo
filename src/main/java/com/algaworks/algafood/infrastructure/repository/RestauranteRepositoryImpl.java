@@ -71,7 +71,7 @@ public class RestauranteRepositoryImpl implements RestauranteRepositoryQueries {
         TypedQuery<Restaurante> query = manager
                 .createQuery(jpql.toString(), Restaurante.class);
 
-        parametros.forEach((chave, valor) -> query.setParameter(chave, valor));
+        parametros.forEach(query::setParameter);
 
         return query.getResultList();
     }
@@ -89,12 +89,15 @@ public class RestauranteRepositoryImpl implements RestauranteRepositoryQueries {
 
         if(StringUtils.hasLength(nome)){
             Predicate nomePredicate = builder.like(root.get("nome"), "%" + nome + "%");
+            predicates.add(nomePredicate);
         }
         if(taxaFreteInicial != null){
             Predicate taxaInicialPredicate = builder.greaterThanOrEqualTo(root.get("taxaFrete"), taxaFreteInicial);
+            predicates.add(taxaInicialPredicate);
         }
         if(taxaFreteFinal != null){
             Predicate taxaFinalPredicate = builder.lessThanOrEqualTo(root.get("taxaFrete"), taxaFreteFinal);
+            predicates.add(taxaFinalPredicate);
         }
 
         criteriaQuery.where(predicates.toArray(new Predicate[0]));

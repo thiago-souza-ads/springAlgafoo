@@ -37,11 +37,11 @@ public class Produto {
 
     @CreationTimestamp
     @Column(nullable = false, columnDefinition = "datetime")
-    private Date data_cadastro = new Date();
+    private Date dataCadastro = new Date();
 
     @UpdateTimestamp
     @Column(nullable = false, columnDefinition = "datetime")
-    private Date data_atualizacao;
+    private Date dataAtualizacao;
 
     @JsonIgnore
     @ManyToOne
