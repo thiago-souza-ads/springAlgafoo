@@ -1,11 +1,13 @@
 package com.algaworks.algafood.domain.service;
 
-import com.algaworks.algafood.domain.Utils.Utils;
 import com.algaworks.algafood.domain.constantes.Constantes;
+import com.algaworks.algafood.domain.exception.CampoObrigatorioException;
 import com.algaworks.algafood.domain.exception.EntidadeEmUsoException;
 import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
 import com.algaworks.algafood.domain.model.Cidade;
+import com.algaworks.algafood.domain.model.Cozinha;
 import com.algaworks.algafood.domain.model.Estado;
+import com.algaworks.algafood.domain.model.Restaurante;
 import com.algaworks.algafood.domain.repository.CidadeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -22,9 +24,14 @@ public class CadastroCidadeService {
     private CadastroEstadoService cadastroEstadoService;
 
     public Cidade salvar(Cidade cidade) {
-        Estado estado = cadastroEstadoService.findOrFail(cidade.getEstado().getId());
-        cidade.setEstado(estado);
-        return cidadeRepository.save(cidade);
+        try{
+            Estado estado = cadastroEstadoService.findOrFail(cidade.getEstado().getId());
+            cidade.setEstado(estado);
+            return cidadeRepository.save(cidade);
+        } catch (NullPointerException nullPointerException){
+            throw new CampoObrigatorioException(
+                    String.format(Constantes.CAMPO_OBRIGATORIO_ERRO, Cidade.class.getSimpleName() , Estado.class.getSimpleName()));
+        }
     }
 
     public void excluir(Long cidadeId) {
