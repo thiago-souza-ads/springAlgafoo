@@ -1,5 +1,6 @@
 package com.algaworks.algafood.api.controller;
 
+import com.algaworks.algafood.domain.dto.CozinhaDto;
 import com.algaworks.algafood.domain.model.Cozinha;
 import com.algaworks.algafood.domain.repository.CozinhaRepository;
 import com.algaworks.algafood.domain.service.CadastroCozinhaService;
@@ -17,6 +18,9 @@ import java.util.Map;
 @RestController
 @RequestMapping("/cozinhas")
 public class CozinhaController {
+
+    @Autowired
+    private ObjectMapper mapper;
 
     @Autowired
     private CadastroCozinhaService cadastroCozinhaService;
@@ -38,15 +42,15 @@ public class CozinhaController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Cozinha adicionar(@RequestBody Cozinha cozinha) {
-        return cadastroCozinhaService.salvar(cozinha);
+    public Cozinha adicionar(@RequestBody CozinhaDto cozinha) {
+        return cadastroCozinhaService.salvar(mapper.convertValue(cozinha, Cozinha.class));
     }
 
     @PutMapping("/{cozinhaId}")
     @ResponseStatus(HttpStatus.OK)
-    public Cozinha atualizar(@PathVariable Long cozinhaId, @RequestBody Cozinha cozinha) {
+    public Cozinha atualizar(@PathVariable Long cozinhaId, @RequestBody CozinhaDto cozinha) {
         Cozinha cozinhaAtual = cadastroCozinhaService.findOrFail(cozinhaId);
-        BeanUtils.copyProperties(cozinha, cozinhaAtual, "id");
+        BeanUtils.copyProperties(mapper.convertValue(cozinha, Cozinha.class), cozinhaAtual, "id");
         return cadastroCozinhaService.salvar(cozinhaAtual);
     }
 
@@ -60,7 +64,7 @@ public class CozinhaController {
     public Cozinha atualizarParcial(@PathVariable Long cozinhaId, @RequestBody Map<String, Object> campos) {
         Cozinha cozinhaAtual = cadastroCozinhaService.findOrFail(cozinhaId);
         merge(campos, cozinhaAtual);
-        return atualizar(cozinhaId, cozinhaAtual);
+        return atualizar(cozinhaId, mapper.convertValue(cozinhaAtual, CozinhaDto.class));
     }
 
     private void merge(Map<String, Object> dadosOrigem, Cozinha cozinhaDestino) {

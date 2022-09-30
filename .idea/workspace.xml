@@ -4,8 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a233741-ba57-4bb0-ac11-ea8e279bbf86" name="Changes" comment="Afinando a granularidade e definindo a hierarquia das exceptions de negócios">
+    <list default="true" id="7a233741-ba57-4bb0-ac11-ea8e279bbf86" name="Changes" comment="Sonar Qube analyse">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/CidadeDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/CozinhaDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/EnderecoDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/EstadoDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/FormaDePagamentoDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/GrupoDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/ItemPedidoDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/PaisDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/PedidoDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/PermissaoDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/ProdutoDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/RegiaoDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/RestauranteDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/UsuarioDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/CozinhaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/CozinhaController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,8 +68,8 @@
     </option>
     <option name="myId2Visible">
       <map>
-        <entry key="com.haulmont.jpb.jpaInspector" value="true" />
-        <entry key="com.haulmont.jpb.jpaPalette" value="true" />
+        <entry key="com.haulmont.jpb.jpaInspector" value="false" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="false" />
         <entry key="com.haulmont.jpb.jpaStructure" value="false" />
       </map>
     </option>
@@ -79,12 +94,14 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="JPA.DatabaseSchemaImportDialog" value="80cfb83d-5fc2-4388-bd62-115f4747dcf5" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
@@ -99,6 +116,9 @@
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.algaworks.algafood.domain.service" />
+    </key>
+    <key name="ImportMappingsDialog.RecentPackages">
+      <recent name="" />
     </key>
   </component>
   <component name="RunManager">
@@ -136,6 +156,9 @@
       <workItem from="1664233434332" duration="3990000" />
       <workItem from="1664323564315" duration="605000" />
       <workItem from="1664407782874" duration="3541000" />
+      <workItem from="1664411856985" duration="800000" />
+      <workItem from="1664455807065" duration="1522000" />
+      <workItem from="1664495306263" duration="2658000" />
     </task>
     <task id="LOCAL-00001" summary="branchs">
       <created>1660613098618</created>
@@ -277,7 +300,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664410576991</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Sonar Qube analyse">
+      <created>1664412593866</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1664412593866</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -314,7 +344,8 @@
     <MESSAGE value="Incluindo atualização parcial nas entidades" />
     <MESSAGE value="Inclusão de atualização parcial de entidade" />
     <MESSAGE value="Afinando a granularidade e definindo a hierarquia das exceptions de negócios" />
-    <option name="LAST_COMMIT_MESSAGE" value="Afinando a granularidade e definindo a hierarquia das exceptions de negócios" />
+    <MESSAGE value="Sonar Qube analyse" />
+    <option name="LAST_COMMIT_MESSAGE" value="Sonar Qube analyse" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
