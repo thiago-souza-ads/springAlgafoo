@@ -1,6 +1,7 @@
 package com.algaworks.algafood.domain.service;
 
 import com.algaworks.algafood.domain.constantes.Constantes;
+import com.algaworks.algafood.domain.exception.BusinessException;
 import com.algaworks.algafood.domain.exception.CampoObrigatorioException;
 import com.algaworks.algafood.domain.exception.EntidadeEmUsoException;
 import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
@@ -27,7 +28,7 @@ public class CadastroCidadeService {
             cidade.setEstado(estado);
             return cidadeRepository.save(cidade);
         } catch (NullPointerException nullPointerException){
-            throw new CampoObrigatorioException(
+            throw new BusinessException(
                     String.format(Constantes.CAMPO_OBRIGATORIO_ERRO, Cidade.class.getSimpleName() , Estado.class.getSimpleName()));
         }
     }
