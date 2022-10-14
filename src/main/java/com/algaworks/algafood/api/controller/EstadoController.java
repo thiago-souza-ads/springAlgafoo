@@ -1,5 +1,7 @@
 package com.algaworks.algafood.api.controller;
 
+import com.algaworks.algafood.domain.exception.BusinessException;
+import com.algaworks.algafood.domain.exception.EstadoNaoEncontradaException;
 import com.algaworks.algafood.domain.model.Estado;
 import com.algaworks.algafood.domain.repository.EstadoRepository;
 import com.algaworks.algafood.domain.service.CadastroEstadoService;
@@ -38,8 +40,12 @@ public class EstadoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void adicionar(@RequestBody Estado estado) {
-        cadastroEstadoService.salvar(estado);
+    public Estado adicionar(@RequestBody Estado estado) {
+        try {
+            return cadastroEstadoService.salvar(estado);
+        } catch (EstadoNaoEncontradaException e) {
+            throw new BusinessException(e.getMessage(), e);
+        }
     }
 
     @PutMapping("/{estadoId}")
@@ -47,7 +53,11 @@ public class EstadoController {
     public Estado atualizar(@PathVariable Long estadoId, @RequestBody Estado estado) {
         Estado estadoAtual = cadastroEstadoService.findOrFail(estadoId);
         BeanUtils.copyProperties(estado, estadoAtual, "id");
-        return cadastroEstadoService.salvar(estadoAtual);
+        try {
+            return cadastroEstadoService.salvar(estadoAtual);
+        } catch (EstadoNaoEncontradaException e) {
+            throw new BusinessException(e.getMessage(), e);
+        }
     }
 
     @DeleteMapping("/{estadoId}")

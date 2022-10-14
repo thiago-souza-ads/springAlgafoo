@@ -1,5 +1,7 @@
 package com.algaworks.algafood.api.controller;
 
+import com.algaworks.algafood.domain.exception.BusinessException;
+import com.algaworks.algafood.domain.exception.ProdutoNaoEncontradaException;
 import com.algaworks.algafood.domain.model.Produto;
 import com.algaworks.algafood.domain.repository.ProdutoRepository;
 import com.algaworks.algafood.domain.service.CadastroProdutoService;
@@ -38,14 +40,23 @@ public class ProdutoController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Produto adicionar(@RequestBody Produto produto) {
-        return cadastroProdutoService.salvar(produto);
+        try {
+            return cadastroProdutoService.salvar(produto);
+        } catch (ProdutoNaoEncontradaException e) {
+            throw new BusinessException(e.getMessage(), e);
+        }
     }
 
     @PutMapping("/{produtoId}")
     public Produto atualizar(@PathVariable Long produtoId, @RequestBody Produto produto) {
         Produto produtoAtual = cadastroProdutoService.findOrFail(produtoId);
         BeanUtils.copyProperties(produto, produtoAtual, "id");
-        return cadastroProdutoService.salvar(produtoAtual);
+        try {
+            return cadastroProdutoService.salvar(produtoAtual);
+        } catch (ProdutoNaoEncontradaException e) {
+            throw new BusinessException(e.getMessage(), e);
+        }
+
     }
 
     @PatchMapping("/{produtoId}")

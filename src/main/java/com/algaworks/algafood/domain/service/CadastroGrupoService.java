@@ -3,6 +3,7 @@ package com.algaworks.algafood.domain.service;
 import com.algaworks.algafood.domain.constantes.Constantes;
 import com.algaworks.algafood.domain.exception.EntidadeEmUsoException;
 import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
+import com.algaworks.algafood.domain.exception.GrupoNaoEncontradaException;
 import com.algaworks.algafood.domain.model.Grupo;
 import com.algaworks.algafood.domain.repository.GrupoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,9 +38,7 @@ public class CadastroGrupoService {
     public Grupo findOrFail(Long grupoId) {
         return grupoRepository.findById(grupoId)
                 .orElseThrow(
-                        () -> new EntidadeNaoEncontradaException(
-                                String.format(Constantes.ENTIDADE_INEXISTENTE, Grupo.class.getSimpleName(), grupoId)
-                        ));
+                        () -> new GrupoNaoEncontradaException(grupoId));
     }
 
 }

@@ -3,6 +3,7 @@ package com.algaworks.algafood.domain.service;
 import com.algaworks.algafood.domain.constantes.Constantes;
 import com.algaworks.algafood.domain.exception.EntidadeEmUsoException;
 import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
+import com.algaworks.algafood.domain.exception.RegiaoNaoEncontradaException;
 import com.algaworks.algafood.domain.model.Regiao;
 import com.algaworks.algafood.domain.repository.RegiaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,9 +38,7 @@ public class CadastroRegiaoService {
     public Regiao findOrFail(Long regiaoId) {
         return regiaoRepository.findById(regiaoId)
                 .orElseThrow(
-                        () -> new EntidadeNaoEncontradaException(
-                                String.format(Constantes.ENTIDADE_INEXISTENTE, Regiao.class.getSimpleName(), regiaoId)
-                        ));
+                        () -> new RegiaoNaoEncontradaException(regiaoId));
     }
 
 }

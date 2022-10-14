@@ -1,6 +1,9 @@
 package com.algaworks.algafood.api.controller;
 
 import com.algaworks.algafood.domain.dto.CozinhaDto;
+import com.algaworks.algafood.domain.exception.BusinessException;
+import com.algaworks.algafood.domain.exception.CozinhaNaoEncontradaException;
+import com.algaworks.algafood.domain.exception.EnderecoNaoEncontradaException;
 import com.algaworks.algafood.domain.model.Cozinha;
 import com.algaworks.algafood.domain.repository.CozinhaRepository;
 import com.algaworks.algafood.domain.service.CadastroCozinhaService;
@@ -43,7 +46,11 @@ public class CozinhaController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Cozinha adicionar(@RequestBody CozinhaDto cozinha) {
-        return cadastroCozinhaService.salvar(mapper.convertValue(cozinha, Cozinha.class));
+        try {
+            return cadastroCozinhaService.salvar(mapper.convertValue(cozinha, Cozinha.class));
+        } catch (CozinhaNaoEncontradaException e) {
+            throw new BusinessException(e.getMessage(), e);
+        }
     }
 
     @PutMapping("/{cozinhaId}")
@@ -51,7 +58,11 @@ public class CozinhaController {
     public Cozinha atualizar(@PathVariable Long cozinhaId, @RequestBody CozinhaDto cozinha) {
         Cozinha cozinhaAtual = cadastroCozinhaService.findOrFail(cozinhaId);
         BeanUtils.copyProperties(mapper.convertValue(cozinha, Cozinha.class), cozinhaAtual, "id");
-        return cadastroCozinhaService.salvar(cozinhaAtual);
+        try {
+            return cadastroCozinhaService.salvar(cozinhaAtual);
+        } catch (EnderecoNaoEncontradaException e) {
+            throw new BusinessException(e.getMessage(), e);
+        }
     }
 
     @DeleteMapping("/{cozinhaId}")

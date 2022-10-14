@@ -3,6 +3,7 @@ package com.algaworks.algafood.domain.service;
 import com.algaworks.algafood.domain.constantes.Constantes;
 import com.algaworks.algafood.domain.exception.EntidadeEmUsoException;
 import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
+import com.algaworks.algafood.domain.exception.PaisNaoEncontradaException;
 import com.algaworks.algafood.domain.model.Pais;
 import com.algaworks.algafood.domain.repository.PaisRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,9 +38,7 @@ public class CadastroPaisService {
     public Pais findOrFail(Long paisId) {
         return paisRepository.findById(paisId)
                 .orElseThrow(
-                        () -> new EntidadeNaoEncontradaException(
-                                String.format(Constantes.ENTIDADE_INEXISTENTE, Pais.class.getSimpleName(), paisId)
-                        ));
+                        () -> new PaisNaoEncontradaException(paisId));
     }
 
 }

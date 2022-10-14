@@ -1,6 +1,8 @@
 package com.algaworks.algafood.api.controller;
 
 
+import com.algaworks.algafood.domain.exception.BusinessException;
+import com.algaworks.algafood.domain.exception.PedidoNaoEncontradaException;
 import com.algaworks.algafood.domain.model.Pedido;
 import com.algaworks.algafood.domain.repository.PedidoRepository;
 import com.algaworks.algafood.domain.service.CadastroPedidoService;
@@ -38,8 +40,12 @@ public class PedidoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void adicionar(@RequestBody Pedido pedido) {
-        cadastroPedidoService.salvar(pedido);
+    public Pedido adicionar(@RequestBody Pedido pedido) {
+        try {
+            return cadastroPedidoService.salvar(pedido);
+        } catch (PedidoNaoEncontradaException e) {
+            throw new BusinessException(e.getMessage(), e);
+        }
     }
 
     @PutMapping("/{pedidoId}")
@@ -47,7 +53,11 @@ public class PedidoController {
     public Pedido atualizar(@PathVariable Long pedidoId, @RequestBody Pedido pedido) {
         Pedido pedidoAtual = cadastroPedidoService.findOrFail(pedidoId);
         BeanUtils.copyProperties(pedido, pedidoAtual, "id");
-        return cadastroPedidoService.salvar(pedidoAtual);
+        try {
+            return cadastroPedidoService.salvar(pedidoAtual);
+        } catch (PedidoNaoEncontradaException e) {
+            throw new BusinessException(e.getMessage(), e);
+        }
     }
 
     @DeleteMapping("/{pedidoId}")

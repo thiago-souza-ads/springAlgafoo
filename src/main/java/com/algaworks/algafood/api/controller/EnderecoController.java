@@ -1,5 +1,7 @@
 package com.algaworks.algafood.api.controller;
 
+import com.algaworks.algafood.domain.exception.BusinessException;
+import com.algaworks.algafood.domain.exception.EnderecoNaoEncontradaException;
 import com.algaworks.algafood.domain.model.Endereco;
 import com.algaworks.algafood.domain.repository.EnderecoRepository;
 import com.algaworks.algafood.domain.service.CadastroEnderecoService;
@@ -37,15 +39,23 @@ public class EnderecoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void adicionar(@RequestBody Endereco endereco) {
-        cadastroEnderecoService.salvar(endereco);
+    public Endereco adicionar(@RequestBody Endereco endereco) {
+        try{
+            return cadastroEnderecoService.salvar(endereco);
+        } catch (EnderecoNaoEncontradaException e){
+            throw new BusinessException(e.getMessage(), e);
+        }
     }
 
     @PutMapping("/{enderecoId}")
     public Endereco atualizar(@PathVariable Long enderecoId, @RequestBody Endereco endereco) {
         Endereco enderecoAtual = cadastroEnderecoService.findOrFail(enderecoId);
         BeanUtils.copyProperties(endereco, enderecoAtual, "id");
-        return cadastroEnderecoService.salvar(enderecoAtual);
+        try {
+            return cadastroEnderecoService.salvar(enderecoAtual);
+        } catch (EnderecoNaoEncontradaException e){
+            throw new BusinessException(e.getMessage(),e);
+        }
     }
 
     @DeleteMapping("/{enderecoId}")

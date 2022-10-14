@@ -1,5 +1,7 @@
 package com.algaworks.algafood.api.controller;
 
+import com.algaworks.algafood.domain.exception.BusinessException;
+import com.algaworks.algafood.domain.exception.GrupoNaoEncontradaException;
 import com.algaworks.algafood.domain.model.Grupo;
 import com.algaworks.algafood.domain.model.Restaurante;
 import com.algaworks.algafood.domain.repository.GrupoRepository;
@@ -39,14 +41,22 @@ public class GrupoController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Grupo adicionar(@RequestBody Grupo grupo) {
-        return cadastroGrupoService.salvar(grupo);
+        try {
+            return cadastroGrupoService.salvar(grupo);
+        } catch (GrupoNaoEncontradaException e) {
+            throw new BusinessException(e.getMessage(), e);
+        }
     }
 
     @PutMapping("/{grupoId}")
     public Grupo atualizar(@PathVariable Long grupoId, @RequestBody Grupo grupo) {
         Grupo grupoAtual = cadastroGrupoService.findOrFail(grupoId);
         BeanUtils.copyProperties(grupo, grupoAtual, "id");
-        return cadastroGrupoService.salvar(grupoAtual);
+        try {
+            return cadastroGrupoService.salvar(grupoAtual);
+        } catch (GrupoNaoEncontradaException e) {
+            throw new BusinessException(e.getMessage(), e);
+        }
     }
 
     @PatchMapping("/{grupoAtual}")

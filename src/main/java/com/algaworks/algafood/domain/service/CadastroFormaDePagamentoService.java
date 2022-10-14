@@ -3,6 +3,7 @@ package com.algaworks.algafood.domain.service;
 import com.algaworks.algafood.domain.constantes.Constantes;
 import com.algaworks.algafood.domain.exception.EntidadeEmUsoException;
 import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
+import com.algaworks.algafood.domain.exception.FormaDePagamentoNaoEncontradaException;
 import com.algaworks.algafood.domain.model.FormaDePagamento;
 import com.algaworks.algafood.domain.repository.FormaDePagamentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,9 +38,7 @@ public class CadastroFormaDePagamentoService {
     public FormaDePagamento findOrFail(Long formaDePagamentoId) {
         return formaDePagamentoRepository.findById(formaDePagamentoId)
                 .orElseThrow(
-                        () -> new EntidadeNaoEncontradaException(
-                                String.format(Constantes.ENTIDADE_INEXISTENTE, FormaDePagamento.class.getSimpleName(), formaDePagamentoId)
-                        ));
+                        () -> new FormaDePagamentoNaoEncontradaException(formaDePagamentoId));
     }
 
 }

@@ -1,5 +1,7 @@
 package com.algaworks.algafood.api.controller;
 
+import com.algaworks.algafood.domain.exception.BusinessException;
+import com.algaworks.algafood.domain.exception.ItemPedidoNaoEncontradaException;
 import com.algaworks.algafood.domain.model.ItemPedido;
 import com.algaworks.algafood.domain.repository.ItemPedidoRepository;
 import com.algaworks.algafood.domain.service.CadastroItemPedidoService;
@@ -39,14 +41,22 @@ public class ItemPedidoController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ItemPedido adicionar(@RequestBody ItemPedido itemPedido) {
-        return cadastroItemPedidoService.salvar(itemPedido);
+        try {
+            return cadastroItemPedidoService.salvar(itemPedido);
+        } catch (ItemPedidoNaoEncontradaException e) {
+            throw new BusinessException(e.getMessage(), e);
+        }
     }
 
     @PutMapping("/{itemPedidoId}")
     public ItemPedido atualizar(@PathVariable Long itemPedidoId, @RequestBody ItemPedido itemPedido) {
         ItemPedido itemPedidoAtual = cadastroItemPedidoService.findOrFail(itemPedidoId);
         BeanUtils.copyProperties(itemPedido, itemPedidoAtual, "id");
-        return cadastroItemPedidoService.salvar(itemPedidoAtual);
+        try {
+            return cadastroItemPedidoService.salvar(itemPedidoAtual);
+        } catch (ItemPedidoNaoEncontradaException e) {
+            throw new BusinessException(e.getMessage(), e);
+        }
     }
 
     @DeleteMapping("/{itemPedidoId}")

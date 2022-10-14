@@ -1,5 +1,7 @@
 package com.algaworks.algafood.api.controller;
 
+import com.algaworks.algafood.domain.exception.BusinessException;
+import com.algaworks.algafood.domain.exception.RegiaoNaoEncontradaException;
 import com.algaworks.algafood.domain.model.Regiao;
 import com.algaworks.algafood.domain.repository.RegiaoRepository;
 import com.algaworks.algafood.domain.service.CadastroRegiaoService;
@@ -37,8 +39,12 @@ public class RegiaoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void adicionar(@RequestBody Regiao regiao) {
-        cadastroRegiaoService.salvar(regiao);
+    public Regiao adicionar(@RequestBody Regiao regiao) {
+        try {
+            return cadastroRegiaoService.salvar(regiao);
+        } catch (RegiaoNaoEncontradaException e) {
+            throw new BusinessException(e.getMessage(), e);
+        }
     }
 
     @PutMapping("/{regiaoId}")
@@ -46,7 +52,11 @@ public class RegiaoController {
     public Regiao atualizar(@PathVariable Long regiaoId, @RequestBody Regiao regiao) {
         Regiao regiaoAtual = cadastroRegiaoService.findOrFail(regiaoId);
         BeanUtils.copyProperties(regiao, regiaoAtual, "id");
-        return cadastroRegiaoService.salvar(regiaoAtual);
+        try {
+            return cadastroRegiaoService.salvar(regiaoAtual);
+        } catch (RegiaoNaoEncontradaException e) {
+            throw new BusinessException(e.getMessage(), e);
+        }
     }
 
     @DeleteMapping("/{regiaoId}")

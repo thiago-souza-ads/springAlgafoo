@@ -1,5 +1,7 @@
 package com.algaworks.algafood.api.controller;
 
+import com.algaworks.algafood.domain.exception.BusinessException;
+import com.algaworks.algafood.domain.exception.PermissaoNaoEncontradaException;
 import com.algaworks.algafood.domain.model.Cidade;
 import com.algaworks.algafood.domain.model.Permissao;
 import com.algaworks.algafood.domain.repository.PermissaoRepository;
@@ -38,8 +40,12 @@ public class PermissaoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void adicionar(@RequestBody Permissao permissao) {
-        cadastroPermissaoService.salvar(permissao);
+    public Permissao adicionar(@RequestBody Permissao permissao) {
+        try {
+            return cadastroPermissaoService.salvar(permissao);
+        } catch (PermissaoNaoEncontradaException e) {
+            throw new BusinessException(e.getMessage(), e);
+        }
     }
 
     @PutMapping("/{permissaoId}")
@@ -47,7 +53,11 @@ public class PermissaoController {
     public Permissao atualizar(@PathVariable Long permissaoId, @RequestBody Permissao permissao) {
         Permissao permissaoAtual = cadastroPermissaoService.findOrFail(permissaoId);
         BeanUtils.copyProperties(permissao, permissaoAtual, "id");
-        return cadastroPermissaoService.salvar(permissaoAtual);
+        try {
+            return cadastroPermissaoService.salvar(permissaoAtual);
+        } catch (PermissaoNaoEncontradaException e) {
+            throw new BusinessException(e.getMessage(), e);
+        }
     }
 
     @DeleteMapping("/{permissaoId}")

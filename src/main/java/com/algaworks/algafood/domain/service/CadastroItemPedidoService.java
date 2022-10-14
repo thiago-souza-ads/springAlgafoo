@@ -3,6 +3,7 @@ package com.algaworks.algafood.domain.service;
 import com.algaworks.algafood.domain.constantes.Constantes;
 import com.algaworks.algafood.domain.exception.EntidadeEmUsoException;
 import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
+import com.algaworks.algafood.domain.exception.ItemPedidoNaoEncontradaException;
 import com.algaworks.algafood.domain.model.ItemPedido;
 import com.algaworks.algafood.domain.repository.ItemPedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,9 +39,7 @@ public class CadastroItemPedidoService {
     public ItemPedido findOrFail(Long itemPedidoId) {
         return itemPedidoRepository.findById(itemPedidoId)
                 .orElseThrow(
-                        () -> new EntidadeNaoEncontradaException(
-                                String.format(Constantes.ENTIDADE_INEXISTENTE, ItemPedido.class.getSimpleName(), itemPedidoId)
-                        ));
+                        () -> new ItemPedidoNaoEncontradaException(itemPedidoId));
     }
 }
 

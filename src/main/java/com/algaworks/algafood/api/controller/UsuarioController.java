@@ -1,5 +1,7 @@
 package com.algaworks.algafood.api.controller;
 
+import com.algaworks.algafood.domain.exception.BusinessException;
+import com.algaworks.algafood.domain.exception.UsuarioNaoEncontradaException;
 import com.algaworks.algafood.domain.model.Usuario;
 import com.algaworks.algafood.domain.repository.UsuarioRepository;
 import com.algaworks.algafood.domain.service.CadastroUsuarioService;
@@ -38,14 +40,22 @@ public class UsuarioController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Usuario adicionar(@RequestBody Usuario usuario) {
-        return cadastroUsuarioService.salvar(usuario);
+        try {
+            return cadastroUsuarioService.salvar(usuario);
+        } catch (UsuarioNaoEncontradaException e) {
+            throw new BusinessException(e.getMessage(), e);
+        }
     }
 
     @PutMapping("/{usuarioId}")
     public Usuario atualizar(@PathVariable Long usuarioId, @RequestBody Usuario usuario) {
         Usuario usuarioAtual = cadastroUsuarioService.findOrFail(usuarioId);
         BeanUtils.copyProperties(usuario, usuarioAtual, "id");
-        return cadastroUsuarioService.salvar(usuarioAtual);
+        try {
+            return cadastroUsuarioService.salvar(usuarioAtual);
+        } catch (UsuarioNaoEncontradaException e) {
+            throw new BusinessException(e.getMessage(), e);
+        }
     }
 
     @PatchMapping("/{usuarioAtual}")

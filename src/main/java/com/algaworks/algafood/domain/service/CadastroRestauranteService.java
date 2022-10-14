@@ -4,6 +4,7 @@ import com.algaworks.algafood.domain.constantes.Constantes;
 import com.algaworks.algafood.domain.exception.CampoObrigatorioException;
 import com.algaworks.algafood.domain.exception.EntidadeEmUsoException;
 import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
+import com.algaworks.algafood.domain.exception.RestauranteNaoEncontradaException;
 import com.algaworks.algafood.domain.model.Cozinha;
 import com.algaworks.algafood.domain.model.Restaurante;
 import com.algaworks.algafood.domain.repository.RestauranteRepository;
@@ -49,9 +50,7 @@ public class CadastroRestauranteService {
     public Restaurante findOrFail(Long restauranteId) {
         return restauranteRepository.findById(restauranteId)
                 .orElseThrow(
-                        () -> new EntidadeNaoEncontradaException(
-                                String.format(Constantes.ENTIDADE_INEXISTENTE, Restaurante.class.getSimpleName(), restauranteId)
-                        ));
+                        () -> new RestauranteNaoEncontradaException(restauranteId));
     }
 
 }

@@ -1,5 +1,7 @@
 package com.algaworks.algafood.api.controller;
 
+import com.algaworks.algafood.domain.exception.BusinessException;
+import com.algaworks.algafood.domain.exception.FormaDePagamentoNaoEncontradaException;
 import com.algaworks.algafood.domain.model.FormaDePagamento;
 import com.algaworks.algafood.domain.repository.FormaDePagamentoRepository;
 import com.algaworks.algafood.domain.service.CadastroFormaDePagamentoService;
@@ -37,15 +39,23 @@ public class FormaDePagamentoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void adicionar(@RequestBody FormaDePagamento formaDePagamento) {
-        cadastroFormaDePagamentoService.salvar(formaDePagamento);
+    public FormaDePagamento adicionar(@RequestBody FormaDePagamento formaDePagamento) {
+        try {
+            return cadastroFormaDePagamentoService.salvar(formaDePagamento);
+        } catch (FormaDePagamentoNaoEncontradaException e) {
+            throw new BusinessException(e.getMessage(), e);
+        }
     }
 
     @PutMapping("/{formaDePagamentoId}")
     public FormaDePagamento atualizar(@PathVariable Long formaDePagamentoId, @RequestBody FormaDePagamento formaDePagamento) {
         FormaDePagamento formaDePagamentoAtual = cadastroFormaDePagamentoService.findOrFail(formaDePagamentoId);
         BeanUtils.copyProperties(formaDePagamento, formaDePagamentoAtual, "id");
-        return cadastroFormaDePagamentoService.salvar(formaDePagamentoAtual);
+        try {
+            return cadastroFormaDePagamentoService.salvar(formaDePagamentoAtual);
+        } catch (FormaDePagamentoNaoEncontradaException e) {
+            throw new BusinessException(e.getMessage(), e);
+        }
     }
 
     @DeleteMapping("/{formaDePagamentoId}")

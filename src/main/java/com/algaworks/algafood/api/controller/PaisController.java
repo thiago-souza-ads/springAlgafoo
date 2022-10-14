@@ -1,5 +1,7 @@
 package com.algaworks.algafood.api.controller;
 
+import com.algaworks.algafood.domain.exception.BusinessException;
+import com.algaworks.algafood.domain.exception.PaisNaoEncontradaException;
 import com.algaworks.algafood.domain.model.Pais;
 import com.algaworks.algafood.domain.repository.PaisRepository;
 import com.algaworks.algafood.domain.service.CadastroPaisService;
@@ -37,8 +39,12 @@ public class PaisController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void adicionar(@RequestBody Pais pais) {
-        cadastroPaisService.salvar(pais);
+    public Pais adicionar(@RequestBody Pais pais) {
+        try {
+            return cadastroPaisService.salvar(pais);
+        } catch (PaisNaoEncontradaException e) {
+            throw new BusinessException(e.getMessage(), e);
+        }
     }
 
     @PutMapping("/{paisId}")
@@ -46,7 +52,11 @@ public class PaisController {
     public Pais atualizar(@PathVariable Long paisId, @RequestBody Pais pais) {
         Pais paisAtual = cadastroPaisService.findOrFail(paisId);
         BeanUtils.copyProperties(pais, paisAtual, "id");
-        return cadastroPaisService.salvar(paisAtual);
+        try {
+            return cadastroPaisService.salvar(paisAtual);
+        } catch (PaisNaoEncontradaException e) {
+            throw new BusinessException(e.getMessage(), e);
+        }
     }
 
     @DeleteMapping("/{paisId}")

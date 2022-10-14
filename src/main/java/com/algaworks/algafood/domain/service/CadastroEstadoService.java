@@ -3,6 +3,7 @@ package com.algaworks.algafood.domain.service;
 import com.algaworks.algafood.domain.constantes.Constantes;
 import com.algaworks.algafood.domain.exception.EntidadeEmUsoException;
 import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
+import com.algaworks.algafood.domain.exception.EstadoNaoEncontradaException;
 import com.algaworks.algafood.domain.model.Estado;
 import com.algaworks.algafood.domain.model.Pais;
 import com.algaworks.algafood.domain.repository.EstadoRepository;
@@ -42,8 +43,6 @@ public class CadastroEstadoService {
     public Estado findOrFail(Long estadoId) {
         return estadoRepository.findById(estadoId)
                 .orElseThrow(
-                        () -> new EntidadeNaoEncontradaException(
-                                String.format(Constantes.ENTIDADE_INEXISTENTE, Estado.class.getSimpleName(), estadoId)
-                        ));
+                        () -> new EstadoNaoEncontradaException(estadoId));
     }
 }
