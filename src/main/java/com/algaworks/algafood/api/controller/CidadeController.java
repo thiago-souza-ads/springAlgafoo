@@ -1,6 +1,7 @@
 package com.algaworks.algafood.api.controller;
 
 import com.algaworks.algafood.domain.exception.BusinessException;
+import com.algaworks.algafood.domain.exception.CidadeNaoEncontradaException;
 import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
 import com.algaworks.algafood.domain.model.Cidade;
 import com.algaworks.algafood.domain.repository.CidadeRepository;
@@ -43,7 +44,7 @@ public class CidadeController {
     public Cidade adicionar(@RequestBody Cidade cidade) {
         try{
             return cadastroCidadeService.salvar(cidade);
-        } catch (EntidadeNaoEncontradaException e){
+        } catch (CidadeNaoEncontradaException e){
             throw new BusinessException(e.getMessage());
         }
     }
@@ -54,7 +55,7 @@ public class CidadeController {
         BeanUtils.copyProperties(cidade, cidadeAtual, "id");
         try {
             return cadastroCidadeService.salvar(cidadeAtual);
-        } catch (EntidadeNaoEncontradaException e){
+        } catch (CidadeNaoEncontradaException e){
             throw new BusinessException(e.getMessage());
         }
     }

@@ -1,10 +1,7 @@
 package com.algaworks.algafood.domain.service;
 
 import com.algaworks.algafood.domain.constantes.Constantes;
-import com.algaworks.algafood.domain.exception.BusinessException;
-import com.algaworks.algafood.domain.exception.CampoObrigatorioException;
-import com.algaworks.algafood.domain.exception.EntidadeEmUsoException;
-import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
+import com.algaworks.algafood.domain.exception.*;
 import com.algaworks.algafood.domain.model.Cidade;
 import com.algaworks.algafood.domain.model.Estado;
 import com.algaworks.algafood.domain.repository.CidadeRepository;
@@ -50,7 +47,7 @@ public class CadastroCidadeService {
     public Cidade findOrFail(Long cidadeId) {
         return cidadeRepository.findById(cidadeId)
                 .orElseThrow(
-                        () -> new EntidadeNaoEncontradaException(
+                        () -> new CidadeNaoEncontradaException(
                                 String.format(Constantes.ENTIDADE_INEXISTENTE, Cidade.class.getSimpleName(), cidadeId)
                         ));
     }
