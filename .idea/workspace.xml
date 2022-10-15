@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a233741-ba57-4bb0-ac11-ea8e279bbf86" name="Changes" comment="Modificando a hierarquia das exceptions">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/exceptionHandler/ApiExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/exceptionHandler/Problema.java" afterDir="false" />
+    <list default="true" id="7a233741-ba57-4bb0-ac11-ea8e279bbf86" name="Changes" comment="ControllerAdvice criando e centralizando o tratamento de exceçoes Handler">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/CidadeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/CidadeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/exceptionHandler/ApiExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/exceptionHandler/ApiExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/constantes/Constantes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/constantes/Constantes.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,7 +148,7 @@
       <workItem from="1664455807065" duration="1522000" />
       <workItem from="1664495306263" duration="2658000" />
       <workItem from="1665704165595" duration="6991000" />
-      <workItem from="1665792959723" duration="1504000" />
+      <workItem from="1665792959723" duration="2966000" />
     </task>
     <task id="LOCAL-00001" summary="branchs">
       <created>1660613098618</created>
@@ -333,7 +332,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665792992947</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="ControllerAdvice criando e centralizando o tratamento de exceçoes Handler">
+      <created>1665794621890</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1665794621890</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -375,7 +381,8 @@
     <MESSAGE value="Especificando a granularidade da exception" />
     <MESSAGE value="Afinando a granularidade das exceptions" />
     <MESSAGE value="Modificando a hierarquia das exceptions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modificando a hierarquia das exceptions" />
+    <MESSAGE value="ControllerAdvice criando e centralizando o tratamento de exceçoes Handler" />
+    <option name="LAST_COMMIT_MESSAGE" value="ControllerAdvice criando e centralizando o tratamento de exceçoes Handler" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

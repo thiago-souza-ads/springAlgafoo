@@ -23,4 +23,5 @@ public abstract class Constantes {
     public static final String REGIAO_NAO_ENCONTRADA = "Região de id [{%d}] não existe no banco de Dados!";
     public static final String RESTAURANTE_NAO_ENCONTRADO = "Restaurante de id [{%d}] não existe no banco de Dados!";
     public static final String USUARIO_NAO_ENCONTRADO = "Usuario de id [{%d}] não existe no banco de Dados!";
+    public static final String TIPO_DE_MIDIA_NAO_SUPERTADA = "O tipo de mídia não é aceito!";
 }
