@@ -24,4 +24,18 @@ public abstract class Constantes {
     public static final String RESTAURANTE_NAO_ENCONTRADO = "Restaurante de id [{%d}] não existe no banco de Dados!";
     public static final String USUARIO_NAO_ENCONTRADO = "Usuario de id [{%d}] não existe no banco de Dados!";
     public static final String TIPO_DE_MIDIA_NAO_SUPERTADA = "O tipo de mídia não é aceito!";
+
+    public static final String URI = "https://algafood.com.br";
+
+    public static final String PATCH_ENTIDADE_NAO_ENCONTRADA = "/entidade-nao-encontrada";
+    public static final String TITLE_ENTIDADE_NAO_ENCONTRADA = "Entidade não encontrada";
+
+    public static final String PATCH_BUSINESS_EXCEPTION = "/regras-de-negocio";
+    public static final String TITLE_BUSINESS_EXCEPTION = "Regra de negocio";
+
+    public static final String PATCH_ENTIDADE_EM_USO = "/entidade-em-uso";
+    public static final String TITLE_ENTIDADE_EM_USO = "Entidade em uso";
+
+    public static final String PATCH_CAMPO_OBRIGATORIO = "/campo-obrigatorio";
+    public static final String TITLE_CAMPO_OBRIGATORIO = "Campo Obrigatório";
 }

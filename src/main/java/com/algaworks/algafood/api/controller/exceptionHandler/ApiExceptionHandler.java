@@ -1,5 +1,6 @@
 package com.algaworks.algafood.api.controller.exceptionHandler;
 
+import com.algaworks.algafood.domain.constantes.Constantes;
 import com.algaworks.algafood.domain.exception.*;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -9,8 +10,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import java.time.LocalDateTime;
-
 @ControllerAdvice
 public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 
@@ -18,174 +17,285 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
     protected ResponseEntity<Object> handleExceptionInternal(Exception ex, Object body, HttpHeaders headers,
                                                              HttpStatus status, WebRequest request){
         if(body == null) {
-            body = Problema.builder()
-                    .dataHora(LocalDateTime.now())
-                    .mensagem(status.getReasonPhrase())
+            body = Problem.builder()
+                    .title(status.getReasonPhrase())
+                    .status(status.value())
                     .build();
-        } else if(body instanceof String){
-            body = Problema.builder()
-                    .dataHora(LocalDateTime.now())
-                    .mensagem((String) body)
+        } else if(body instanceof String) {
+            body = Problem.builder()
+                    .title((String) body)
+                    .status(status.value())
                     .build();
         }
 
         return super.handleExceptionInternal(ex, body, headers, status, request);
     }
 
-    @ExceptionHandler(BusinessException.class)
-    public ResponseEntity<?> handleBusinessException(BusinessException e) {
-        Problema problema = Problema.builder()
-                .dataHora(LocalDateTime.now())
-                .mensagem(e.getMessage())
-                .build();
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                .body(problema);
+    @ExceptionHandler(EntidadeNaoEncontradaException.class)
+    public ResponseEntity<?> handleEntidadeNaoEncontradaException(EntidadeNaoEncontradaException ex,
+                                                                  WebRequest request) {
+        HttpStatus status = HttpStatus.NOT_FOUND;
+
+        ProblemType problemType = ProblemType.ENTIDADE_NAO_ENCONTRADA;
+
+        String detail = ex.getMessage();
+
+        Problem problem = creatProblemBuilder(status, problemType, detail).build();
+
+        return handleExceptionInternal(ex, problem, new HttpHeaders(),
+                status, request);
     }
 
-    @ExceptionHandler(EntidadeNaoEncontradaException.class)
-    public ResponseEntity<?> handleEntidadeNaoEncontradaException(EntidadeNaoEncontradaException ex, WebRequest request) {
-        return handleExceptionInternal(ex, ex.getMessage(), new HttpHeaders(), HttpStatus.NOT_FOUND, request);
+    @ExceptionHandler(BusinessException.class)
+    public ResponseEntity<?> handleBusinessException(BusinessException ex, WebRequest request) {
+
+        HttpStatus status = HttpStatus.BAD_REQUEST;
+
+        ProblemType problemType = ProblemType.BUSINESS_EXCEPTION;
+
+        String detail = ex.getMessage();
+
+        Problem problem = creatProblemBuilder(status, problemType, detail).build();
+
+        return handleExceptionInternal(ex, problem, new HttpHeaders(),
+                status, request);
     }
+
+
 
     @ExceptionHandler(EntidadeEmUsoException.class)
     public ResponseEntity<?> handleEntidadeEmUsoException(EntidadeEmUsoException ex, WebRequest request) {
-        return handleExceptionInternal(ex, ex.getMessage(), new HttpHeaders(), HttpStatus.CONFLICT, request);
+
+        HttpStatus status = HttpStatus.CONFLICT;
+
+        ProblemType problemType = ProblemType.ENTIDADE_ENTIDADE_EM_USO;
+
+        String detail = ex.getMessage();
+
+        Problem problem = creatProblemBuilder(status, problemType, detail).build();
+
+        return handleExceptionInternal(ex, problem, new HttpHeaders(),
+                status, request);
     }
 
     @ExceptionHandler(CampoObrigatorioException.class)
-    public ResponseEntity<?> handleCampoObrigatorioException(CampoObrigatorioException e) {
-        Problema problema = Problema.builder()
-                .dataHora(LocalDateTime.now())
-                .mensagem(e.getMessage())
-                .build();
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                .body(problema);
+    public ResponseEntity<?> handleCampoObrigatorioException(CampoObrigatorioException ex, WebRequest request) {
+
+        HttpStatus status = HttpStatus.BAD_REQUEST;
+
+        ProblemType problemType = ProblemType.CAMPO_OBRIGATORIO;
+
+        String detail = ex.getMessage();
+
+        Problem problem = creatProblemBuilder(status, problemType, detail).build();
+
+        return handleExceptionInternal(ex, problem, new HttpHeaders(),
+                status, request);
     }
 
     @ExceptionHandler(UsuarioNaoEncontradaException.class)
-    public ResponseEntity<?> handleUsuarioNaoEncontradaException(UsuarioNaoEncontradaException e) {
-        Problema problema = Problema.builder()
-                .dataHora(LocalDateTime.now())
-                .mensagem(e.getMessage())
-                .build();
-        return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                .body(problema);
+    public ResponseEntity<?> handleUsuarioNaoEncontradaException(UsuarioNaoEncontradaException ex,
+                                                                 WebRequest request) {
+        HttpStatus status = HttpStatus.NOT_FOUND;
+
+        ProblemType problemType = ProblemType.ENTIDADE_NAO_ENCONTRADA;
+
+        String detail = ex.getMessage();
+
+        Problem problem = creatProblemBuilder(status, problemType, detail).build();
+
+        return handleExceptionInternal(ex, problem, new HttpHeaders(),
+                status, request);
     }
 
     @ExceptionHandler(RestauranteNaoEncontradaException.class)
-    public ResponseEntity<?> handleRestauranteNaoEncontradaException(RestauranteNaoEncontradaException e) {
-        Problema problema = Problema.builder()
-                .dataHora(LocalDateTime.now())
-                .mensagem(e.getMessage())
-                .build();
-        return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                .body(problema);
+    public ResponseEntity<?> handleRestauranteNaoEncontradaException(RestauranteNaoEncontradaException ex,
+                                                                     WebRequest request) {
+        HttpStatus status = HttpStatus.NOT_FOUND;
+
+        ProblemType problemType = ProblemType.ENTIDADE_NAO_ENCONTRADA;
+
+        String detail = ex.getMessage();
+
+        Problem problem = creatProblemBuilder(status, problemType, detail).build();
+
+        return handleExceptionInternal(ex, problem, new HttpHeaders(),
+                status, request);
     }
 
     @ExceptionHandler(RegiaoNaoEncontradaException.class)
-    public ResponseEntity<?> handleRegiaoNaoEncontradaException(RegiaoNaoEncontradaException e) {
-        Problema problema = Problema.builder()
-                .dataHora(LocalDateTime.now())
-                .mensagem(e.getMessage())
-                .build();
-        return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                .body(problema);
+    public ResponseEntity<?> handleRegiaoNaoEncontradaException(RegiaoNaoEncontradaException ex,
+                                                                WebRequest request) {
+        HttpStatus status = HttpStatus.NOT_FOUND;
+
+        ProblemType problemType = ProblemType.ENTIDADE_NAO_ENCONTRADA;
+
+        String detail = ex.getMessage();
+
+        Problem problem = creatProblemBuilder(status, problemType, detail).build();
+
+        return handleExceptionInternal(ex, problem, new HttpHeaders(),
+                status, request);
     }
 
     @ExceptionHandler(PermissaoNaoEncontradaException.class)
-    public ResponseEntity<?> handlePermissaoNaoEncontradaException(PermissaoNaoEncontradaException e) {
-        Problema problema = Problema.builder()
-                .dataHora(LocalDateTime.now())
-                .mensagem(e.getMessage())
-                .build();
-        return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                .body(problema);
+    public ResponseEntity<?> handlePermissaoNaoEncontradaException(PermissaoNaoEncontradaException ex,
+                                                                   WebRequest request) {
+        HttpStatus status = HttpStatus.NOT_FOUND;
+
+        ProblemType problemType = ProblemType.ENTIDADE_NAO_ENCONTRADA;
+
+        String detail = ex.getMessage();
+
+        Problem problem = creatProblemBuilder(status, problemType, detail).build();
+
+        return handleExceptionInternal(ex, problem, new HttpHeaders(),
+                status, request);
     }
 
     @ExceptionHandler(PedidoNaoEncontradaException.class)
-    public ResponseEntity<?> handlePedidoNaoEncontradaException(PedidoNaoEncontradaException e) {
-        Problema problema = Problema.builder()
-                .dataHora(LocalDateTime.now())
-                .mensagem(e.getMessage())
-                .build();
-        return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                .body(problema);
+    public ResponseEntity<?> handlePedidoNaoEncontradaException(PedidoNaoEncontradaException ex,
+                                                                WebRequest request) {
+        HttpStatus status = HttpStatus.NOT_FOUND;
+
+        ProblemType problemType = ProblemType.ENTIDADE_NAO_ENCONTRADA;
+
+        String detail = ex.getMessage();
+
+        Problem problem = creatProblemBuilder(status, problemType, detail).build();
+
+        return handleExceptionInternal(ex, problem, new HttpHeaders(),
+                status, request);
     }
 
     @ExceptionHandler(PaisNaoEncontradaException.class)
-    public ResponseEntity<?> handlePaisNaoEncontradaException(PaisNaoEncontradaException e) {
-        Problema problema = Problema.builder()
-                .dataHora(LocalDateTime.now())
-                .mensagem(e.getMessage())
-                .build();
-        return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                .body(problema);
+    public ResponseEntity<?> handlePaisNaoEncontradaException(PaisNaoEncontradaException ex,
+                                                              WebRequest request) {
+        HttpStatus status = HttpStatus.NOT_FOUND;
+
+        ProblemType problemType = ProblemType.ENTIDADE_NAO_ENCONTRADA;
+
+        String detail = ex.getMessage();
+
+        Problem problem = creatProblemBuilder(status, problemType, detail).build();
+
+        return handleExceptionInternal(ex, problem, new HttpHeaders(),
+                status, request);
     }
 
     @ExceptionHandler(ItemPedidoNaoEncontradaException.class)
-    public ResponseEntity<?> handleItemPedidoNaoEncontradaException(ItemPedidoNaoEncontradaException e) {
-        Problema problema = Problema.builder()
-                .dataHora(LocalDateTime.now())
-                .mensagem(e.getMessage())
-                .build();
-        return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                .body(problema);
+    public ResponseEntity<?> handleItemPedidoNaoEncontradaException(ItemPedidoNaoEncontradaException ex,
+                                                                    WebRequest request) {
+        HttpStatus status = HttpStatus.NOT_FOUND;
+
+        ProblemType problemType = ProblemType.ENTIDADE_NAO_ENCONTRADA;
+
+        String detail = ex.getMessage();
+
+        Problem problem = creatProblemBuilder(status, problemType, detail).build();
+
+        return handleExceptionInternal(ex, problem, new HttpHeaders(),
+                status, request);
     }
 
     @ExceptionHandler(GrupoNaoEncontradaException.class)
-    public ResponseEntity<?> handleGrupoNaoEncontradaException(GrupoNaoEncontradaException e) {
-        Problema problema = Problema.builder()
-                .dataHora(LocalDateTime.now())
-                .mensagem(e.getMessage())
-                .build();
-        return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                .body(problema);
+    public ResponseEntity<?> handleGrupoNaoEncontradaException(GrupoNaoEncontradaException ex,
+                                                               WebRequest request) {
+        HttpStatus status = HttpStatus.NOT_FOUND;
+
+        ProblemType problemType = ProblemType.ENTIDADE_NAO_ENCONTRADA;
+
+        String detail = ex.getMessage();
+
+        Problem problem = creatProblemBuilder(status, problemType, detail).build();
+
+        return handleExceptionInternal(ex, problem, new HttpHeaders(),
+                status, request);
     }
 
     @ExceptionHandler(FormaDePagamentoNaoEncontradaException.class)
-    public ResponseEntity<?> handleFormaDePagamentoNaoEncontradaException(FormaDePagamentoNaoEncontradaException e) {
-        Problema problema = Problema.builder()
-                .dataHora(LocalDateTime.now())
-                .mensagem(e.getMessage())
-                .build();
-        return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                .body(problema);
+    public ResponseEntity<?> handleFormaDePagamentoNaoEncontradaException(FormaDePagamentoNaoEncontradaException ex,
+                                                                          WebRequest request) {
+        HttpStatus status = HttpStatus.NOT_FOUND;
+
+        ProblemType problemType = ProblemType.ENTIDADE_NAO_ENCONTRADA;
+
+        String detail = ex.getMessage();
+
+        Problem problem = creatProblemBuilder(status, problemType, detail).build();
+
+        return handleExceptionInternal(ex, problem, new HttpHeaders(),
+                status, request);
     }
 
     @ExceptionHandler(EstadoNaoEncontradaException.class)
-    public ResponseEntity<?> handleEstadoNaoEncontradaException(EstadoNaoEncontradaException e) {
-        Problema problema = Problema.builder()
-                .dataHora(LocalDateTime.now())
-                .mensagem(e.getMessage())
-                .build();
-        return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                .body(problema);
+    public ResponseEntity<?> handleEstadoNaoEncontradaException(EstadoNaoEncontradaException ex,
+                                                                WebRequest request) {
+        HttpStatus status = HttpStatus.NOT_FOUND;
+
+        ProblemType problemType = ProblemType.ENTIDADE_NAO_ENCONTRADA;
+
+        String detail = ex.getMessage();
+
+        Problem problem = creatProblemBuilder(status, problemType, detail).build();
+
+        return handleExceptionInternal(ex, problem, new HttpHeaders(),
+                status, request);
     }
 
 
     @ExceptionHandler(EnderecoNaoEncontradaException.class)
-    public ResponseEntity<?> handleEnderecoNaoEncontradaException(EnderecoNaoEncontradaException e) {
-        Problema problema = Problema.builder()
-                .dataHora(LocalDateTime.now())
-                .mensagem(e.getMessage())
-                .build();
-        return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                .body(problema);
+    public ResponseEntity<?> handleEnderecoNaoEncontradaException(EnderecoNaoEncontradaException ex,
+                                                                  WebRequest request) {
+        HttpStatus status = HttpStatus.NOT_FOUND;
+
+        ProblemType problemType = ProblemType.ENTIDADE_NAO_ENCONTRADA;
+
+        String detail = ex.getMessage();
+
+        Problem problem = creatProblemBuilder(status, problemType, detail).build();
+
+        return handleExceptionInternal(ex, problem, new HttpHeaders(),
+                status, request);
     }
 
     @ExceptionHandler(CozinhaNaoEncontradaException.class)
-    public ResponseEntity<?> handleCozinhaNaoEncontradaException(CozinhaNaoEncontradaException e) {
-        Problema problema = Problema.builder()
-                .dataHora(LocalDateTime.now())
-                .mensagem(e.getMessage())
-                .build();
-        return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                .body(problema);
+    public ResponseEntity<?> handleCozinhaNaoEncontradaException(CozinhaNaoEncontradaException ex,
+                                                                 WebRequest request) {
+        HttpStatus status = HttpStatus.NOT_FOUND;
+
+        ProblemType problemType = ProblemType.ENTIDADE_NAO_ENCONTRADA;
+
+        String detail = ex.getMessage();
+
+        Problem problem = creatProblemBuilder(status, problemType, detail).build();
+
+        return handleExceptionInternal(ex, problem, new HttpHeaders(),
+                status, request);
     }
 
     @ExceptionHandler(CidadeNaoEncontradaException.class)
-    public ResponseEntity<?> handleCidadeNaoEncontradaException(CidadeNaoEncontradaException ex, WebRequest request) {
-        return handleExceptionInternal(ex, ex.getMessage(), new HttpHeaders(), HttpStatus.NOT_FOUND, request);
+    public ResponseEntity<?> handleCidadeNaoEncontradaException(CidadeNaoEncontradaException ex,
+                                                                WebRequest request) {
+        HttpStatus status = HttpStatus.NOT_FOUND;
+
+        ProblemType problemType = ProblemType.ENTIDADE_NAO_ENCONTRADA;
+
+        String detail = ex.getMessage();
+
+        Problem problem = creatProblemBuilder(status, problemType, detail).build();
+
+        return handleExceptionInternal(ex, problem, new HttpHeaders(),
+                status, request);
+    }
+
+    private Problem.ProblemBuilder creatProblemBuilder(HttpStatus status, ProblemType problemType, String detail){
+        return Problem
+                .builder()
+                .status(status.value())
+                .type(problemType.getUri())
+                .title(problemType.getTitle())
+                .detail(detail);
     }
 
 }
