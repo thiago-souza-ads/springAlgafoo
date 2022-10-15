@@ -2,7 +2,6 @@ package com.algaworks.algafood.domain.service;
 
 import com.algaworks.algafood.domain.constantes.Constantes;
 import com.algaworks.algafood.domain.exception.EntidadeEmUsoException;
-import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
 import com.algaworks.algafood.domain.exception.GrupoNaoEncontradaException;
 import com.algaworks.algafood.domain.model.Grupo;
 import com.algaworks.algafood.domain.repository.GrupoRepository;
@@ -25,9 +24,7 @@ public class CadastroGrupoService {
         try {
             grupoRepository.deleteById(grupoId);
         } catch (EmptyResultDataAccessException e) {
-            throw new EntidadeNaoEncontradaException(
-                    String.format(Constantes.ENTIDADE_INEXISTENTE, Grupo.class.getName(), grupoId)
-            );
+            throw new GrupoNaoEncontradaException(grupoId);
         } catch (DataIntegrityViolationException e) {
             throw new EntidadeEmUsoException(
                     String.format(Constantes.ENTIDADE_EM_USO, Grupo.class.getName(), grupoId)

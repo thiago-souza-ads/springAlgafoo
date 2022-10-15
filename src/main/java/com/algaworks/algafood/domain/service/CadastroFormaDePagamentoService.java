@@ -2,7 +2,6 @@ package com.algaworks.algafood.domain.service;
 
 import com.algaworks.algafood.domain.constantes.Constantes;
 import com.algaworks.algafood.domain.exception.EntidadeEmUsoException;
-import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
 import com.algaworks.algafood.domain.exception.FormaDePagamentoNaoEncontradaException;
 import com.algaworks.algafood.domain.model.FormaDePagamento;
 import com.algaworks.algafood.domain.repository.FormaDePagamentoRepository;
@@ -25,9 +24,7 @@ public class CadastroFormaDePagamentoService {
         try {
             formaDePagamentoRepository.deleteById(formaDePagamentoId);
         } catch (EmptyResultDataAccessException e) {
-            throw new EntidadeNaoEncontradaException(
-                    String.format(Constantes.ENTIDADE_INEXISTENTE, FormaDePagamento.class.getName(), formaDePagamentoId)
-            );
+            throw new FormaDePagamentoNaoEncontradaException(formaDePagamentoId);
         } catch (DataIntegrityViolationException e) {
             throw new EntidadeEmUsoException(
                     String.format(Constantes.ENTIDADE_EM_USO, FormaDePagamento.class.getName(), formaDePagamentoId)

@@ -3,7 +3,6 @@ package com.algaworks.algafood.domain.service;
 import com.algaworks.algafood.domain.constantes.Constantes;
 import com.algaworks.algafood.domain.exception.EnderecoNaoEncontradaException;
 import com.algaworks.algafood.domain.exception.EntidadeEmUsoException;
-import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
 import com.algaworks.algafood.domain.model.Cidade;
 import com.algaworks.algafood.domain.model.Endereco;
 import com.algaworks.algafood.domain.repository.EnderecoRepository;
@@ -29,9 +28,7 @@ public class CadastroEnderecoService {
         try {
             enderecoRepository.deleteById(enderecoId);
         } catch (EmptyResultDataAccessException e) {
-            throw new EntidadeNaoEncontradaException(
-                    String.format(Constantes.ENTIDADE_INEXISTENTE, Endereco.class.getSimpleName(), enderecoId)
-            );
+            throw new EnderecoNaoEncontradaException(enderecoId);
         } catch (DataIntegrityViolationException e) {
             throw new EntidadeEmUsoException(
                     String.format(Constantes.ENTIDADE_EM_USO, Endereco.class.getSimpleName(), enderecoId)

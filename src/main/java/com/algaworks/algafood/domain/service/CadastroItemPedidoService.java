@@ -2,7 +2,6 @@ package com.algaworks.algafood.domain.service;
 
 import com.algaworks.algafood.domain.constantes.Constantes;
 import com.algaworks.algafood.domain.exception.EntidadeEmUsoException;
-import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
 import com.algaworks.algafood.domain.exception.ItemPedidoNaoEncontradaException;
 import com.algaworks.algafood.domain.model.ItemPedido;
 import com.algaworks.algafood.domain.repository.ItemPedidoRepository;
@@ -26,9 +25,7 @@ public class CadastroItemPedidoService {
         try {
             itemPedidoRepository.deleteById(itemPedidoId);
         } catch (EmptyResultDataAccessException e) {
-            throw new EntidadeNaoEncontradaException(
-                    String.format(Constantes.ENTIDADE_INEXISTENTE, ItemPedido.class.getSimpleName(), itemPedidoId)
-            );
+            throw new ItemPedidoNaoEncontradaException(itemPedidoId);
         } catch (DataIntegrityViolationException e) {
             throw new EntidadeEmUsoException(
                     String.format(Constantes.ENTIDADE_EM_USO, ItemPedido.class.getSimpleName(), itemPedidoId)

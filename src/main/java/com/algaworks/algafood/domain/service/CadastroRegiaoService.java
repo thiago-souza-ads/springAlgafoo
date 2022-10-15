@@ -2,7 +2,6 @@ package com.algaworks.algafood.domain.service;
 
 import com.algaworks.algafood.domain.constantes.Constantes;
 import com.algaworks.algafood.domain.exception.EntidadeEmUsoException;
-import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
 import com.algaworks.algafood.domain.exception.RegiaoNaoEncontradaException;
 import com.algaworks.algafood.domain.model.Regiao;
 import com.algaworks.algafood.domain.repository.RegiaoRepository;
@@ -25,9 +24,7 @@ public class CadastroRegiaoService {
         try {
             regiaoRepository.deleteById(regiaoId);
         } catch (EmptyResultDataAccessException e) {
-            throw new EntidadeNaoEncontradaException(
-                    String.format(Constantes.ENTIDADE_INEXISTENTE, Regiao.class.getName(), regiaoId)
-            );
+            throw new RegiaoNaoEncontradaException(regiaoId);
         } catch (DataIntegrityViolationException e) {
             throw new EntidadeEmUsoException(
                     String.format(Constantes.ENTIDADE_EM_USO, Regiao.class.getName(), regiaoId)
