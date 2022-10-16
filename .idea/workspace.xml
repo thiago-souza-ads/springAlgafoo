@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="7a233741-ba57-4bb0-ac11-ea8e279bbf86" name="Changes" comment="Lançando exception de desserialização na atualização parcial (PATCH)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/RestauranteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/RestauranteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/exceptionHandler/ApiExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/exceptionHandler/ApiExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/exceptionHandler/ProblemType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/exceptionHandler/ProblemType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/constantes/Constantes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/constantes/Constantes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,7 +153,7 @@
       <workItem from="1665792959723" duration="3060000" />
       <workItem from="1665796362818" duration="45000" />
       <workItem from="1665848688444" duration="11244000" />
-      <workItem from="1665941211413" duration="5773000" />
+      <workItem from="1665941211413" duration="9128000" />
     </task>
     <task id="LOCAL-00001" summary="branchs">
       <created>1660613098618</created>
@@ -397,7 +400,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665944638756</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Lançando exception de desserialização na atualização parcial (PATCH)">
+      <created>1665950385979</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1665950385979</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
