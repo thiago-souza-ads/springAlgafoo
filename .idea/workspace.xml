@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a233741-ba57-4bb0-ac11-ea8e279bbf86" name="Changes" comment="Padronizando o formato de problemas no corpo de respostas com a RFC 7807">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/exceptionHandler/ApiExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/exceptionHandler/ApiExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/exceptionHandler/ProblemType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/exceptionHandler/ProblemType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/constantes/Constantes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/constantes/Constantes.java" afterDir="false" />
-    </list>
+    <list default="true" id="7a233741-ba57-4bb0-ac11-ea8e279bbf86" name="Changes" comment="Tratando a exception InvalidFormatException na desserialização" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -153,7 +147,7 @@
       <workItem from="1665792959723" duration="3060000" />
       <workItem from="1665796362818" duration="45000" />
       <workItem from="1665848688444" duration="11244000" />
-      <workItem from="1665941211413" duration="1309000" />
+      <workItem from="1665941211413" duration="1700000" />
     </task>
     <task id="LOCAL-00001" summary="branchs">
       <created>1660613098618</created>
@@ -372,7 +366,21 @@
       <option name="project" value="LOCAL" />
       <updated>1665859990878</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Tratando a exception InvalidFormatException na desserialização">
+      <created>1665942747429</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1665942747429</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Tratando a exception InvalidFormatException na desserialização">
+      <created>1665942757436</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1665942757436</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -418,7 +426,8 @@
     <MESSAGE value="Centralizando  o tratamento de exceçoes e extend ResponseEntityExceptionHandler" />
     <MESSAGE value="ResponseEntityExceptionHandler modelada" />
     <MESSAGE value="Padronizando o formato de problemas no corpo de respostas com a RFC 7807" />
-    <option name="LAST_COMMIT_MESSAGE" value="Padronizando o formato de problemas no corpo de respostas com a RFC 7807" />
+    <MESSAGE value="Tratando a exception InvalidFormatException na desserialização" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tratando a exception InvalidFormatException na desserialização" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -432,11 +441,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/CozinhaController.java</url>
           <line>58</line>
           <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/exceptionHandler/ApiExceptionHandler.java</url>
-          <line>50</line>
-          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
