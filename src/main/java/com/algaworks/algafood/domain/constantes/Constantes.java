@@ -41,4 +41,5 @@ public abstract class Constantes {
     public static final String PATCH_MENSAGEM_INCOMPREENSIVEL = "/mensagem-incompreensivel";
     public static final String TITLE_MENSAGEM_INCOMPREENSIVEL = "Mensagem incompreensivel";
     public static final String DETAIL_MENSAGEM_INCOMPREENSIVEL = "Corpo da reqeuisição está inválido. Verifique erro de sintaxe.";
+    public static final String CAMPO_NAO_DEVE_SER_INFORMADO = "O campo %s não deve ser informado no corpo da requisiçao";
 }

@@ -68,7 +68,7 @@ public class Restaurante {
     private List<Produto> produtos = new ArrayList<>();
 
     @OneToOne
-    @JoinColumn(name = "endereco_id", nullable = false)
+    @JoinColumn(name = "endereco_id", nullable = true)
     private Endereco endereco;
 
      /*     @JsonIgnore -- Foi removido pois era somente para didatica
