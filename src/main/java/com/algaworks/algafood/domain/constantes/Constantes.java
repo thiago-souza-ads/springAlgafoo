@@ -8,6 +8,7 @@ public abstract class Constantes {
 
     public static final String PATCH_ENTIDADE_NAO_ENCONTRADA = "/entidade-nao-encontrada";
     public static final String PATCH_URL_INXEXISTENTE = "/url-nao-existente";
+    public static final String PATCH_ERRO_DE_SISTEMA = "/erro-de-sistema";
     public static final String PATCH_BUSINESS_EXCEPTION = "/regras-de-negocio";
     public static final String PATCH_ENTIDADE_EM_USO = "/entidade-em-uso";
     public static final String PATCH_CAMPO_OBRIGATORIO = "/campo-obrigatorio";
@@ -15,6 +16,7 @@ public abstract class Constantes {
     public static final String PATCH_MENSAGEM_INCOMPREENSIVEL = "/mensagem-incompreensivel";
 
     public static final String ENTIDADE_EM_USO = "A entidade [{%s}] de id:[{%d}] está em uso por outras Entidades, não pode ser excluida.";
+    public static final String ERRO_DE_SISTEMA = "Ocorreu um erro interno inesperado no sistema. Tente novamente e se o problema persistir, entre em contato com o administrador do sistema";
     public static final String CAMPO_OBRIGATORIO_ERRO = "A entidade [{%s}], possui o campo [{%s}] obrigatório!";
     public static final String CIDADE_NAO_ENCONTRADA = "A cidade de id [{%d}] não existe no banco de Dados!";
     public static final String COZINHA_NAO_ENCONTRADA = "A cozinha de id [{%d}] não existe no banco de Dados!";
@@ -35,6 +37,7 @@ public abstract class Constantes {
     public static final String URL_INXISTENTE = "A url [{%s}] não existe no sistema, verifique-a e tente novamente";
     public static final String PARAMETRO_URL_INVALIDO = "O parâmetro de URL [{%s}] recebeu o valor [{%s}], que é de um tipo inválido. Corrija e informe um valor compatível com o tipo [{%s}].";
 
+    public static final String TITLE_ERRO_DE_SISTEMA = "Erro no sistema";
     public static final String TITLE_BUSINESS_EXCEPTION = "Regra de negocio";
     public static final String TITLE_URL_INXEXISTENTE = "A url informada não existe";
     public static final String TITLE_ENTIDADE_NAO_ENCONTRADA = "Entidade não encontrada";
