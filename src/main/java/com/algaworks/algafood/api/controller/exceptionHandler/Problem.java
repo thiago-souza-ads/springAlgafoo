@@ -5,7 +5,9 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
 import lombok.Getter;
 
-        /**
+import java.time.LocalDateTime;
+
+/**
          * Descrição da classe de modelagem de erro seguindo a RFC 7807
          *  Status : Código de Status HTTP da resposta
          *  Type: Uri que especifica o tipo do problema
@@ -23,10 +25,17 @@ public class Problem {
     private String detail;
 
     private String userMessage;
+    private LocalDateTime timestamp;
 
     public String getUserMessage(){
         return this.userMessage != null ?
                 this.userMessage :
                 Constantes.MENSAGEM_ERRO_GENERIO_USUARIO_FINAL;
     }
+    public LocalDateTime getTimestamp(){
+        return this.userMessage != null ?
+            this.timestamp :
+            LocalDateTime.now();
+}
+
 }
