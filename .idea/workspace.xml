@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a233741-ba57-4bb0-ac11-ea8e279bbf86" name="Changes" comment="tratando-a-excecao-nohandlerfoundexception">
+    <list default="true" id="7a233741-ba57-4bb0-ac11-ea8e279bbf86" name="Changes" comment="tratando outras exceções não capturadas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/RestauranteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/RestauranteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/exceptionHandler/ApiExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/exceptionHandler/ApiExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/exceptionHandler/ProblemType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/exceptionHandler/ProblemType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/exceptionHandler/Problem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/exceptionHandler/Problem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/constantes/Constantes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/constantes/Constantes.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -153,7 +152,7 @@
       <workItem from="1665792959723" duration="3060000" />
       <workItem from="1665796362818" duration="45000" />
       <workItem from="1665848688444" duration="11244000" />
-      <workItem from="1665941211413" duration="9845000" />
+      <workItem from="1665941211413" duration="10634000" />
     </task>
     <task id="LOCAL-00001" summary="branchs">
       <created>1660613098618</created>
@@ -414,7 +413,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665954807072</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="tratando outras exceções não capturadas">
+      <created>1665955521377</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1665955521377</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -437,7 +443,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Flyway Implementando" />
     <MESSAGE value="Flyway - Organizando properties by profile" />
     <MESSAGE value="Flyway - Implementando" />
     <MESSAGE value="Workspace" />
@@ -462,7 +467,8 @@
     <MESSAGE value="Habilitando erros na desserialização de propriedades inexistentes ou ignoradas" />
     <MESSAGE value="Lançando exception de desserialização na atualização parcial (PATCH)" />
     <MESSAGE value="tratando-a-excecao-nohandlerfoundexception" />
-    <option name="LAST_COMMIT_MESSAGE" value="tratando-a-excecao-nohandlerfoundexception" />
+    <MESSAGE value="tratando outras exceções não capturadas" />
+    <option name="LAST_COMMIT_MESSAGE" value="tratando outras exceções não capturadas" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

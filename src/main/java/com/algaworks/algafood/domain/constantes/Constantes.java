@@ -46,4 +46,5 @@ public abstract class Constantes {
     public static final String TITLE_MENSAGEM_INCOMPREENSIVEL = "Mensagem incompreensivel";
     public static final String TITLE_PARAMETRO_URL_INVALIDO = "O parâmetro de URL '%s' recebeu o valor '%s', que é de um tipo inválido. Corrija e informe um valor compatível com o tipo [{%s}].";
     public static final String DETAIL_MENSAGEM_INCOMPREENSIVEL = "Corpo da reqeuisição está inválido. Verifique erro de sintaxe.";
+    public static final String MENSAGEM_ERRO_GENERIO_USUARIO_FINAL = "Ocorreu um erro no sistema, tente novamente!";
 }

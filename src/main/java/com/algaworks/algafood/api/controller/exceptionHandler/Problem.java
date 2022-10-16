@@ -1,5 +1,6 @@
 package com.algaworks.algafood.api.controller.exceptionHandler;
 
+import com.algaworks.algafood.domain.constantes.Constantes;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,4 +21,12 @@ public class Problem {
     private String type;
     private String title;
     private String detail;
+
+    private String userMessage;
+
+    public String getUserMessage(){
+        return this.userMessage != null ?
+                this.userMessage :
+                Constantes.MENSAGEM_ERRO_GENERIO_USUARIO_FINAL;
+    }
 }
