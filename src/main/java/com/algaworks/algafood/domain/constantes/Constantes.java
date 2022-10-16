@@ -5,7 +5,6 @@ public abstract class Constantes {
     protected Constantes() {}
 
     // Contantes ligadas a exceptions
-    public static final String ENTIDADE_INEXISTENTE = "A entidade [{%s}] de id:[{%d}], não existe no Banco de Dados.";
     public static final String ENTIDADE_EM_USO = "A entidade [{%s}] de id:[{%d}] está em uso por outras Entidades, não pode ser excluida.";
     public static final String CAMPO_OBRIGATORIO_ERRO = "A entidade [{%s}], possui o campo [{%s}] obrigatório!";
 
@@ -23,7 +22,7 @@ public abstract class Constantes {
     public static final String REGIAO_NAO_ENCONTRADA = "Região de id [{%d}] não existe no banco de Dados!";
     public static final String RESTAURANTE_NAO_ENCONTRADO = "Restaurante de id [{%d}] não existe no banco de Dados!";
     public static final String USUARIO_NAO_ENCONTRADO = "Usuario de id [{%d}] não existe no banco de Dados!";
-    public static final String TIPO_DE_MIDIA_NAO_SUPERTADA = "O tipo de mídia não é aceito!";
+    public static final String TIPO_DE_CAMPO_DIVERGENTE = "A propiedade [{%s}] recebeu o valor [{%s}], que é um tipo inválido. Corrija e informe um valor compatível com o tipo [{%s}].";
 
     public static final String URI = "https://algafood.com.br";
 
@@ -38,4 +37,8 @@ public abstract class Constantes {
 
     public static final String PATCH_CAMPO_OBRIGATORIO = "/campo-obrigatorio";
     public static final String TITLE_CAMPO_OBRIGATORIO = "Campo Obrigatório";
+
+    public static final String PATCH_MENSAGEM_INCOMPREENSIVEL = "/mensagem-incompreensivel";
+    public static final String TITLE_MENSAGEM_INCOMPREENSIVEL = "Mensagem incompreensivel";
+    public static final String DETAIL_MENSAGEM_INCOMPREENSIVEL = "Corpo da reqeuisição está inválido. Verifique erro de sintaxe.";
 }

@@ -2,16 +2,57 @@ package com.algaworks.algafood.api.controller.exceptionHandler;
 
 import com.algaworks.algafood.domain.constantes.Constantes;
 import com.algaworks.algafood.domain.exception.*;
+import com.fasterxml.jackson.databind.exc.InvalidFormatException;
+import org.flywaydb.core.internal.util.ExceptionUtils;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import java.util.stream.Collectors;
+
 @ControllerAdvice
 public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
+
+    @Override
+    protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex,
+                                                                  HttpHeaders headers, HttpStatus status, WebRequest request) {
+
+        Throwable rootCause = ExceptionUtils.getRootCause(ex);
+
+        if(rootCause instanceof InvalidFormatException){
+            return handleInvalidFormatException((InvalidFormatException) rootCause, headers, status, request);
+        }
+
+        ProblemType problemType = ProblemType.MENSAGEM_INCOMPREENSIVEL;
+
+        String detail = Constantes.DETAIL_MENSAGEM_INCOMPREENSIVEL;
+
+        Problem problem = creatProblemBuilder(status, problemType, detail).build();
+
+        return handleExceptionInternal(ex, problem, new HttpHeaders(),
+                status, request);
+    }
+
+    private ResponseEntity<Object> handleInvalidFormatException(InvalidFormatException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+        ProblemType problemType = ProblemType.MENSAGEM_INCOMPREENSIVEL;
+
+        var propriedade =
+                ex.getPath()
+                        .stream()
+                        .map(ref-> ref.getFieldName())
+                        .collect(Collectors.joining("."));
+        var recebido = ex.getValue();
+        var esperado = ex.getTargetType().getSimpleName();
+        String detail =
+                String.format(Constantes.TIPO_DE_CAMPO_DIVERGENTE, propriedade, recebido, esperado);
+        Problem problem = creatProblemBuilder(status, problemType, detail).build();
+        return handleExceptionInternal(ex, problem, headers, status, request);
+    }
 
     @Override
     protected ResponseEntity<Object> handleExceptionInternal(Exception ex, Object body, HttpHeaders headers,

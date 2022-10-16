@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a233741-ba57-4bb0-ac11-ea8e279bbf86" name="Changes" comment="ResponseEntityExceptionHandler modelada">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/exceptionHandler/ProblemType.java" afterDir="false" />
+    <list default="true" id="7a233741-ba57-4bb0-ac11-ea8e279bbf86" name="Changes" comment="Padronizando o formato de problemas no corpo de respostas com a RFC 7807">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/CidadeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/CidadeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/exceptionHandler/ApiExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/exceptionHandler/ApiExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/exceptionHandler/Problema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/exceptionHandler/Problem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/exceptionHandler/ProblemType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/exceptionHandler/ProblemType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/constantes/Constantes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/constantes/Constantes.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -153,7 +152,8 @@
       <workItem from="1665704165595" duration="6991000" />
       <workItem from="1665792959723" duration="3060000" />
       <workItem from="1665796362818" duration="45000" />
-      <workItem from="1665848688444" duration="9433000" />
+      <workItem from="1665848688444" duration="11244000" />
+      <workItem from="1665941211413" duration="1309000" />
     </task>
     <task id="LOCAL-00001" summary="branchs">
       <created>1660613098618</created>
@@ -365,7 +365,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665852971011</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Padronizando o formato de problemas no corpo de respostas com a RFC 7807">
+      <created>1665859990878</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1665859990878</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -410,7 +417,8 @@
     <MESSAGE value="ControllerAdvice criando e centralizando o tratamento de exceçoes Handler" />
     <MESSAGE value="Centralizando  o tratamento de exceçoes e extend ResponseEntityExceptionHandler" />
     <MESSAGE value="ResponseEntityExceptionHandler modelada" />
-    <option name="LAST_COMMIT_MESSAGE" value="ResponseEntityExceptionHandler modelada" />
+    <MESSAGE value="Padronizando o formato de problemas no corpo de respostas com a RFC 7807" />
+    <option name="LAST_COMMIT_MESSAGE" value="Padronizando o formato de problemas no corpo de respostas com a RFC 7807" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -419,6 +427,16 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/service/CadastroRestauranteService.java</url>
           <line>29</line>
           <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/CozinhaController.java</url>
+          <line>58</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/exceptionHandler/ApiExceptionHandler.java</url>
+          <line>50</line>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
