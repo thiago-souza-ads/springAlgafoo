@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
          * Descrição da classe de modelagem de erro seguindo a RFC 7807
@@ -26,6 +27,16 @@ public class Problem {
 
     private String userMessage;
     private LocalDateTime timestamp;
+
+    private List<Field> fields;
+
+
+    @Getter
+    @Builder
+    public static class Field {
+        private String name;
+        private String userMessage;
+    }
 
     public String getUserMessage(){
         return this.userMessage != null ?
