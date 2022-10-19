@@ -8,6 +8,9 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 import java.math.BigDecimal;
@@ -35,12 +38,15 @@ public class Restaurante {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
+    //@NotNull -> Não aceita null
+    //@NotEmpty -> nao pode ser vazio, o abaixo nao aceita espaço em branco
+    @NotBlank
     @Column(nullable = false)
     private String nome;
 
 
     // Anotações de constrants do BeanValidation
+    // https://docs.jboss.org/hibernate/stable/validator/reference/en-US/html_single/#section-builtin-constraints
     //@DecimalMin("1")
     //@DecimalMax("100")
     @PositiveOrZero
@@ -60,9 +66,11 @@ public class Restaurante {
 
     // Com Json ignore ou nao o Hibernate vai dar o select de Cozinha vai ter o problema N+1 (uma consulta a mais para cada consulta basica)
     // Toda ligacao ToOne usa Eager Loading por Defalt (Carregamento Ancioso) @ManyToOne(fetch = FetchType.EAGER) @ManyToOne(fetch = FetchType.LAZY)
+    @Valid
+    @NotNull
     @JsonIgnoreProperties({"hibernateLazyInitializer"})
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cozinha_id")
+    @JoinColumn(name = "cozinha_id", nullable = false)
     private Cozinha cozinha;
 
     @JsonIgnore //- Cuidado ao alterar para eager pois pode prejudicar o rendimento do sistema
