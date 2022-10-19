@@ -9,6 +9,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -38,12 +39,18 @@ public class Restaurante {
     @Column(nullable = false)
     private String nome;
 
+
+    // Anotações de constrants do BeanValidation
+    //@DecimalMin("1")
+    //@DecimalMax("100")
+    @PositiveOrZero
     @Column(name = "taxa_frete", nullable = false)
     private BigDecimal taxaFrete;
 
     @JsonIgnore
     @CreationTimestamp
-    @Column(nullable = false, columnDefinition = "datetime") //definindo ignorando datetime(6) casas decimais de milisegundos
+    @Column(nullable = false, columnDefinition = "datetime")
+    //definindo ignorando datetime(6) casas decimais de milisegundos
     private LocalDateTime dataCadastro;
 
     @JsonIgnore
@@ -70,7 +77,7 @@ public class Restaurante {
     private List<Produto> produtos = new ArrayList<>();
 
     @OneToOne
-    @JoinColumn(name = "endereco_id", nullable = true)
+    @JoinColumn(name = "endereco_id")
     private Endereco endereco;
 
      /*     @JsonIgnore -- Foi removido pois era somente para didatica
