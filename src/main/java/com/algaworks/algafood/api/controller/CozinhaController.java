@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
@@ -45,9 +46,9 @@ public class CozinhaController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Cozinha adicionar(@RequestBody CozinhaDto cozinha) {
+    public Cozinha adicionar(@RequestBody @Valid Cozinha cozinha) {
         try {
-            return cadastroCozinhaService.salvar(mapper.convertValue(cozinha, Cozinha.class));
+            return cadastroCozinhaService.salvar(cozinha);
         } catch (CozinhaNaoEncontradaException e) {
             throw new BusinessException(e.getMessage(), e);
         }
