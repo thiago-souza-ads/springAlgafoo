@@ -66,7 +66,7 @@ public class Restaurante {
 
     // Com Json ignore ou nao o Hibernate vai dar o select de Cozinha vai ter o problema N+1 (uma consulta a mais para cada consulta basica)
     // Toda ligacao ToOne usa Eager Loading por Defalt (Carregamento Ancioso) @ManyToOne(fetch = FetchType.EAGER) @ManyToOne(fetch = FetchType.LAZY)
-    @Valid
+    @Valid // Forca a validação em cascata
     @NotNull
     @JsonIgnoreProperties({"hibernateLazyInitializer"})
     @ManyToOne(fetch = FetchType.LAZY)
