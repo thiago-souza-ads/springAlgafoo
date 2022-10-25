@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7a233741-ba57-4bb0-ac11-ea8e279bbf86" name="Changes" comment="@Valid forçando a verificação em cascata">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/validators/Groups.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/CozinhaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/CozinhaController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/Cozinha.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/Cozinha.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -154,7 +154,10 @@
       <workItem from="1665941211413" duration="11100000" />
       <workItem from="1666045279461" duration="3743000" />
       <workItem from="1666050098918" duration="3000" />
-      <workItem from="1666136961415" duration="3803000" />
+      <workItem from="1666136961415" duration="5099000" />
+      <workItem from="1666403075842" duration="112000" />
+      <workItem from="1666403684238" duration="536000" />
+      <workItem from="1666658922680" duration="653000" />
     </task>
     <task id="LOCAL-00001" summary="branchs">
       <created>1660613098618</created>
@@ -457,7 +460,21 @@
       <option name="project" value="LOCAL" />
       <updated>1666140898867</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="@Valid forçando a verificação em cascata">
+      <created>1666141253417</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1666141253417</updated>
+    </task>
+    <task id="LOCAL-00045" summary="@Valid forçando a verificação em cascata">
+      <created>1666659190059</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1666659190059</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -515,6 +532,11 @@
           <line>59</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/RestauranteController.java</url>
+          <line>49</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
@@ -522,5 +544,8 @@
         <PinnedItemInfo parentTag="com.algaworks.algafood.domain.model.Cozinha" memberName="id" />
       </pinned-members>
     </pin-to-top-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/springAlgafoo$AlgafoodApiApplication.ic" NAME="AlgafoodApiApplication Coverage Results" MODIFIED="1666659319286" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

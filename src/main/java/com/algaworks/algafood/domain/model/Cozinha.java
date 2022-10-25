@@ -1,5 +1,6 @@
 package com.algaworks.algafood.domain.model;
 
+import com.algaworks.algafood.domain.validators.Groups;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -12,7 +13,7 @@ import javax.validation.constraints.NotNull;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Cozinha {
 
-    @NotNull
+    @NotNull(groups = Groups.CadastroRestaurante.class)
     @Id
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)

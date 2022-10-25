@@ -1,5 +1,6 @@
 package com.algaworks.algafood.domain.model;
 
+import com.algaworks.algafood.domain.validators.Groups;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
@@ -40,7 +41,7 @@ public class Restaurante {
 
     //@NotNull -> Não aceita null
     //@NotEmpty -> nao pode ser vazio, o abaixo nao aceita espaço em branco
-    @NotBlank
+    @NotBlank(groups = Groups.CadastroRestaurante.class)
     @Column(nullable = false)
     private String nome;
 
@@ -49,7 +50,7 @@ public class Restaurante {
     // https://docs.jboss.org/hibernate/stable/validator/reference/en-US/html_single/#section-builtin-constraints
     //@DecimalMin("1")
     //@DecimalMax("100")
-    @PositiveOrZero
+    @PositiveOrZero(groups = Groups.CadastroRestaurante.class)
     @Column(name = "taxa_frete", nullable = false)
     private BigDecimal taxaFrete;
 
@@ -67,7 +68,7 @@ public class Restaurante {
     // Com Json ignore ou nao o Hibernate vai dar o select de Cozinha vai ter o problema N+1 (uma consulta a mais para cada consulta basica)
     // Toda ligacao ToOne usa Eager Loading por Defalt (Carregamento Ancioso) @ManyToOne(fetch = FetchType.EAGER) @ManyToOne(fetch = FetchType.LAZY)
     @Valid // Forca a validação em cascata
-    @NotNull
+    @NotNull(groups = Groups.CadastroRestaurante.class)
     @JsonIgnoreProperties({"hibernateLazyInitializer"})
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cozinha_id", nullable = false)
