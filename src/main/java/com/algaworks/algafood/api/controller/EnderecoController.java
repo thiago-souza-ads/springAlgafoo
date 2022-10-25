@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
@@ -39,22 +40,22 @@ public class EnderecoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Endereco adicionar(@RequestBody Endereco endereco) {
-        try{
+    public Endereco adicionar(@RequestBody @Valid Endereco endereco) {
+        try {
             return cadastroEnderecoService.salvar(endereco);
-        } catch (EnderecoNaoEncontradaException e){
+        } catch (EnderecoNaoEncontradaException e) {
             throw new BusinessException(e.getMessage(), e);
         }
     }
 
     @PutMapping("/{enderecoId}")
-    public Endereco atualizar(@PathVariable Long enderecoId, @RequestBody Endereco endereco) {
+    public Endereco atualizar(@PathVariable Long enderecoId, @RequestBody @Valid Endereco endereco) {
         Endereco enderecoAtual = cadastroEnderecoService.findOrFail(enderecoId);
         BeanUtils.copyProperties(endereco, enderecoAtual, "id");
         try {
             return cadastroEnderecoService.salvar(enderecoAtual);
-        } catch (EnderecoNaoEncontradaException e){
-            throw new BusinessException(e.getMessage(),e);
+        } catch (EnderecoNaoEncontradaException e) {
+            throw new BusinessException(e.getMessage(), e);
         }
     }
 

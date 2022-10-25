@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
@@ -39,7 +40,7 @@ public class UsuarioController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Usuario adicionar(@RequestBody Usuario usuario) {
+    public Usuario adicionar(@RequestBody @Valid Usuario usuario) {
         try {
             return cadastroUsuarioService.salvar(usuario);
         } catch (UsuarioNaoEncontradaException e) {
@@ -48,7 +49,7 @@ public class UsuarioController {
     }
 
     @PutMapping("/{usuarioId}")
-    public Usuario atualizar(@PathVariable Long usuarioId, @RequestBody Usuario usuario) {
+    public Usuario atualizar(@PathVariable Long usuarioId, @RequestBody @Valid Usuario usuario) {
         Usuario usuarioAtual = cadastroUsuarioService.findOrFail(usuarioId);
         BeanUtils.copyProperties(usuario, usuarioAtual, "id");
         try {

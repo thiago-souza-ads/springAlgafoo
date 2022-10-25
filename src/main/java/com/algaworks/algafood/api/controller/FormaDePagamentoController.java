@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
@@ -39,7 +40,7 @@ public class FormaDePagamentoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public FormaDePagamento adicionar(@RequestBody FormaDePagamento formaDePagamento) {
+    public FormaDePagamento adicionar(@RequestBody @Valid FormaDePagamento formaDePagamento) {
         try {
             return cadastroFormaDePagamentoService.salvar(formaDePagamento);
         } catch (FormaDePagamentoNaoEncontradaException e) {
@@ -48,7 +49,7 @@ public class FormaDePagamentoController {
     }
 
     @PutMapping("/{formaDePagamentoId}")
-    public FormaDePagamento atualizar(@PathVariable Long formaDePagamentoId, @RequestBody FormaDePagamento formaDePagamento) {
+    public FormaDePagamento atualizar(@PathVariable Long formaDePagamentoId, @RequestBody @Valid FormaDePagamento formaDePagamento) {
         FormaDePagamento formaDePagamentoAtual = cadastroFormaDePagamentoService.findOrFail(formaDePagamentoId);
         BeanUtils.copyProperties(formaDePagamento, formaDePagamentoAtual, "id");
         try {

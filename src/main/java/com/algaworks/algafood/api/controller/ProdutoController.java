@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
@@ -39,7 +40,7 @@ public class ProdutoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Produto adicionar(@RequestBody Produto produto) {
+    public Produto adicionar(@RequestBody @Valid Produto produto) {
         try {
             return cadastroProdutoService.salvar(produto);
         } catch (ProdutoNaoEncontradaException e) {
@@ -48,7 +49,7 @@ public class ProdutoController {
     }
 
     @PutMapping("/{produtoId}")
-    public Produto atualizar(@PathVariable Long produtoId, @RequestBody Produto produto) {
+    public Produto atualizar(@PathVariable Long produtoId, @RequestBody @Valid Produto produto) {
         Produto produtoAtual = cadastroProdutoService.findOrFail(produtoId);
         BeanUtils.copyProperties(produto, produtoAtual, "id");
         try {

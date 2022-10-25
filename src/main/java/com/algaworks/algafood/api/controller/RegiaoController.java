@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
@@ -39,7 +40,7 @@ public class RegiaoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Regiao adicionar(@RequestBody Regiao regiao) {
+    public Regiao adicionar(@RequestBody  @Valid Regiao regiao) {
         try {
             return cadastroRegiaoService.salvar(regiao);
         } catch (RegiaoNaoEncontradaException e) {
@@ -49,7 +50,7 @@ public class RegiaoController {
 
     @PutMapping("/{regiaoId}")
     @ResponseStatus(HttpStatus.OK)
-    public Regiao atualizar(@PathVariable Long regiaoId, @RequestBody Regiao regiao) {
+    public Regiao atualizar(@PathVariable Long regiaoId, @RequestBody  @Valid Regiao regiao) {
         Regiao regiaoAtual = cadastroRegiaoService.findOrFail(regiaoId);
         BeanUtils.copyProperties(regiao, regiaoAtual, "id");
         try {

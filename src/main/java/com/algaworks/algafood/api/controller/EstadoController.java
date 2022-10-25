@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
@@ -40,7 +41,7 @@ public class EstadoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Estado adicionar(@RequestBody Estado estado) {
+    public Estado adicionar(@RequestBody @Valid Estado estado) {
         try {
             return cadastroEstadoService.salvar(estado);
         } catch (EstadoNaoEncontradaException e) {
@@ -50,7 +51,7 @@ public class EstadoController {
 
     @PutMapping("/{estadoId}")
     @ResponseStatus(HttpStatus.OK)
-    public Estado atualizar(@PathVariable Long estadoId, @RequestBody Estado estado) {
+    public Estado atualizar(@PathVariable Long estadoId, @RequestBody @Valid Estado estado) {
         Estado estadoAtual = cadastroEstadoService.findOrFail(estadoId);
         BeanUtils.copyProperties(estado, estadoAtual, "id");
         try {

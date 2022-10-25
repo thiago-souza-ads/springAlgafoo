@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
@@ -40,7 +41,7 @@ public class GrupoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Grupo adicionar(@RequestBody Grupo grupo) {
+    public Grupo adicionar(@RequestBody @Valid Grupo grupo) {
         try {
             return cadastroGrupoService.salvar(grupo);
         } catch (GrupoNaoEncontradaException e) {
@@ -49,7 +50,7 @@ public class GrupoController {
     }
 
     @PutMapping("/{grupoId}")
-    public Grupo atualizar(@PathVariable Long grupoId, @RequestBody Grupo grupo) {
+    public Grupo atualizar(@PathVariable Long grupoId, @RequestBody @Valid Grupo grupo) {
         Grupo grupoAtual = cadastroGrupoService.findOrFail(grupoId);
         BeanUtils.copyProperties(grupo, grupoAtual, "id");
         try {

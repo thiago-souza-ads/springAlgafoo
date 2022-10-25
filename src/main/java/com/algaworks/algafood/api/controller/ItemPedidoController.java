@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
@@ -40,7 +41,7 @@ public class ItemPedidoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ItemPedido adicionar(@RequestBody ItemPedido itemPedido) {
+    public ItemPedido adicionar(@RequestBody @Valid ItemPedido itemPedido) {
         try {
             return cadastroItemPedidoService.salvar(itemPedido);
         } catch (ItemPedidoNaoEncontradaException e) {
@@ -49,7 +50,7 @@ public class ItemPedidoController {
     }
 
     @PutMapping("/{itemPedidoId}")
-    public ItemPedido atualizar(@PathVariable Long itemPedidoId, @RequestBody ItemPedido itemPedido) {
+    public ItemPedido atualizar(@PathVariable Long itemPedidoId, @RequestBody @Valid ItemPedido itemPedido) {
         ItemPedido itemPedidoAtual = cadastroItemPedidoService.findOrFail(itemPedidoId);
         BeanUtils.copyProperties(itemPedido, itemPedidoAtual, "id");
         try {

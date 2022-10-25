@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
@@ -40,7 +41,7 @@ public class PedidoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Pedido adicionar(@RequestBody Pedido pedido) {
+    public Pedido adicionar(@RequestBody @Valid Pedido pedido) {
         try {
             return cadastroPedidoService.salvar(pedido);
         } catch (PedidoNaoEncontradaException e) {
@@ -50,7 +51,7 @@ public class PedidoController {
 
     @PutMapping("/{pedidoId}")
     @ResponseStatus(HttpStatus.OK)
-    public Pedido atualizar(@PathVariable Long pedidoId, @RequestBody Pedido pedido) {
+    public Pedido atualizar(@PathVariable Long pedidoId, @RequestBody @Valid Pedido pedido) {
         Pedido pedidoAtual = cadastroPedidoService.findOrFail(pedidoId);
         BeanUtils.copyProperties(pedido, pedidoAtual, "id");
         try {

@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
@@ -40,7 +41,7 @@ public class PermissaoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Permissao adicionar(@RequestBody Permissao permissao) {
+    public Permissao adicionar(@RequestBody @Valid Permissao permissao) {
         try {
             return cadastroPermissaoService.salvar(permissao);
         } catch (PermissaoNaoEncontradaException e) {
@@ -50,7 +51,7 @@ public class PermissaoController {
 
     @PutMapping("/{permissaoId}")
     @ResponseStatus(HttpStatus.OK)
-    public Permissao atualizar(@PathVariable Long permissaoId, @RequestBody Permissao permissao) {
+    public Permissao atualizar(@PathVariable Long permissaoId, @RequestBody @Valid Permissao permissao) {
         Permissao permissaoAtual = cadastroPermissaoService.findOrFail(permissaoId);
         BeanUtils.copyProperties(permissao, permissaoAtual, "id");
         try {
