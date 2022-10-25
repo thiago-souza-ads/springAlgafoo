@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a233741-ba57-4bb0-ac11-ea8e279bbf86" name="Changes" comment="@Valid forçando a verificação em cascata">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/validators/Groups.java" afterDir="false" />
+    <list default="true" id="7a233741-ba57-4bb0-ac11-ea8e279bbf86" name="Changes" comment="@Valid Agrupando e restringindo constraints que devem ser usadas na validação">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/Cozinha.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/Cozinha.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +17,7 @@
       <list>
         <option value="Class" />
         <option value="Enum" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -157,7 +156,7 @@
       <workItem from="1666136961415" duration="5099000" />
       <workItem from="1666403075842" duration="112000" />
       <workItem from="1666403684238" duration="536000" />
-      <workItem from="1666658922680" duration="653000" />
+      <workItem from="1666658922680" duration="1003000" />
     </task>
     <task id="LOCAL-00001" summary="branchs">
       <created>1660613098618</created>
@@ -474,7 +473,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666659190059</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="@Valid Agrupando e restringindo constraints que devem ser usadas na validação">
+      <created>1666659802357</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1666659802357</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -497,7 +503,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Usando ResponseStatusException" />
     <MESSAGE value="Refatorando o Codigo - Clean Code - Tratamento de Erros e Response Codes" />
     <MESSAGE value="Fechando o Open View" />
     <MESSAGE value="Aplicando exception tratada de campos obrigatorios" />
@@ -522,7 +527,8 @@
     <MESSAGE value="Bean Validator - Adicionando constraints e validando no controller com @Valid" />
     <MESSAGE value="@DecimalMin, @DecimalMax, @NotNull, @NotEmpty" />
     <MESSAGE value="@Valid forçando a verificação em cascata" />
-    <option name="LAST_COMMIT_MESSAGE" value="@Valid forçando a verificação em cascata" />
+    <MESSAGE value="@Valid Agrupando e restringindo constraints que devem ser usadas na validação" />
+    <option name="LAST_COMMIT_MESSAGE" value="@Valid Agrupando e restringindo constraints que devem ser usadas na validação" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
