@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a233741-ba57-4bb0-ac11-ea8e279bbf86" name="Changes" comment="@Valid Agrupando e restringindo constraints que devem ser usadas na validação">
+    <list default="true" id="7a233741-ba57-4bb0-ac11-ea8e279bbf86" name="Changes" comment="@Validated Agrupando e restringindo constraints que devem ser usadas na validação">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/RestauranteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/RestauranteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/Restaurante.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/Restaurante.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,7 +158,7 @@
       <workItem from="1666136961415" duration="5099000" />
       <workItem from="1666403075842" duration="112000" />
       <workItem from="1666403684238" duration="536000" />
-      <workItem from="1666658922680" duration="1003000" />
+      <workItem from="1666658922680" duration="1654000" />
     </task>
     <task id="LOCAL-00001" summary="branchs">
       <created>1660613098618</created>
@@ -480,7 +482,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666659802357</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="@Validated Agrupando e restringindo constraints que devem ser usadas na validação">
+      <created>1666660210899</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1666660210899</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -503,7 +512,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refatorando o Codigo - Clean Code - Tratamento de Erros e Response Codes" />
     <MESSAGE value="Fechando o Open View" />
     <MESSAGE value="Aplicando exception tratada de campos obrigatorios" />
     <MESSAGE value="Incluindo atualização parcial nas entidades" />
@@ -528,7 +536,8 @@
     <MESSAGE value="@DecimalMin, @DecimalMax, @NotNull, @NotEmpty" />
     <MESSAGE value="@Valid forçando a verificação em cascata" />
     <MESSAGE value="@Valid Agrupando e restringindo constraints que devem ser usadas na validação" />
-    <option name="LAST_COMMIT_MESSAGE" value="@Valid Agrupando e restringindo constraints que devem ser usadas na validação" />
+    <MESSAGE value="@Validated Agrupando e restringindo constraints que devem ser usadas na validação" />
+    <option name="LAST_COMMIT_MESSAGE" value="@Validated Agrupando e restringindo constraints que devem ser usadas na validação" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -540,7 +549,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/RestauranteController.java</url>
-          <line>49</line>
+          <line>51</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
