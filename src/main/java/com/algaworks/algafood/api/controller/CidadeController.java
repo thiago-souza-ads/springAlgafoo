@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
@@ -40,21 +41,21 @@ public class CidadeController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Cidade adicionar(@RequestBody Cidade cidade) {
-        try{
+    public Cidade adicionar(@RequestBody @Valid Cidade cidade) {
+        try {
             return cadastroCidadeService.salvar(cidade);
-        } catch (CidadeNaoEncontradaException e){
+        } catch (CidadeNaoEncontradaException e) {
             throw new BusinessException(e.getMessage(), e);
         }
     }
 
     @PutMapping("/{cidadeId}")
-    public Cidade atualizar(@PathVariable Long cidadeId, @RequestBody Cidade cidade) {
+    public Cidade atualizar(@PathVariable Long cidadeId, @RequestBody @Valid Cidade cidade) {
         Cidade cidadeAtual = cadastroCidadeService.findOrFail(cidadeId);
         BeanUtils.copyProperties(cidade, cidadeAtual, "id");
         try {
             return cadastroCidadeService.salvar(cidadeAtual);
-        } catch (CidadeNaoEncontradaException e){
+        } catch (CidadeNaoEncontradaException e) {
             throw new BusinessException(e.getMessage(), e);
         }
     }
