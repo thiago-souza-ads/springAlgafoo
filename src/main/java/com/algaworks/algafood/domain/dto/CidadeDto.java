@@ -4,8 +4,11 @@ import com.algaworks.algafood.domain.validators.Groups;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.groups.ConvertGroup;
+import javax.validation.groups.Default;
 import java.io.Serializable;
 
 @Data
@@ -22,6 +25,8 @@ public class CidadeDto implements Serializable {
     @NotNull
     private final Boolean isCapital;
 
+    @Valid
+    @ConvertGroup(from = Default.class, to = Groups.EstadoId.class)
     @NotNull
     private final EstadoDto estado;
 }

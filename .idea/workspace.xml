@@ -4,10 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a233741-ba57-4bb0-ac11-ea8e279bbf86" name="Changes" comment="@Validated Agrupando e restringindo constraints que devem ser usadas na validação">
+    <list default="true" id="7a233741-ba57-4bb0-ac11-ea8e279bbf86" name="Changes" comment="Aplicando groups controladore, adicionar e atualizar, agrupando validações">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/RestauranteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/RestauranteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/Restaurante.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/Restaurante.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/CozinhaDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/CozinhaDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/EnderecoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/EnderecoDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/EstadoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/EstadoDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/FormaDePagamentoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/FormaDePagamentoDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/GrupoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/GrupoDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/ItemPedidoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/ItemPedidoDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/PaisDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/PaisDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/PedidoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/PedidoDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/PermissaoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/PermissaoDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/ProdutoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/ProdutoDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/RegiaoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/RegiaoDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/RestauranteDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/RestauranteDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/UsuarioDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/UsuarioDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/Cidade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/Cidade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/Endereco.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/Endereco.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/Estado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/Estado.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/FormaDePagamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/FormaDePagamento.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,13 +174,6 @@
       <workItem from="1666403075842" duration="112000" />
       <workItem from="1666403684238" duration="536000" />
       <workItem from="1666658922680" duration="1654000" />
-    </task>
-    <task id="LOCAL-00001" summary="branchs">
-      <created>1660613098618</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1660613098618</updated>
     </task>
     <task id="LOCAL-00002" summary="Hikari implements tests">
       <created>1660864940565</created>
@@ -489,7 +497,28 @@
       <option name="project" value="LOCAL" />
       <updated>1666660210899</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Aplicando groups Classe cidade, agrupando validações">
+      <created>1666738790014</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1666738790014</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Aplicando groups Classe cidade, agrupando validações">
+      <created>1666738909201</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1666738909201</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Aplicando groups controladore, adicionar e atualizar, agrupando validações">
+      <created>1666739319127</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1666739319127</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -512,8 +541,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fechando o Open View" />
-    <MESSAGE value="Aplicando exception tratada de campos obrigatorios" />
     <MESSAGE value="Incluindo atualização parcial nas entidades" />
     <MESSAGE value="Inclusão de atualização parcial de entidade" />
     <MESSAGE value="Afinando a granularidade e definindo a hierarquia das exceptions de negócios" />
@@ -537,7 +564,9 @@
     <MESSAGE value="@Valid forçando a verificação em cascata" />
     <MESSAGE value="@Valid Agrupando e restringindo constraints que devem ser usadas na validação" />
     <MESSAGE value="@Validated Agrupando e restringindo constraints que devem ser usadas na validação" />
-    <option name="LAST_COMMIT_MESSAGE" value="@Validated Agrupando e restringindo constraints que devem ser usadas na validação" />
+    <MESSAGE value="Aplicando groups Classe cidade, agrupando validações" />
+    <MESSAGE value="Aplicando groups controladore, adicionar e atualizar, agrupando validações" />
+    <option name="LAST_COMMIT_MESSAGE" value="Aplicando groups controladore, adicionar e atualizar, agrupando validações" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -549,7 +578,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/RestauranteController.java</url>
-          <line>51</line>
+          <line>49</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>

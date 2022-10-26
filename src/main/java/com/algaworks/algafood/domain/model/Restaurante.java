@@ -36,6 +36,7 @@ import java.util.List;
 @Entity
 public class Restaurante {
 
+    @NotNull(groups = Groups.RestauranteId.class)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -87,6 +88,9 @@ public class Restaurante {
     @OneToMany(mappedBy = "restaurante") // Todos mapeamentos to Many eh Lazy Loading (Carregamento Pregicoso)
     private List<Produto> produtos = new ArrayList<>();
 
+    @Valid // Forca a validação em cascata
+    @ConvertGroup(from = Default.class, to = Groups.EnderecoId.class)
+    @NotNull
     @OneToOne
     @JoinColumn(name = "endereco_id")
     private Endereco endereco;

@@ -1,10 +1,14 @@
 package com.algaworks.algafood.domain.model;
 
+import com.algaworks.algafood.domain.validators.Groups;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,17 +18,21 @@ import java.util.List;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Usuario {
 
+    @NotNull(groups = Groups.UsuarioId.class)
     @Id
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
     @Column(nullable = false)
     private String nome;
 
+    @Email
     @Column(nullable = false)
     private String email;
 
+    @NotBlank
     @Column(nullable = false)
     private String senha;
 

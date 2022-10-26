@@ -24,6 +24,7 @@ public class Cozinha {
     @Column(name = "nome", length = 30)
     private String nome;
 
+
     /**
      * Informacoes Adicionais
      * Para usar o mapeamento Bi-direcional:
