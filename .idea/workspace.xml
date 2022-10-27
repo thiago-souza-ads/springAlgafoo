@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a233741-ba57-4bb0-ac11-ea8e279bbf86" name="Changes" comment="Aplicando groups controladore, adicionar e atualizar, agrupando validações adicionando mensagem nos campos obrigatorios">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/messages.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="7a233741-ba57-4bb0-ac11-ea8e279bbf86" name="Changes" comment="Customizando e resolvendo mensagens de validação globais em Resource Bundle">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/exceptionHandler/ApiExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/exceptionHandler/ApiExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,14 +158,7 @@
       <workItem from="1666403075842" duration="112000" />
       <workItem from="1666403684238" duration="536000" />
       <workItem from="1666658922680" duration="1654000" />
-      <workItem from="1666829058819" duration="4556000" />
-    </task>
-    <task id="LOCAL-00004" summary="Hikari implements tests">
-      <created>1660870566651</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1660870566651</updated>
+      <workItem from="1666829058819" duration="6694000" />
     </task>
     <task id="LOCAL-00005" summary="Flyway Implementando">
       <created>1661101251687</created>
@@ -505,7 +496,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666829112628</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Customizando e resolvendo mensagens de validação globais em Resource Bundle">
+      <created>1666833765630</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1666833765630</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -528,7 +526,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Inclusão de atualização parcial de entidade" />
     <MESSAGE value="Afinando a granularidade e definindo a hierarquia das exceptions de negócios" />
     <MESSAGE value="Sonar Qube analyse" />
     <MESSAGE value="Criação de Camada de Dominio" />
@@ -553,7 +550,8 @@
     <MESSAGE value="Aplicando groups Classe cidade, agrupando validações" />
     <MESSAGE value="Aplicando groups controladore, adicionar e atualizar, agrupando validações" />
     <MESSAGE value="Aplicando groups controladore, adicionar e atualizar, agrupando validações adicionando mensagem nos campos obrigatorios" />
-    <option name="LAST_COMMIT_MESSAGE" value="Aplicando groups controladore, adicionar e atualizar, agrupando validações adicionando mensagem nos campos obrigatorios" />
+    <MESSAGE value="Customizando e resolvendo mensagens de validação globais em Resource Bundle" />
+    <option name="LAST_COMMIT_MESSAGE" value="Customizando e resolvendo mensagens de validação globais em Resource Bundle" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
