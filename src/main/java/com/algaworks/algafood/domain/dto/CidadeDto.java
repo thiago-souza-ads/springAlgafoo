@@ -19,7 +19,7 @@ public class CidadeDto implements Serializable {
     @EqualsAndHashCode.Include
     private final Long id;
 
-    @NotBlank
+    @NotBlank(message = "O nome da cidade é obrigatório")
     private final String nome;
 
     @NotNull

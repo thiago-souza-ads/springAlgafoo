@@ -22,7 +22,7 @@ public class Cidade {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
+    @NotBlank(message = "O nome da cidade é obrigatório")
     @Column(name = "nome", length = 100)
     private String nome;
 
