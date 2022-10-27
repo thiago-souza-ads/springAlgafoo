@@ -7,6 +7,9 @@ import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import com.fasterxml.jackson.databind.exc.PropertyBindingException;
 import org.flywaydb.core.internal.util.ExceptionUtils;
 import org.springframework.beans.TypeMismatchException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +32,9 @@ import java.util.stream.Collectors;
 
 @ControllerAdvice
 public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
+
+    @Autowired
+    private MessageSource messageSource;
 
     @Override
     protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex,
@@ -112,10 +118,15 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 
         List<Problem.Field> problemFields = bindingResult.getFieldErrors()
                 .stream()
-                .map(f-> Problem.Field.builder()
+                .map(f-> {
+                    String message = messageSource.getMessage(f, LocaleContextHolder.getLocale());
+
+                    return Problem.Field.builder()
                         .name(f.getField())
-                        .userMessage(f.getDefaultMessage())
-                        .build()).collect(Collectors.toList());
+                        .userMessage(message)
+                        .build();
+                })
+        .collect(Collectors.toList());
 
         Problem problem = creatProblemBuilder(status, problemType, detail)
                 .userMessage(detail)
