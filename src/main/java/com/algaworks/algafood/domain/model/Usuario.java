@@ -1,6 +1,6 @@
 package com.algaworks.algafood.domain.model;
 
-import com.algaworks.algafood.domain.validators.Groups;
+import com.algaworks.algafood.core.validation.Groups;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.CreationTimestamp;
