@@ -1,6 +1,7 @@
 package com.algaworks.algafood.domain.model;
 
 import com.algaworks.algafood.core.validation.Groups;
+import com.algaworks.algafood.core.validation.TaxaFrete;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
@@ -52,8 +53,9 @@ public class Restaurante {
     // https://docs.jboss.org/hibernate/stable/validator/reference/en-US/html_single/#section-builtin-constraints
     //@DecimalMin("1")
     //@DecimalMax("100")
-    @PositiveOrZero(message = "{TaxaFrete.invalida}")
+    //@PositiveOrZero(message = "{TaxaFrete.invalida}")
     //@PositiveOrZero(message = "A taxa de entrega deverá conter um valor não negativo!")
+    @TaxaFrete
     @Column(name = "taxa_frete", nullable = false)
     private BigDecimal taxaFrete;
 

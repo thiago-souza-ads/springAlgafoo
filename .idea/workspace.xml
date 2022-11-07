@@ -4,38 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a233741-ba57-4bb0-ac11-ea8e279bbf86" name="Changes" comment="Resolvendo mensagens de validação com Resource Bundle do Bean Validation">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/core/validation/ValidationConfig.java" afterDir="false" />
+    <list default="true" id="7a233741-ba57-4bb0-ac11-ea8e279bbf86" name="Changes" comment="Usando o Resource Bundle do Spring como Resource Bundle do Bean Validation">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/core/validation/TaxaFrete.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/CidadeDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/CidadeDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/CozinhaDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/CozinhaDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/EnderecoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/EnderecoDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/EstadoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/EstadoDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/FormaDePagamentoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/FormaDePagamentoDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/GrupoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/GrupoDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/ItemPedidoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/ItemPedidoDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/PaisDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/PaisDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/PedidoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/PedidoDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/PermissaoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/PermissaoDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/ProdutoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/ProdutoDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/RegiaoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/RegiaoDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/RestauranteDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/RestauranteDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/UsuarioDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/dto/UsuarioDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/Cidade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/Cidade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/Cozinha.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/Cozinha.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/Endereco.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/Endereco.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/Estado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/Estado.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/FormaDePagamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/FormaDePagamento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/Grupo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/Grupo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/ItemPedido.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/ItemPedido.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/Pais.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/Pais.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/Pedido.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/Pedido.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/Permissao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/Permissao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/Produto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/Produto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/Regiao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/Regiao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/Restaurante.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/Restaurante.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/validators/Groups.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/core/validation/Groups.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,6 +21,7 @@
         <option value="Enum" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="AnnotationType" />
       </list>
     </option>
   </component>
@@ -196,14 +169,7 @@
       <workItem from="1667067865923" duration="1000" />
       <workItem from="1667264619381" duration="932000" />
       <workItem from="1667518078430" duration="628000" />
-      <workItem from="1667862051538" duration="1435000" />
-    </task>
-    <task id="LOCAL-00009" summary="Flyway - Organizando properties by profile">
-      <created>1661210444903</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1661210444903</updated>
+      <workItem from="1667862051538" duration="2318000" />
     </task>
     <task id="LOCAL-00010" summary="Flyway - Organizando properties by profile">
       <created>1661210549967</created>
@@ -541,7 +507,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667862990695</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="Usando o Resource Bundle do Spring como Resource Bundle do Bean Validation">
+      <created>1667863532189</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1667863532189</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -594,7 +567,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Sonar Qube analyse" />
     <MESSAGE value="Criação de Camada de Dominio" />
     <MESSAGE value="Especificando a granularidade da exception" />
     <MESSAGE value="Afinando a granularidade das exceptions" />
@@ -619,7 +591,8 @@
     <MESSAGE value="Aplicando groups controladore, adicionar e atualizar, agrupando validações adicionando mensagem nos campos obrigatorios" />
     <MESSAGE value="Customizando e resolvendo mensagens de validação globais em Resource Bundle" />
     <MESSAGE value="Resolvendo mensagens de validação com Resource Bundle do Bean Validation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Resolvendo mensagens de validação com Resource Bundle do Bean Validation" />
+    <MESSAGE value="Usando o Resource Bundle do Spring como Resource Bundle do Bean Validation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Usando o Resource Bundle do Spring como Resource Bundle do Bean Validation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
