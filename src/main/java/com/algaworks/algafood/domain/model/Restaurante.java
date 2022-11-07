@@ -52,7 +52,8 @@ public class Restaurante {
     // https://docs.jboss.org/hibernate/stable/validator/reference/en-US/html_single/#section-builtin-constraints
     //@DecimalMin("1")
     //@DecimalMax("100")
-    @PositiveOrZero
+    @PositiveOrZero(message = "{TaxaFrete.invalida}")
+    //@PositiveOrZero(message = "A taxa de entrega deverá conter um valor não negativo!")
     @Column(name = "taxa_frete", nullable = false)
     private BigDecimal taxaFrete;
 
