@@ -14,9 +14,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
-import org.springframework.transaction.TransactionException;
-import org.springframework.transaction.TransactionSystemException;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -25,8 +24,6 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import javax.validation.ConstraintViolationException;
-import javax.validation.ValidationException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -111,26 +108,33 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
                                                                   HttpHeaders headers, HttpStatus status, WebRequest request) {
 
         ProblemType problemType = ProblemType.CAMPO_INVALIDO;
-        String detail = String.format(Constantes.CAMPO_OBRIGATORIO_ERRO,
-                ex.getBindingResult().getTarget().getClass().getSimpleName() ,ex.getBindingResult().getFieldError().getField());
+
+        String detail = "Um ou mais campos estão inválidos";
 
         BindingResult bindingResult = ex.getBindingResult();
 
-        List<Problem.Field> problemFields = bindingResult.getFieldErrors()
+        List<Problem.Object> problemObjects = bindingResult.getAllErrors()
                 .stream()
-                .map(f-> {
-                    String message = messageSource.getMessage(f, LocaleContextHolder.getLocale());
+                .map(objectError -> {
+                    String message = messageSource.getMessage(
+                            objectError, LocaleContextHolder.getLocale());
 
-                    return Problem.Field.builder()
-                        .name(f.getField())
-                        .userMessage(message)
-                        .build();
+                    String name = objectError.getObjectName();
+
+                    if (objectError instanceof FieldError) {
+                        name = ((FieldError) objectError).getField();
+                    }
+
+                    return Problem.Object.builder()
+                            .name(name)
+                            .userMessage(message)
+                            .build();
                 })
         .collect(Collectors.toList());
 
         Problem problem = creatProblemBuilder(status, problemType, detail)
                 .userMessage(detail)
-                .fields(problemFields)
+                .objects(problemObjects)
                 .build();
 
         return handleExceptionInternal(ex, problem, headers, status, request);

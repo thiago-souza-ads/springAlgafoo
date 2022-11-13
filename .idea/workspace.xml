@@ -5,10 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7a233741-ba57-4bb0-ac11-ea8e279bbf86" name="Changes" comment="Criando constraints de validação customizadas em nível de classe">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/core/validation/ValorZeroIncluiDescricao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/core/validation/ValorZeroIncluiDescricaoValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/exceptionHandler/ApiExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/exceptionHandler/ApiExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/exceptionHandler/Problem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/exceptionHandler/Problem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/core/validation/ValorZeroIncluiDescricao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/core/validation/ValorZeroIncluiDescricao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/core/validation/ValorZeroIncluiDescricaoValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/core/validation/ValorZeroIncluiDescricaoValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/Restaurante.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/domain/model/Restaurante.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,14 +174,9 @@
       <workItem from="1667518078430" duration="628000" />
       <workItem from="1667862051538" duration="2478000" />
       <workItem from="1667864567863" duration="2270000" />
-      <workItem from="1668038897000" duration="1760000" />
-    </task>
-    <task id="LOCAL-00012" summary="Tratamento de Exceptions">
-      <created>1661388316350</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1661388316350</updated>
+      <workItem from="1668038897000" duration="2147000" />
+      <workItem from="1668301959360" duration="1165000" />
+      <workItem from="1668352585538" duration="907000" />
     </task>
     <task id="LOCAL-00013" summary="Usando ResponseStatusException">
       <created>1661389730082</created>
@@ -516,7 +514,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668038928050</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="Criando constraints de validação customizadas em nível de classe">
+      <created>1668040738076</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1668040738076</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -603,11 +608,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/CozinhaController.java</url>
           <line>59</line>
           <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/algaworks/algafood/core/validation/ValorZeroIncluiDescricaoValidator.java</url>
-          <line>41</line>
-          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
