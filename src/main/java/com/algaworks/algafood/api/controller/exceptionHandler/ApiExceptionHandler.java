@@ -1,5 +1,6 @@
 package com.algaworks.algafood.api.controller.exceptionHandler;
 
+import com.algaworks.algafood.core.validation.ValidacaoException;
 import com.algaworks.algafood.domain.constantes.Constantes;
 import com.algaworks.algafood.domain.exception.*;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -102,22 +103,15 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
             return handleExceptionInternal(ex, problem, headers, status, request);
 
     }
-
-    @Override
-    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
-                                                                  HttpHeaders headers, HttpStatus status, WebRequest request) {
+    private ResponseEntity<Object> handleValidationInternal(Exception ex, BindingResult bindingResult, HttpHeaders headers,
+                                                            HttpStatus status, WebRequest request) {
 
         ProblemType problemType = ProblemType.CAMPO_INVALIDO;
+        String detail = "Um ou mais campos estão inválidos. Faça o preenchimento correto e tente novamente.";
 
-        String detail = "Um ou mais campos estão inválidos";
-
-        BindingResult bindingResult = ex.getBindingResult();
-
-        List<Problem.Object> problemObjects = bindingResult.getAllErrors()
-                .stream()
+        List<Problem.Object> problemObjects = bindingResult.getAllErrors().stream()
                 .map(objectError -> {
-                    String message = messageSource.getMessage(
-                            objectError, LocaleContextHolder.getLocale());
+                    String message = messageSource.getMessage(objectError, LocaleContextHolder.getLocale());
 
                     String name = objectError.getObjectName();
 
@@ -130,7 +124,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
                             .userMessage(message)
                             .build();
                 })
-        .collect(Collectors.toList());
+                .collect(Collectors.toList());
 
         Problem problem = creatProblemBuilder(status, problemType, detail)
                 .userMessage(detail)
@@ -140,6 +134,17 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
         return handleExceptionInternal(ex, problem, headers, status, request);
     }
 
+    @Override
+    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
+                                                                  HttpHeaders headers, HttpStatus status, WebRequest request) {
+        return handleValidationInternal(ex, ex.getBindingResult(), headers, status, request);
+    }
+
+    @ExceptionHandler({ ValidacaoException.class })
+    public ResponseEntity<Object> handleValidacaoException(ValidacaoException ex, WebRequest request) {
+        return handleValidationInternal(ex, ex.getBindingResult(), new HttpHeaders(),
+                HttpStatus.BAD_REQUEST, request);
+    }
 
     private ResponseEntity<Object> handlePropertyBindingException(PropertyBindingException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
         ProblemType problemType = ProblemType.MENSAGEM_INCOMPREENSIVEL;
