@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a233741-ba57-4bb0-ac11-ea8e279bbf86" name="Changes" comment="Criando e rodando um teste de integração com Spring Boot, JUnit e AssertJ">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="7a233741-ba57-4bb0-ac11-ea8e279bbf86" name="Changes" comment="Escrevendo testes de integração">
       <change beforePath="$PROJECT_DIR$/src/test/java/com/algaworks/algafood/CadastroCozinhaIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/algaworks/algafood/CadastroCozinhaIntegrationTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -260,14 +259,7 @@
       <workItem from="1668038897000" duration="2147000" />
       <workItem from="1668301959360" duration="1165000" />
       <workItem from="1668352585538" duration="3000000" />
-      <workItem from="1669245890096" duration="1746000" />
-    </task>
-    <task id="LOCAL-00017" summary="Aplicando exception tratada de campos obrigatorios">
-      <created>1664235643493</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1664235643493</updated>
+      <workItem from="1669245890096" duration="1827000" />
     </task>
     <task id="LOCAL-00018" summary="Incluindo atualização parcial nas entidades">
       <created>1664408568509</created>
@@ -605,7 +597,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669246747840</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="Escrevendo testes de integração">
+      <created>1669247691458</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1669247691458</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -658,7 +657,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="ResponseEntityExceptionHandler modelada" />
     <MESSAGE value="Padronizando o formato de problemas no corpo de respostas com a RFC 7807" />
     <MESSAGE value="Tratando a exception InvalidFormatException na desserialização" />
     <MESSAGE value="Habilitando erros na desserialização de propriedades inexistentes ou ignoradas" />
@@ -683,7 +681,8 @@
     <MESSAGE value=" Ajustando Exception Handler para adicionar mensagens de validação em nível de classe" />
     <MESSAGE value="Preparando o projeto para testes de integração" />
     <MESSAGE value="Criando e rodando um teste de integração com Spring Boot, JUnit e AssertJ" />
-    <option name="LAST_COMMIT_MESSAGE" value="Criando e rodando um teste de integração com Spring Boot, JUnit e AssertJ" />
+    <MESSAGE value="Escrevendo testes de integração" />
+    <option name="LAST_COMMIT_MESSAGE" value="Escrevendo testes de integração" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -710,7 +709,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/algaworks/algafood/CadastroCozinhaIntegrationTest.java</url>
-          <line>17</line>
+          <line>19</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
