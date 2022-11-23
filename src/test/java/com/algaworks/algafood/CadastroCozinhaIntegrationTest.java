@@ -20,7 +20,7 @@ public class CadastroCozinhaIntegrationTest {
     private CadastroCozinhaService cadastroCozinhaService;
 
     @Test
-    public void testarCadastrarCozinhaComSucesso() {
+    public void deveCadastrarCozinhaComSucesso_QuandoCozinhaCorreta() {
         //Cenário
         Cozinha novaCozinha = new Cozinha();
         novaCozinha.setNome("Chinesa");
@@ -32,9 +32,12 @@ public class CadastroCozinhaIntegrationTest {
     }
 
     @Test(expected = ConstraintViolationException.class)
-    public void testarCadastroCozinhaSemNome(){
+    public void deveFalharAoCadastrarCozinha_QuandoSemNome(){
+        // Em caso de Exception não usar AssestThat
+        //Cenário
         Cozinha novaCozinha = new Cozinha();
         novaCozinha.setNome(null);
+        //Ação
         novaCozinha = cadastroCozinhaService.salvar(novaCozinha);
     }
 
