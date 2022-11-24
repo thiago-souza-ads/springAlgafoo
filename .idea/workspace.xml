@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7a233741-ba57-4bb0-ac11-ea8e279bbf86" name="Changes" comment="Escrevendo testes de integração">
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/algaworks/algafood/CadastroCozinhaIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/algaworks/algafood/CadastroCozinhaIntegrationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,8 +109,8 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CadastroCozinhaIntegrationTest">
-    <configuration name="CadastroCozinhaIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.CadastroCozinhaIT">
+    <configuration name="CadastroCozinhaIT" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="springAlgafoo" />
       <extension name="coverage">
         <pattern>
@@ -119,13 +119,13 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.algaworks.algafood" />
-      <option name="MAIN_CLASS_NAME" value="com.algaworks.algafood.CadastroCozinhaIntegrationTest" />
+      <option name="MAIN_CLASS_NAME" value="com.algaworks.algafood.CadastroCozinhaIT" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CadastroCozinhaIntegrationTest.deveFalharAoCadastrarCozinha_QuandoSemNome" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CadastroCozinhaIT.deveFalharAoCadastrarCozinha_QuandoSemNome" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="springAlgafoo" />
       <extension name="coverage">
         <pattern>
@@ -134,14 +134,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.algaworks.algafood" />
-      <option name="MAIN_CLASS_NAME" value="com.algaworks.algafood.CadastroCozinhaIntegrationTest" />
+      <option name="MAIN_CLASS_NAME" value="com.algaworks.algafood.CadastroCozinhaIT" />
       <option name="METHOD_NAME" value="deveFalharAoCadastrarCozinha_QuandoSemNome" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CadastroCozinhaIntegrationTest.deveFalharAoExcluirCozinha_QuandoCozinhaEmUso" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CadastroCozinhaIT.deveFalharAoExcluirCozinha_QuandoCozinhaEmUso" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="springAlgafoo" />
       <extension name="coverage">
         <pattern>
@@ -150,14 +150,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.algaworks.algafood" />
-      <option name="MAIN_CLASS_NAME" value="com.algaworks.algafood.CadastroCozinhaIntegrationTest" />
+      <option name="MAIN_CLASS_NAME" value="com.algaworks.algafood.CadastroCozinhaIT" />
       <option name="METHOD_NAME" value="deveFalharAoExcluirCozinha_QuandoCozinhaEmUso" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CadastroCozinhaIntegrationTest.deveFalharAoExcluirCozinha_QuandoCozinhaInexistente" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CadastroCozinhaIT.deveFalharAoExcluirCozinha_QuandoCozinhaInexistente" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="springAlgafoo" />
       <extension name="coverage">
         <pattern>
@@ -166,14 +166,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.algaworks.algafood" />
-      <option name="MAIN_CLASS_NAME" value="com.algaworks.algafood.CadastroCozinhaIntegrationTest" />
+      <option name="MAIN_CLASS_NAME" value="com.algaworks.algafood.CadastroCozinhaIT" />
       <option name="METHOD_NAME" value="deveFalharAoExcluirCozinha_QuandoCozinhaInexistente" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CadastroCozinhaIntegrationTest.testarCadastrarCozinhaComSucesso" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CadastroCozinhaIT.testarCadastrarCozinhaComSucesso" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="springAlgafoo" />
       <extension name="coverage">
         <pattern>
@@ -182,7 +182,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.algaworks.algafood" />
-      <option name="MAIN_CLASS_NAME" value="com.algaworks.algafood.CadastroCozinhaIntegrationTest" />
+      <option name="MAIN_CLASS_NAME" value="com.algaworks.algafood.CadastroCozinhaIT" />
       <option name="METHOD_NAME" value="testarCadastrarCozinhaComSucesso" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -198,11 +198,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CadastroCozinhaIntegrationTest" />
-        <item itemvalue="JUnit.CadastroCozinhaIntegrationTest.deveFalharAoExcluirCozinha_QuandoCozinhaInexistente" />
-        <item itemvalue="JUnit.CadastroCozinhaIntegrationTest.deveFalharAoExcluirCozinha_QuandoCozinhaEmUso" />
-        <item itemvalue="JUnit.CadastroCozinhaIntegrationTest.deveFalharAoCadastrarCozinha_QuandoSemNome" />
-        <item itemvalue="JUnit.CadastroCozinhaIntegrationTest.testarCadastrarCozinhaComSucesso" />
+        <item itemvalue="JUnit.CadastroCozinhaIT" />
+        <item itemvalue="JUnit.CadastroCozinhaIT.deveFalharAoExcluirCozinha_QuandoCozinhaInexistente" />
+        <item itemvalue="JUnit.CadastroCozinhaIT.deveFalharAoExcluirCozinha_QuandoCozinhaEmUso" />
+        <item itemvalue="JUnit.CadastroCozinhaIT.deveFalharAoCadastrarCozinha_QuandoSemNome" />
+        <item itemvalue="JUnit.CadastroCozinhaIT.testarCadastrarCozinhaComSucesso" />
       </list>
     </recent_temporary>
   </component>
@@ -259,14 +259,7 @@
       <workItem from="1668038897000" duration="2147000" />
       <workItem from="1668301959360" duration="1165000" />
       <workItem from="1668352585538" duration="3000000" />
-      <workItem from="1669245890096" duration="1827000" />
-    </task>
-    <task id="LOCAL-00018" summary="Incluindo atualização parcial nas entidades">
-      <created>1664408568509</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1664408568509</updated>
+      <workItem from="1669245890096" duration="2058000" />
     </task>
     <task id="LOCAL-00019" summary="Inclusão de atualização parcial de entidade">
       <created>1664409034527</created>
@@ -604,7 +597,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669247691458</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="Escrevendo testes de integração">
+      <created>1669247810119</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1669247810119</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

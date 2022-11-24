@@ -12,13 +12,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.validation.ConstraintViolationException;
 
-import java.util.zip.DataFormatException;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class CadastroCozinhaIntegrationTest {
+public class CadastroCozinhaIT {
 
     @Autowired
     private CadastroCozinhaService cadastroCozinhaService;
