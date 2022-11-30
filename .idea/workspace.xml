@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a233741-ba57-4bb0-ac11-ea8e279bbf86" name="Changes" comment="">
+    <list default="true" id="7a233741-ba57-4bb0-ac11-ea8e279bbf86" name="Changes" comment="Validando o corpo da resposta HTTP">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/FormaDePagamentoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/algaworks/algafood/api/controller/FormaDePagamentoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/algaworks/algafood/CadastroCozinhaIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/algaworks/algafood/CadastroCozinhaIT.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -113,7 +114,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CadastroCozinhaIT">
+  <component name="RunManager" selected="JUnit.CadastroCozinhaIT.deveConter8CozinhasExistindoAsEspecificadas_QuandoConsultarCozinhas">
     <configuration name="CadastroCozinhaIT" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="springAlgafoo" />
       <extension name="coverage">
@@ -129,7 +130,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CadastroCozinhaIT.deveFalharAoCadastrarCozinha_QuandoCozinhaSemNome" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CadastroCozinhaIT.deveConter8CozinhasExistindoAsEspecificadas_QuandoConsultarCozinhas" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="springAlgafoo" />
       <extension name="coverage">
         <pattern>
@@ -139,13 +140,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.algaworks.algafood" />
       <option name="MAIN_CLASS_NAME" value="com.algaworks.algafood.CadastroCozinhaIT" />
-      <option name="METHOD_NAME" value="deveFalharAoCadastrarCozinha_QuandoCozinhaSemNome" />
+      <option name="METHOD_NAME" value="deveConter8CozinhasExistindoAsEspecificadas_QuandoConsultarCozinhas" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CadastroCozinhaIT.deveFalharAoCadastrarCozinha_QuandoSemNome" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CadastroCozinhaIT.deveConter8Cozinhas_QuandoConsultarCozinhas" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="springAlgafoo" />
       <extension name="coverage">
         <pattern>
@@ -155,13 +156,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.algaworks.algafood" />
       <option name="MAIN_CLASS_NAME" value="com.algaworks.algafood.CadastroCozinhaIT" />
-      <option name="METHOD_NAME" value="deveFalharAoCadastrarCozinha_QuandoSemNome" />
+      <option name="METHOD_NAME" value="deveConter8Cozinhas_QuandoConsultarCozinhas" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CadastroCozinhaIT.deveFalharAoExcluirCozinha_QuandoCozinhaEmUso" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CadastroCozinhaIT.deveConter9Cozinhas_QuandoConsultarCozinhas" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="springAlgafoo" />
       <extension name="coverage">
         <pattern>
@@ -171,13 +172,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.algaworks.algafood" />
       <option name="MAIN_CLASS_NAME" value="com.algaworks.algafood.CadastroCozinhaIT" />
-      <option name="METHOD_NAME" value="deveFalharAoExcluirCozinha_QuandoCozinhaEmUso" />
+      <option name="METHOD_NAME" value="deveConter9Cozinhas_QuandoConsultarCozinhas" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CadastroCozinhaIT.deveFalharAoExcluirCozinha_QuandoCozinhaInexistente" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CadastroCozinhaIT.deveRetornarStatus200_QuandoConsultarCozinhas" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="springAlgafoo" />
       <extension name="coverage">
         <pattern>
@@ -187,7 +188,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.algaworks.algafood" />
       <option name="MAIN_CLASS_NAME" value="com.algaworks.algafood.CadastroCozinhaIT" />
-      <option name="METHOD_NAME" value="deveFalharAoExcluirCozinha_QuandoCozinhaInexistente" />
+      <option name="METHOD_NAME" value="deveRetornarStatus200_QuandoConsultarCozinhas" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -202,11 +203,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CadastroCozinhaIT.deveConter8CozinhasExistindoAsEspecificadas_QuandoConsultarCozinhas" />
+        <item itemvalue="JUnit.CadastroCozinhaIT.deveConter8Cozinhas_QuandoConsultarCozinhas" />
+        <item itemvalue="JUnit.CadastroCozinhaIT.deveConter9Cozinhas_QuandoConsultarCozinhas" />
         <item itemvalue="JUnit.CadastroCozinhaIT" />
-        <item itemvalue="JUnit.CadastroCozinhaIT.deveFalharAoCadastrarCozinha_QuandoCozinhaSemNome" />
-        <item itemvalue="JUnit.CadastroCozinhaIT.deveFalharAoExcluirCozinha_QuandoCozinhaInexistente" />
-        <item itemvalue="JUnit.CadastroCozinhaIT.deveFalharAoExcluirCozinha_QuandoCozinhaEmUso" />
-        <item itemvalue="JUnit.CadastroCozinhaIT.deveFalharAoCadastrarCozinha_QuandoSemNome" />
+        <item itemvalue="JUnit.CadastroCozinhaIT.deveRetornarStatus200_QuandoConsultarCozinhas" />
       </list>
     </recent_temporary>
   </component>
@@ -265,14 +266,7 @@
       <workItem from="1668352585538" duration="3000000" />
       <workItem from="1669245890096" duration="2058000" />
       <workItem from="1669773736202" duration="248000" />
-      <workItem from="1669848949839" duration="235000" />
-    </task>
-    <task id="LOCAL-00021" summary="Sonar Qube analyse">
-      <created>1664412593866</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1664412593866</updated>
+      <workItem from="1669848949839" duration="2004000" />
     </task>
     <task id="LOCAL-00022" summary="Criação de Camada de Dominio">
       <created>1665539732508</created>
@@ -610,7 +604,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669773975762</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="Implementando Testes de API com REST Assured e validando o código de status HTTP">
+      <created>1669849312861</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1669849312862</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -663,7 +664,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Tratando a exception InvalidFormatException na desserialização" />
     <MESSAGE value="Habilitando erros na desserialização de propriedades inexistentes ou ignoradas" />
     <MESSAGE value="Lançando exception de desserialização na atualização parcial (PATCH)" />
     <MESSAGE value="tratando-a-excecao-nohandlerfoundexception" />
@@ -688,7 +688,8 @@
     <MESSAGE value="Criando e rodando um teste de integração com Spring Boot, JUnit e AssertJ" />
     <MESSAGE value="Escrevendo testes de integração" />
     <MESSAGE value="Implementando Testes de API com REST Assured e validando o código de status HTTP" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementando Testes de API com REST Assured e validando o código de status HTTP" />
+    <MESSAGE value="Validando o corpo da resposta HTTP" />
+    <option name="LAST_COMMIT_MESSAGE" value="Validando o corpo da resposta HTTP" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -717,11 +718,6 @@
           <url>file://$PROJECT_DIR$/src/test/java/com/algaworks/algafood/CadastroCozinhaIntegrationTest.java</url>
           <line>19</line>
           <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/com/algaworks/algafood/CadastroCozinhaIT.java</url>
-          <line>51</line>
-          <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

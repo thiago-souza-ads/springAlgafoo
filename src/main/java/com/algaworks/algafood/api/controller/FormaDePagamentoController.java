@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/formasDePagamento")
+@RequestMapping("/formas-de-pagamento")
 public class FormaDePagamentoController {
 
     @Autowired
