@@ -7,6 +7,7 @@ import com.algaworks.algafood.domain.service.CadastroCozinhaService;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import org.hamcrest.Matchers;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,14 @@ public class CadastroCozinhaIT {
 
     @LocalServerPort
     private int port;
+
+    // Método que será executado preparando o setup para bateria de testes.
+    @Before
+    public void setUp(){
+        RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
+        RestAssured.port = port;
+        RestAssured.basePath = "/cozinhas";
+    }
 
     /**
      * Testes de Integração
@@ -74,12 +83,8 @@ public class CadastroCozinhaIT {
 
     @Test
     public void deveRetornarStatus200_QuandoConsultarCozinhas() {
-        // Exibir a requisição caso falhar
-        RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
 
         given()
-                .basePath("/cozinhas")
-                .port(port)
                 .accept(ContentType.JSON)
         .when()
                 .get()
@@ -89,12 +94,7 @@ public class CadastroCozinhaIT {
 
     @Test
     public void deveConter8CozinhasExistindoAsEspecificadas_QuandoConsultarCozinhas() {
-        // Exibir a requisição caso falhar
-        RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
-
         given()
-                .basePath("/cozinhas")
-                .port(port)
                 .accept(ContentType.JSON)
             .when()
                 .get()
@@ -102,7 +102,7 @@ public class CadastroCozinhaIT {
                 .body("nome", Matchers.hasSize(8))
                 .body("nome", Matchers.hasItems("Indiana", "Indiana"));
     }
-
+    /*
     @Test
     public void deveRetornarStatus200_QuandoConsultarCidades() {
         given()
@@ -246,5 +246,5 @@ public class CadastroCozinhaIT {
                 .then()
                 .statusCode(HttpStatus.OK.value());
     }
-
+    */
 }
