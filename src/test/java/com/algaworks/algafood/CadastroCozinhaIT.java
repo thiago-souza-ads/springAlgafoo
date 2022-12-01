@@ -6,6 +6,7 @@ import com.algaworks.algafood.domain.model.Cozinha;
 import com.algaworks.algafood.domain.service.CadastroCozinhaService;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
+import org.flywaydb.core.Flyway;
 import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
@@ -31,12 +32,16 @@ public class CadastroCozinhaIT {
     @LocalServerPort
     private int port;
 
+    @Autowired
+    private Flyway flyWay;
+
     // Método que será executado preparando o setup para bateria de testes.
     @Before
     public void setUp(){
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
         RestAssured.port = port;
         RestAssured.basePath = "/cozinhas";
+        flyWay.migrate();
     }
 
     /**
@@ -102,6 +107,18 @@ public class CadastroCozinhaIT {
                 .body("nome", Matchers.hasSize(8))
                 .body("nome", Matchers.hasItems("Indiana", "Indiana"));
     }
+    @Test
+    public void deveRetornarStatus201_QuandoCadastrarCozinha() {
+        given()
+                .body("{\"nome\": \"Chinesa\" }")
+            .contentType(ContentType.JSON)
+            .accept(ContentType.JSON)
+        .when()
+            .post()
+        .then()
+                .statusCode(HttpStatus.CREATED.value());
+    }
+
     /*
     @Test
     public void deveRetornarStatus200_QuandoConsultarCidades() {

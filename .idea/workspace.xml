@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a233741-ba57-4bb0-ac11-ea8e279bbf86" name="Changes" comment="Validando o corpo da resposta HTTP">
+    <list default="true" id="7a233741-ba57-4bb0-ac11-ea8e279bbf86" name="Changes" comment="Criando um método para fazer setup dos testes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/algaworks/algafood/CadastroCozinhaIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/algaworks/algafood/CadastroCozinhaIT.java" afterDir="false" />
     </list>
@@ -113,7 +113,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CadastroCozinhaIT.deveConter8CozinhasExistindoAsEspecificadas_QuandoConsultarCozinhas">
+  <component name="RunManager" selected="JUnit.CadastroCozinhaIT">
     <configuration name="CadastroCozinhaIT" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="springAlgafoo" />
       <extension name="coverage">
@@ -202,10 +202,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CadastroCozinhaIT" />
         <item itemvalue="JUnit.CadastroCozinhaIT.deveConter8CozinhasExistindoAsEspecificadas_QuandoConsultarCozinhas" />
         <item itemvalue="JUnit.CadastroCozinhaIT.deveConter8Cozinhas_QuandoConsultarCozinhas" />
         <item itemvalue="JUnit.CadastroCozinhaIT.deveConter9Cozinhas_QuandoConsultarCozinhas" />
-        <item itemvalue="JUnit.CadastroCozinhaIT" />
         <item itemvalue="JUnit.CadastroCozinhaIT.deveRetornarStatus200_QuandoConsultarCozinhas" />
       </list>
     </recent_temporary>
@@ -265,14 +265,9 @@
       <workItem from="1668352585538" duration="3000000" />
       <workItem from="1669245890096" duration="2058000" />
       <workItem from="1669773736202" duration="248000" />
-      <workItem from="1669848949839" duration="2976000" />
-    </task>
-    <task id="LOCAL-00023" summary="Especificando a granularidade da exception">
-      <created>1665705944825</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1665705944825</updated>
+      <workItem from="1669848949839" duration="4187000" />
+      <workItem from="1669855126361" duration="3000" />
+      <workItem from="1669934823425" duration="625000" />
     </task>
     <task id="LOCAL-00024" summary="Afinando a granularidade das exceptions">
       <created>1665706628055</created>
@@ -610,7 +605,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669851008098</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="Criando um método para fazer setup dos testes">
+      <created>1669854060737</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1669854060737</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -663,7 +665,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Habilitando erros na desserialização de propriedades inexistentes ou ignoradas" />
     <MESSAGE value="Lançando exception de desserialização na atualização parcial (PATCH)" />
     <MESSAGE value="tratando-a-excecao-nohandlerfoundexception" />
     <MESSAGE value="tratando outras exceções não capturadas" />
@@ -688,7 +689,8 @@
     <MESSAGE value="Escrevendo testes de integração" />
     <MESSAGE value="Implementando Testes de API com REST Assured e validando o código de status HTTP" />
     <MESSAGE value="Validando o corpo da resposta HTTP" />
-    <option name="LAST_COMMIT_MESSAGE" value="Validando o corpo da resposta HTTP" />
+    <MESSAGE value="Criando um método para fazer setup dos testes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Criando um método para fazer setup dos testes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
