@@ -2,13 +2,12 @@ package com.algaworks.algafood;
 
 import com.algaworks.algafood.domain.exception.EntidadeEmUsoException;
 import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
-import com.algaworks.algafood.domain.model.Cozinha;
-import com.algaworks.algafood.domain.repository.CozinhaRepository;
+import com.algaworks.algafood.domain.model.*;
+import com.algaworks.algafood.domain.repository.*;
 import com.algaworks.algafood.domain.service.CadastroCozinhaService;
 import com.algaworks.algafood.util.DatabaseCleaner;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
-import org.flywaydb.core.Flyway;
 import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,6 +20,9 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.validation.ConstraintViolationException;
+import java.math.BigDecimal;
+import java.util.LinkedList;
+import java.util.List;
 
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -36,34 +38,60 @@ public class CadastroCozinhaIT {
     @LocalServerPort
     private int port;
 
-//    @Autowired
-//    private Flyway flyWay;
-
     @Autowired
     DatabaseCleaner databaseCleaner;
 
     @Autowired
     private CozinhaRepository cozinhaRepository;
 
-    // Método que será executado preparando o setup para bateria de testes.
+    @Autowired
+    private RestauranteRepository restauranteRepository;
+
+    @Autowired
+    PaisRepository paisRepository;
+
+    @Autowired
+    EstadoRepository estadoRepository;
+
+    @Autowired
+    RegiaoRepository regiaoRepository;
+
+    @Autowired
+    CidadeRepository cidadeRepository;
+
+    @Autowired
+    EnderecoRepository enderecoRepository;
+
+
+    private String basePath = "/cozinhas";
+
+    private Long idCozinhaInexistente = 123456L;
+
+    private String[] nomeDasCozinhas =
+            {"Australiana", "Belga", "Brasileira", "Chinesa", "Eslovenha", "Francesa", "Inglesa", "Jamaicana", "Portuguesa"};
+
+    private Integer count = 0;
+
+    private List<Cozinha> cozinhas = new LinkedList<>();
+
+    /**
+     * Preparação dos dados Mokados antes dos testes e configurando variaveis relacionadas aos testes.
+     */
+
     @Before
-    public void setUp(){
+    public void setUp() {
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
         RestAssured.port = port;
-        RestAssured.basePath = "/cozinhas";
+        RestAssured.basePath = basePath;
         databaseCleaner.clearTables();
         preparaDados();
-//        flyWay.migrate();
     }
 
-    private void preparaDados(){
-        Cozinha cozinha1 = new Cozinha();
-        cozinha1.setNome("Tailandesa");
-        cozinhaRepository.save(cozinha1);
-
-        Cozinha cozinha2 = new Cozinha();
-        cozinha2.setNome("Americana");
-        cozinhaRepository.save(cozinha2);
+    private void preparaDados() {
+        for (String nomeDasCozinha : nomeDasCozinhas) {
+            cozinhas.add(count, cozinhaRepository.save(new Cozinha(nomeDasCozinha)));
+            count++;
+        }
     }
 
     /**
@@ -72,40 +100,29 @@ public class CadastroCozinhaIT {
 
     @Test
     public void deveCadastrarCozinhaComSucesso_QuandoCozinhaCorreta() {
-        //Cenário
-        Cozinha novaCozinha = new Cozinha();
-        novaCozinha.setNome("Chinesa");
-        //Ação
-        novaCozinha = cadastroCozinhaService.salvar(novaCozinha);
-        //Validação
+        Cozinha novaCozinha = cadastroCozinhaService.salvar(new Cozinha("Mexicana"));
         assertThat(novaCozinha).isNotNull();
         assertThat(novaCozinha.getId()).isNotNull();
     }
 
     @Test(expected = ConstraintViolationException.class)
     public void deveFalharAoCadastrarCozinha_QuandoCozinhaSemNome(){
-        // Em caso de Exception não usar AssestThat
-        //Cenário
-        Cozinha novaCozinha = new Cozinha();
-        novaCozinha.setNome(null);
-        //Ação
-        novaCozinha = cadastroCozinhaService.salvar(novaCozinha);
+        cadastroCozinhaService.salvar(new Cozinha(null));
     }
 
     @Test(expected = EntidadeEmUsoException.class)
-    public void deveFalharAoExcluirCozinha_QuandoCozinhaEmUso(){
-        Cozinha cozinha = cadastroCozinhaService.findOrFail(1L);
-        //Ação
-        cadastroCozinhaService.excluir(cozinha.getId());
+    public void deveFalharAoExcluirCozinha_QuandoCozinhaEmUso() {
+        geraRestauranteMokado(1L);
+        cadastroCozinhaService.excluir(1L);
     }
 
     @Test(expected = EntidadeNaoEncontradaException.class)
     public void deveFalharAoExcluirCozinha_QuandoCozinhaInexistente() {
-        cadastroCozinhaService.excluir(123456L);
+        cadastroCozinhaService.excluir(idCozinhaInexistente);
     }
 
     /**
-     * Testes de API
+     * Testes de API's
      */
 
     @Test
@@ -120,170 +137,106 @@ public class CadastroCozinhaIT {
     }
 
     @Test
-    public void deveConter2CozinhasExistindoAsEspecificadas_QuandoConsultarCozinhas() {
+    public void deveConterNumeroDeCozinhasEExistindoAsEspecificadas_QuandoConsultarCozinhas() {
         given()
                 .accept(ContentType.JSON)
-            .when()
+                .when()
                 .get()
-            .then()
-                .body("nome", Matchers.hasSize(2))
-                .body("nome", Matchers.hasItems("Americana", "Tailandesa"));
+                .then()
+                .body("nome", Matchers.hasSize(cozinhas.size()))
+                .body("nome", Matchers.hasItems("Brasileira", "Francesa"));
     }
+
     @Test
     public void deveRetornarStatus201_QuandoCadastrarCozinha() {
         given()
                 .body("{\"nome\": \"Chinesa\" }")
-            .contentType(ContentType.JSON)
-            .accept(ContentType.JSON)
-        .when()
-            .post()
-        .then()
+                .contentType(ContentType.JSON)
+                .accept(ContentType.JSON)
+                .when()
+                .post()
+                .then()
                 .statusCode(HttpStatus.CREATED.value());
     }
 
-    /*
     @Test
-    public void deveRetornarStatus200_QuandoConsultarCidades() {
+    public void deveRetornarRespostaEStatusCorretos_QuandoConsultarCozinhaExistente() {
         given()
-                .basePath("/cidades")
-                .port(port)
                 .accept(ContentType.JSON)
+                .pathParam("cozinhaId", 1L)
                 .when()
-                .get()
+                .get("/{cozinhaId}")
                 .then()
-                .statusCode(HttpStatus.OK.value());
+                .statusCode(HttpStatus.OK.value())
+                .body("nome", Matchers.equalTo("Australiana"));
     }
+
     @Test
-    public void deveRetornarStatus200_QuandoConsultarEndereco() {
+    public void deveRetornarStatus404_QuandoConsultarCozinhaInexistente() {
         given()
-                .basePath("/enderecos")
-                .port(port)
                 .accept(ContentType.JSON)
+                .pathParam("cozinhaId", 100)
                 .when()
-                .get()
+                .get("/{cozinhaId}")
                 .then()
-                .statusCode(HttpStatus.OK.value());
+                .statusCode(HttpStatus.NOT_FOUND.value());
     }
-    @Test
-    public void deveRetornarStatus200_QuandoConsultarEstados() {
-        given()
-                .basePath("/estados")
-                .port(port)
-                .accept(ContentType.JSON)
-                .when()
-                .get()
-                .then()
-                .statusCode(HttpStatus.OK.value());
+
+    public void geraRestauranteMokado(Long cozinhaId){
+        geraRestauranteComDadosMokados(cozinhaId);
     }
-    @Test
-    public void deveRetornarStatus200_QuandoConsultarFormaDePagamento() {
-        given()
-                .basePath("/formas-de-pagamento")
-                .port(port)
-                .accept(ContentType.JSON)
-                .when()
-                .get()
-                .then()
-                .statusCode(HttpStatus.OK.value());
+
+    private void geraRestauranteComDadosMokados(Long cozinhaId){
+        Restaurante restaurante = new Restaurante();
+        Cozinha cozinha = new Cozinha();
+        cozinha.setId(cozinhaId);
+        restaurante.setCozinha(cozinha);
+        restaurante.setNome("Restaurante com a cozinha de Teste");
+        restaurante.setTaxaFrete(BigDecimal.valueOf(5D));
+        Pais pais = geraPaisMokado();
+        Regiao regiao = geraRegiaoMokado(pais);
+        Estado estado = geraEstadoMokado(pais, regiao);
+        Cidade cidade = geraCidadeMokado(estado);
+        Endereco endereco = geraEnderecoMokado(cidade);
+        restaurante.setEndereco(endereco);
+        restauranteRepository.save(restaurante);
     }
-    @Test
-    public void deveRetornarStatus200_QuandoConsultarGrupos() {
-        given()
-                .basePath("/grupos")
-                .port(port)
-                .accept(ContentType.JSON)
-                .when()
-                .get()
-                .then()
-                .statusCode(HttpStatus.OK.value());
+
+    private Pais geraPaisMokado(){
+        Pais pais = new Pais();
+        pais.setNome("Teste Pais");
+        pais.setSigla("TP");
+        pais = paisRepository.save(pais);
+        return pais;
     }
-    @Test
-    public void deveRetornarStatus200_QuandoConsultarItensPedidos() {
-        given()
-                .basePath("/itens-pedido")
-                .port(port)
-                .accept(ContentType.JSON)
-                .when()
-                .get()
-                .then()
-                .statusCode(HttpStatus.OK.value());
+    private Regiao geraRegiaoMokado(Pais pais){
+        Regiao regiao = new Regiao();
+        regiao.setNome("Regiao do Teste");
+        return regiaoRepository.save(regiao);
     }
-    @Test
-    public void deveRetornarStatus200_QuandoConsultarPais() {
-        given()
-                .basePath("/paises")
-                .port(port)
-                .accept(ContentType.JSON)
-                .when()
-                .get()
-                .then()
-                .statusCode(HttpStatus.OK.value());
+    private Estado geraEstadoMokado(Pais pais, Regiao regiao){
+        Estado estado = new Estado();
+        estado.setPais(pais);
+        estado.setSigla("TE");
+        estado.setNome("Teste Estado");
+        estado.setRegiao(regiao);
+        return estadoRepository.save(estado);
     }
-    @Test
-    public void deveRetornarStatus200_QuandoConsultarPedidos() {
-        given()
-                .basePath("/pedidos")
-                .port(port)
-                .accept(ContentType.JSON)
-                .when()
-                .get()
-                .then()
-                .statusCode(HttpStatus.OK.value());
+    private Cidade geraCidadeMokado(Estado estado){
+        Cidade cidade = new Cidade();
+        cidade.setNome("Testolandia");
+        cidade.setIsCapital(Boolean.FALSE);
+        cidade.setEstado(estado);
+        return cidadeRepository.save(cidade);
     }
-    @Test
-    public void deveRetornarStatus200_QuandoConsultarPermissoes() {
-        given()
-                .basePath("/permissoes")
-                .port(port)
-                .accept(ContentType.JSON)
-                .when()
-                .get()
-                .then()
-                .statusCode(HttpStatus.OK.value());
+    private Endereco geraEnderecoMokado(Cidade cidade){
+        Endereco endereco = new Endereco();
+        endereco.setLogradouro("Rua dos Testes");
+        endereco.setNumero("123");
+        endereco.setBairro("Teste Integração");
+        endereco.setComplemento("Importante");
+        endereco.setCep("12345678-00");
+        endereco.setCidade(cidade);
+        return enderecoRepository.save(endereco);
     }
-    @Test
-    public void deveRetornarStatus200_QuandoConsultaProdutos() {
-        given()
-                .basePath("/produtos")
-                .port(port)
-                .accept(ContentType.JSON)
-                .when()
-                .get()
-                .then()
-                .statusCode(HttpStatus.OK.value());
-    }
-    @Test
-    public void deveRetornarStatus200_QuandoConsultarRegioes() {
-        given()
-                .basePath("/regioes")
-                .port(port)
-                .accept(ContentType.JSON)
-                .when()
-                .get()
-                .then()
-                .statusCode(HttpStatus.OK.value());
-    }
-    @Test
-    public void deveRetornarStatus200_QuandoConsultarRestaurantes() {
-        given()
-                .basePath("/restaurantes")
-                .port(port)
-                .accept(ContentType.JSON)
-                .when()
-                .get()
-                .then()
-                .statusCode(HttpStatus.OK.value());
-    }
-    @Test
-    public void deveRetornarStatus200_QuandoConsultarUsuarios() {
-        given()
-                .basePath("/regioes")
-                .port(port)
-                .accept(ContentType.JSON)
-                .when()
-                .get()
-                .then()
-                .statusCode(HttpStatus.OK.value());
-    }
-    */
 }

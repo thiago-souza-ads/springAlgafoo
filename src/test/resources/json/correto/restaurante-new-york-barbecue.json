@@ -1,0 +1,10 @@
+{
+  "nome": "New York Barbecue",
+  "taxaFrete": 10,
+  "cozinha": {
+    "id": 2
+  },
+  "endereco": {
+    "id": 1
+  }
+}

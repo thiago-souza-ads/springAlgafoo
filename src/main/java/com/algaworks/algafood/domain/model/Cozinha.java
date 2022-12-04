@@ -14,6 +14,15 @@ import javax.validation.groups.Default;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Cozinha {
 
+    public Cozinha(){
+
+    }
+
+    public Cozinha(String nome){
+        this();
+        this.nome = nome;
+    }
+
     @NotNull(groups = Groups.CozinhaId.class)
     @Id
     @EqualsAndHashCode.Include
