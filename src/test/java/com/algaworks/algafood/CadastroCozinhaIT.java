@@ -3,7 +3,9 @@ package com.algaworks.algafood;
 import com.algaworks.algafood.domain.exception.EntidadeEmUsoException;
 import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
 import com.algaworks.algafood.domain.model.Cozinha;
+import com.algaworks.algafood.domain.repository.CozinhaRepository;
 import com.algaworks.algafood.domain.service.CadastroCozinhaService;
+import com.algaworks.algafood.util.DatabaseCleaner;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import org.flywaydb.core.Flyway;
@@ -34,8 +36,14 @@ public class CadastroCozinhaIT {
     @LocalServerPort
     private int port;
 
+//    @Autowired
+//    private Flyway flyWay;
+
     @Autowired
-    private Flyway flyWay;
+    DatabaseCleaner databaseCleaner;
+
+    @Autowired
+    private CozinhaRepository cozinhaRepository;
 
     // Método que será executado preparando o setup para bateria de testes.
     @Before
@@ -43,7 +51,19 @@ public class CadastroCozinhaIT {
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
         RestAssured.port = port;
         RestAssured.basePath = "/cozinhas";
-        flyWay.migrate();
+        databaseCleaner.clearTables();
+        preparaDados();
+//        flyWay.migrate();
+    }
+
+    private void preparaDados(){
+        Cozinha cozinha1 = new Cozinha();
+        cozinha1.setNome("Tailandesa");
+        cozinhaRepository.save(cozinha1);
+
+        Cozinha cozinha2 = new Cozinha();
+        cozinha2.setNome("Americana");
+        cozinhaRepository.save(cozinha2);
     }
 
     /**
@@ -100,14 +120,14 @@ public class CadastroCozinhaIT {
     }
 
     @Test
-    public void deveConter8CozinhasExistindoAsEspecificadas_QuandoConsultarCozinhas() {
+    public void deveConter2CozinhasExistindoAsEspecificadas_QuandoConsultarCozinhas() {
         given()
                 .accept(ContentType.JSON)
             .when()
                 .get()
             .then()
-                .body("nome", Matchers.hasSize(8))
-                .body("nome", Matchers.hasItems("Indiana", "Indiana"));
+                .body("nome", Matchers.hasSize(2))
+                .body("nome", Matchers.hasItems("Americana", "Tailandesa"));
     }
     @Test
     public void deveRetornarStatus201_QuandoCadastrarCozinha() {
