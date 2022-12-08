@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class CadastroFormaDePagamentoService {
@@ -20,6 +21,7 @@ public class CadastroFormaDePagamentoService {
         return formaDePagamentoRepository.save(formaDePagamento);
     }
 
+    @Transactional
     public void excluir(Long formaDePagamentoId) {
         try {
             formaDePagamentoRepository.deleteById(formaDePagamentoId);
@@ -32,6 +34,7 @@ public class CadastroFormaDePagamentoService {
         }
     }
 
+    @Transactional
     public FormaDePagamento findOrFail(Long formaDePagamentoId) {
         return formaDePagamentoRepository.findById(formaDePagamentoId)
                 .orElseThrow(

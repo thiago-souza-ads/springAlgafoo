@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class CadastroGrupoService {
@@ -16,10 +17,12 @@ public class CadastroGrupoService {
     @Autowired
     private GrupoRepository grupoRepository;
 
+    @Transactional
     public Grupo salvar(Grupo grupo) {
         return grupoRepository.save(grupo);
     }
 
+    @Transactional
     public void excluir(Long grupoId) {
         try {
             grupoRepository.deleteById(grupoId);

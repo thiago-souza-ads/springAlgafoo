@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class CadastroEnderecoService {
@@ -18,12 +19,14 @@ public class CadastroEnderecoService {
     @Autowired
     private CadastroCidadeService cadastroCidadeService;
 
+    @Transactional
     public Endereco salvar(Endereco endereco) {
         Cidade cidade = cadastroCidadeService.findOrFail(endereco.getCidade().getId());
         endereco.setCidade(cidade);
         return enderecoRepository.save(endereco);
     }
 
+    @Transactional
     public void excluir(Long enderecoId) {
         try {
             enderecoRepository.deleteById(enderecoId);
