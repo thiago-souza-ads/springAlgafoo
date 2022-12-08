@@ -77,7 +77,7 @@ public class Restaurante {
     @Valid // Forca a validação em cascata
     @ConvertGroup(from = Default.class, to = Groups.CozinhaId.class)
     @NotNull
-    @JsonIgnoreProperties({"hibernateLazyInitializer"})
+    @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "nome"}, allowGetters = true)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cozinha_id", nullable = false)
     private Cozinha cozinha;
