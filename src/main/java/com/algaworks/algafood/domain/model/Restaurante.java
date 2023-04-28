@@ -4,8 +4,6 @@ import com.algaworks.algafood.core.validation.Groups;
 import com.algaworks.algafood.core.validation.Multiplo;
 import com.algaworks.algafood.core.validation.TaxaFrete;
 import com.algaworks.algafood.core.validation.ValorZeroIncluiDescricao;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.CreationTimestamp;
@@ -24,7 +22,7 @@ import java.util.List;
 
 /**
  * Informacoes adicionais:
- *
+ * <p>
  * Relacionamento muitos para muitos
  * Customizando nome tabela, Definindo nome da coluna intermediaria que liga na outra tabela
  *
@@ -61,15 +59,14 @@ public class Restaurante {
     @Column(name = "taxa_frete", nullable = false)
     private BigDecimal taxaFrete;
 
-    @JsonIgnore
     @CreationTimestamp
     @Column(nullable = false, columnDefinition = "datetime")
     //definindo ignorando datetime(6) casas decimais de milisegundos
     private LocalDateTime dataCadastro;
 
-    @JsonIgnore
     @UpdateTimestamp
-    @Column(nullable = false, columnDefinition = "datetime") //definindo ignorando datetime(6) casas decimais de milisegundos
+    @Column(nullable = false, columnDefinition = "datetime")
+    //definindo ignorando datetime(6) casas decimais de milisegundos
     private LocalDateTime dataAtualizacao;
 
     // Com Json ignore ou nao o Hibernate vai dar o select de Cozinha vai ter o problema N+1 (uma consulta a mais para cada consulta basica)
@@ -77,12 +74,10 @@ public class Restaurante {
     @Valid // Forca a validação em cascata
     @ConvertGroup(from = Default.class, to = Groups.CozinhaId.class)
     @NotNull
-    @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "nome"}, allowGetters = true)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cozinha_id", nullable = false)
     private Cozinha cozinha;
 
-    @JsonIgnore //- Cuidado ao alterar para eager pois pode prejudicar o rendimento do sistema
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "restaurante_forma_pagamento",
             joinColumns = @JoinColumn(name = "restaurante_id"),
@@ -99,8 +94,4 @@ public class Restaurante {
     @OneToOne
     @JoinColumn(name = "endereco_id")
     private Endereco endereco;
-
-     /*     @JsonIgnore -- Foi removido pois era somente para didatica
-            @Embedded
-            private Endereco endereco                                   */
 }
