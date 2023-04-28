@@ -5652,21 +5652,21 @@ insert into endereco(logradouro, numero, complemento, bairro, cep, cidade_id) va
 insert into endereco(logradouro, numero, complemento, bairro, cep, cidade_id) values ('Rua da Praca', '2755', 'Zona Rural', 'Catedral', '83546-456', 70);
 insert into endereco(logradouro, numero, complemento, bairro, cep, cidade_id) values ('Rua das Flores', '1041', 'Ao lado da Oficina', 'Santista', '83546-456', 45);
 
-insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('La bodega', '14.5', 6, current_timestamp, current_timestamp, 1);
-insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('Preferido do Brasil', '10', 5, current_timestamp, current_timestamp, 2);
-insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('TailandFood', '3', 1, current_timestamp, current_timestamp, 3);
-insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('Cheff Canguru', '0', 3, current_timestamp, current_timestamp, 4);
-insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('Bigodon Restaurante', '20', 6, current_timestamp, current_timestamp, 5);
-insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('Tio San Restaurante', '17', 8, current_timestamp, current_timestamp, 5);
-insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('Manuel Restaurante', '8', 7, current_timestamp, current_timestamp, 4);
-insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('Restaurante La Polonia', '5', 4, current_timestamp, current_timestamp, 3);
-insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('IndiaFood Indiano', '5', 2, current_timestamp, current_timestamp, 2);
-insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('Maracana', '10', 5, current_timestamp, current_timestamp, 1);
-insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('Curitiba', '10', 5, current_timestamp, current_timestamp, 2);
-insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('Pernambuco', '10', 5, current_timestamp, current_timestamp, 3);
-insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('Victor', '10', 5, current_timestamp, current_timestamp, 4);
-insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('Restaurante Joao', '10', 5, current_timestamp, current_timestamp, 5);
-insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('X-Ratao', '10', 5, current_timestamp, current_timestamp, 4);
+insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('La bodega', '14.5', 6, utc_timestamp, utc_timestamp, 1);
+insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('Preferido do Brasil', '10', 5, utc_timestamp, utc_timestamp, 2);
+insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('TailandFood', '3', 1, utc_timestamp, utc_timestamp, 3);
+insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('Cheff Canguru', '0', 3, utc_timestamp, utc_timestamp, 4);
+insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('Bigodon Restaurante', '20', 6, utc_timestamp, utc_timestamp, 5);
+insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('Tio San Restaurante', '17', 8, utc_timestamp, utc_timestamp, 5);
+insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('Manuel Restaurante', '8', 7, utc_timestamp, utc_timestamp, 4);
+insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('Restaurante La Polonia', '5', 4, utc_timestamp, utc_timestamp, 3);
+insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('IndiaFood Indiano', '5', 2, utc_timestamp, utc_timestamp, 2);
+insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('Maracana', '10', 5, utc_timestamp, utc_timestamp, 1);
+insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('Curitiba', '10', 5, utc_timestamp, utc_timestamp, 2);
+insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('Pernambuco', '10', 5, utc_timestamp, utc_timestamp, 3);
+insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('Victor', '10', 5, utc_timestamp, utc_timestamp, 4);
+insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('Restaurante Joao', '10', 5, utc_timestamp, utc_timestamp, 5);
+insert into restaurante  (nome, taxa_frete, cozinha_id, data_cadastro, data_atualizacao, endereco_id) values ('X-Ratao', '10', 5, utc_timestamp, utc_timestamp, 4);
 
 insert into forma_de_pagamento (descricao) values ('A vista dinheiro');
 insert into forma_de_pagamento (descricao) values ('A vista credito');
@@ -5693,20 +5693,20 @@ insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) val
 insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (4,1);
 insert into restaurante_forma_pagamento (restaurante_id, forma_pagamento_id) values (4,4);
 
-insert into produto (nome, descricao, preco, ativo, restaurante_id, data_cadastro, data_atualizacao) values ('Pao de Queijo', 'Tradicional Pao de Queijo Mineiro', 78.90, 1, 1, current_timestamp, current_timestamp);
-insert into produto (nome, descricao, preco, ativo, restaurante_id, data_cadastro, data_atualizacao) values ('Porco com molho agridoce', 'Deliciosa carne suína ao molho especial', 78.90, 1, 1, current_timestamp, current_timestamp);
-insert into produto (nome, descricao, preco, ativo, restaurante_id, data_cadastro, data_atualizacao) values ('Camarão tailandês', '16 camarões grandes ao molho picante', 110, 1, 1, current_timestamp, current_timestamp);
-insert into produto (nome, descricao, preco, ativo, restaurante_id, data_cadastro, data_atualizacao) values ('Salada picante com carne grelhada', 'Salada de folhas com cortes finos de carne bovina grelhada e nosso molho especial de pimenta vermelha', 87.20, 1, 2, current_timestamp, current_timestamp);
-insert into produto (nome, descricao, preco, ativo, restaurante_id, data_cadastro, data_atualizacao) values ('Garlic Naan', 'Pão tradicional indiano com cobertura de alho', 21, 1, 3, current_timestamp, current_timestamp);
-insert into produto (nome, descricao, preco, ativo, restaurante_id, data_cadastro, data_atualizacao) values ('Murg Curry', 'Cubos de frango preparados com molho curry e especiarias', 43, 1, 3, current_timestamp, current_timestamp);
-insert into produto (nome, descricao, preco, ativo, restaurante_id, data_cadastro, data_atualizacao) values ('Bife Ancho', 'Corte macio e suculento, com dois dedos de espessura, retirado da parte dianteira do contrafilé', 79, 1, 4, current_timestamp, current_timestamp);
-insert into produto (nome, descricao, preco, ativo, restaurante_id, data_cadastro, data_atualizacao) values ('T-Bone', 'Corte muito saboroso, com um osso em formato de T, sendo de um lado o contrafilé e do outro o filé mignon', 89, 1, 4, current_timestamp, current_timestamp);
-insert into produto (nome, descricao, preco, ativo, restaurante_id, data_cadastro, data_atualizacao) values ('Sanduíche X-Tudo', 'Sandubão com muito queijo, hamburger bovino, bacon, ovo, salada e maionese', 19, 1, 5, current_timestamp, current_timestamp);
-insert into produto (nome, descricao, preco, ativo, restaurante_id, data_cadastro, data_atualizacao) values ('Espetinho de Cupim', 'Acompanha farinha, mandioca e vinagrete', 8, 1, 6, current_timestamp, current_timestamp);
+insert into produto (nome, descricao, preco, ativo, restaurante_id, data_cadastro, data_atualizacao) values ('Pao de Queijo', 'Tradicional Pao de Queijo Mineiro', 78.90, 1, 1, utc_timestamp, utc_timestamp);
+insert into produto (nome, descricao, preco, ativo, restaurante_id, data_cadastro, data_atualizacao) values ('Porco com molho agridoce', 'Deliciosa carne suína ao molho especial', 78.90, 1, 1, utc_timestamp, utc_timestamp);
+insert into produto (nome, descricao, preco, ativo, restaurante_id, data_cadastro, data_atualizacao) values ('Camarão tailandês', '16 camarões grandes ao molho picante', 110, 1, 1, utc_timestamp, utc_timestamp);
+insert into produto (nome, descricao, preco, ativo, restaurante_id, data_cadastro, data_atualizacao) values ('Salada picante com carne grelhada', 'Salada de folhas com cortes finos de carne bovina grelhada e nosso molho especial de pimenta vermelha', 87.20, 1, 2, utc_timestamp, utc_timestamp);
+insert into produto (nome, descricao, preco, ativo, restaurante_id, data_cadastro, data_atualizacao) values ('Garlic Naan', 'Pão tradicional indiano com cobertura de alho', 21, 1, 3, utc_timestamp, utc_timestamp);
+insert into produto (nome, descricao, preco, ativo, restaurante_id, data_cadastro, data_atualizacao) values ('Murg Curry', 'Cubos de frango preparados com molho curry e especiarias', 43, 1, 3, utc_timestamp, utc_timestamp);
+insert into produto (nome, descricao, preco, ativo, restaurante_id, data_cadastro, data_atualizacao) values ('Bife Ancho', 'Corte macio e suculento, com dois dedos de espessura, retirado da parte dianteira do contrafilé', 79, 1, 4, utc_timestamp, utc_timestamp);
+insert into produto (nome, descricao, preco, ativo, restaurante_id, data_cadastro, data_atualizacao) values ('T-Bone', 'Corte muito saboroso, com um osso em formato de T, sendo de um lado o contrafilé e do outro o filé mignon', 89, 1, 4, utc_timestamp, utc_timestamp);
+insert into produto (nome, descricao, preco, ativo, restaurante_id, data_cadastro, data_atualizacao) values ('Sanduíche X-Tudo', 'Sandubão com muito queijo, hamburger bovino, bacon, ovo, salada e maionese', 19, 1, 5, utc_timestamp, utc_timestamp);
+insert into produto (nome, descricao, preco, ativo, restaurante_id, data_cadastro, data_atualizacao) values ('Espetinho de Cupim', 'Acompanha farinha, mandioca e vinagrete', 8, 1, 6, utc_timestamp, utc_timestamp);
 
-insert into usuario (nome, email, senha, data_cadastro, data_atualizacao) values ('Thiago Rodrigues de Souza', 'thiagorodriguesdesouza@hotmail.com', '123456', current_timestamp, current_timestamp);
-insert into usuario (nome, email, senha, data_cadastro, data_atualizacao) values ('Gabriel Rodrigues de Souza', 'gabrielrodriguesdesouza@hotmail.com', '123456', current_timestamp, current_timestamp);
-insert into usuario (nome, email, senha, data_cadastro, data_atualizacao) values ('Suelen Pereira Rodrigues de Souza', 'suelenrodriguesdesouza@hotmail.com', '123456', current_timestamp, current_timestamp);
+insert into usuario (nome, email, senha, data_cadastro, data_atualizacao) values ('Thiago Rodrigues de Souza', 'thiagorodriguesdesouza@hotmail.com', '123456', utc_timestamp, utc_timestamp);
+insert into usuario (nome, email, senha, data_cadastro, data_atualizacao) values ('Gabriel Rodrigues de Souza', 'gabrielrodriguesdesouza@hotmail.com', '123456', utc_timestamp, utc_timestamp);
+insert into usuario (nome, email, senha, data_cadastro, data_atualizacao) values ('Suelen Pereira Rodrigues de Souza', 'suelenrodriguesdesouza@hotmail.com', '123456', utc_timestamp, utc_timestamp);
 
 insert into grupo (nome) values ("ADMINISTRADORES");
 insert into grupo (nome) values ("FUNCIONARIOS");
